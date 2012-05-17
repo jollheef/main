@@ -1,5 +1,8 @@
 #!/bin/bash
-
+#
+# $ cat /usr/bin/emacsdaemon 
+# #!/usr/bin/emacs --daemon
+#
 . /etc/rc.conf
 . /etc/rc.d/functions
 
