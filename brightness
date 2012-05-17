@@ -1,0 +1,120 @@
+#!/bin/sh
+#
+# Managing brightness with setpci and bc.
+# Copyright (C) 2012 Mikhail Klementyev aka jollheef <jollheef@riseup.net>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# For use without password in /etc/sudoers need add line:
+# your_user ALL=NOPASSWD: /path/to/setpci
+#
+
+TmpFile="/tmp/.brme_db"
+Device=00:02.0
+Action=$1
+Quantity=$2
+
+function Main
+{
+    GetBrightness   
+    case $Action in
+        inc)
+            TestQuantity
+            let "Quantity=$CurrentBrightness+$Quantity"
+            NormaliseQuantity
+            SetBrightness
+            ;;
+        dec)
+            TestQuantity
+            let "Quantity=$CurrentBrightness-$Quantity"
+            NormaliseQuantity
+            SetBrightness
+            ;;
+        set)
+            SetBrightness
+            ;;
+        toggle)
+            ToggleBrightness
+            ;;
+        show)
+            echo $CurrentBrightness
+            ;;
+        *)
+            echo "Use: brightness [inc,dec,set,toggle,show] [0-255]"
+            ;;
+    esac
+}
+
+function TestQuantity
+{
+    # [0-9]* == integer
+    if ! [[ "$Quantity" == [0-9]* ]];
+    then
+        echo "Error: Quantity must be from 0 to 255" >&2
+        exit 1
+    fi
+}
+
+function GetBrightness
+{
+    # Get current brightness
+    CurrentBrightness=`sudo setpci -s $Device F4.B`
+    # Convert to uppercase
+    CurrentBrightness=`echo "$CurrentBrightness" | tr '[:lower:]' '[:upper:]'`
+    # Convert to decimal
+    CurrentBrightness=`echo "ibase=16; $CurrentBrightness" |bc`
+}
+
+function SetBrightness
+{
+    TestQuantity
+    # -le == less than or equal to, -ge == greater than or equal to
+    if [ "$Quantity" -le "255" ] && [ "$Quantity" -ge "0" ];
+    then
+        # Convert from decimal to hexadecimal
+        Quantity=`echo "ibase=10;obase=16; $Quantity" |bc`
+        # Set brightness
+        sudo setpci -s $Device F4.B=$Quantity
+    else
+        echo "Error: Quantity must be from 0 to 255" >&2
+    fi
+}
+
+function ToggleBrightness
+{
+    if [ "$CurrentBrightness" == "0" ];
+    then
+        Quantity=`cat $TmpFile`
+        SetBrightness
+    else
+        echo $CurrentBrightness>$TmpFile
+        Quantity=0
+        SetBrightness
+    fi
+}
+
+function NormaliseQuantity
+{
+    # -lt == less than
+    if [ "$Quantity" -lt "1" ];
+    then
+        Quantity=1
+    # -gt == greater than
+    elif [ "$Quantity" -gt "255" ];
+    then
+        Quantity=255
+    fi
+}
+
+Main
