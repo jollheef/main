@@ -8,7 +8,7 @@
 
 USER="michael"
 
-PID=$(TMPSTR5F37FEB=`ps -eo pid,cmd` && echo "$TMPSTR5F37FEB" |grep /usr/bin/emacsdaemon | sed s/[^0-9]//g)
+PID=$(pgrep emacsdaemon)
 
 case "$1" in
  start)
