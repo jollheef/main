@@ -27,6 +27,7 @@ Quantity=$2
 
 function Main
 {
+    TestRun
     GetBrightness   
     case $Action in
         inc)
@@ -101,6 +102,15 @@ function ToggleBrightness
         echo $CurrentBrightness>$TmpFile
         Quantity=0
         SetBrightness
+    fi
+}
+
+function TestRun
+{
+    PID=`pgrep brightness`
+    if [[ -z $PID ]]; then
+        echo already
+        exit 1;
     fi
 }
 
