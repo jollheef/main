@@ -109,7 +109,6 @@ function TestRun
 {
     PID=`pgrep brightness`
     if [[ -z $PID ]]; then
-        echo already
         exit 1;
     fi
 }
