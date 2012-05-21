@@ -77,16 +77,24 @@ function GetBrightness
     CurrentBrightness=`echo "ibase=16; $CurrentBrightness" |bc`
 }
 
+function SendNotify
+{
+    Percent="`echo "($Quantity*100)/255" | bc`%"
+    notify-send -t 500 "Brightness::$Percent"
+}
+
 function SetBrightness
 {
     TestQuantity
     # -le == less than or equal to, -ge == greater than or equal to
     if [ "$Quantity" -le "255" ] && [ "$Quantity" -ge "0" ];
     then
+        SendNotify
         # Convert from decimal to hexadecimal
         Quantity=`echo "ibase=10;obase=16; $Quantity" |bc`
         # Set brightness
         sudo setpci -s $Device F4.B=$Quantity
+
     else
         echo "Error: Quantity must be from 0 to 255" >&2
     fi
