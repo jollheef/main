@@ -23,6 +23,7 @@ NotifyExpireTime=500
 
 function Main 
 {
+    TestRun
     case $Action in
         inc)
             PlusOrMinus="+"
@@ -58,12 +59,20 @@ function Main
 
 function ChangeVolume
 {
-    notif="Volume::$(amixer sset Master $Quantity%$PlusOrMinus |grep "Mono:" |awk '{print $4}' |sed 's/\[//;s/\]//')"    
+    notif="Volume::$(amixer sset Master $Quantity%$PlusOrMinus |grep "Mono:" |awk '{print $4}' |sed 's/\[//;s/\]//')" 
 }
 
-function SendNotify 
+function SendNotify
 {
     notify-send -t $NotifyExpireTime "$notif" 
+}
+
+function TestRun
+{
+    PID=`pgrep volume`
+    if [[ -z $PID ]]; then
+        exit 1;
+    fi
 }
 
 Main
