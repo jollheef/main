@@ -2,3 +2,4 @@
 /etc/rc.conf
 /etc/rc.d/emacsd
 /home/michael/bin/gitconf
+/home/michael/bin/volume
