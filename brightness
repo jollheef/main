@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Managing brightness with setpci and bc.
 # Copyright (C) 2012 Mikhail Klementyev aka jollheef <jollheef@riseup.net>

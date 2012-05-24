@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Managing volume and send notify.
 # Copyright (C) 2012 Mikhail Klementyev aka jollheef <jollheef@riseup.net>
