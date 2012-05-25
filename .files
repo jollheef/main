@@ -3,3 +3,4 @@
 /etc/rc.d/emacsd
 /home/michael/bin/gitconf
 /home/michael/bin/volume
+/home/michael/.xmonad/xmonad.hs
