@@ -1,0 +1,22 @@
+#!/bin/sh
+pathping=`which ping`
+pathnotify=`which notify-send`
+sleep 1m
+while [ 1 ]; do
+        $pathping -c 1 google.com >/dev/null 2>&1
+        if [ $? != 0 ]; then
+            $pathping -c 1 google.com >/dev/null 2>&1
+            if [ $? != 0 ]; then
+                $pathnotify Интернет упал
+                # set $? to 127
+                - >/dev/null 2>&1
+                while [ $? != 0 ]; do
+                    sleep 10s
+                    $pathping -c 1 google.com >/dev/null 2>&1
+                done
+                $pathnotify Интернет появился
+            fi
+        fi
+        sleep 5s
+done
+
