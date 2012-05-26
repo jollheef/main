@@ -11,3 +11,6 @@
 /home/michael/.xinitrc
 /home/michael/.fonts.conf
 /home/michael/bin/ifexping
+/home/michael/bin/touchpad.sh
+/home/michael/bin/translate.py
+/home/michael/bin/translate.sh
