@@ -4,6 +4,7 @@ xhost local:
 syndaemon -K -d -i 1 &
 
 ifexping &
+touchpad.sh &
 
 firefox &
 emacsclient -c &
