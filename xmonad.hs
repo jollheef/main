@@ -1,6 +1,8 @@
 import XMonad
 import XMonad.Util.EZConfig  -- key/mouse bindings
 import XMonad.Actions.CopyWindow -- for copyToAll
+import XMonad.Actions.GridSelect -- GridSelect displays items(e.g. the opened windows)
+                                 -- in a 2D grid and lets the user select from it with the cursor/hjkl keys or the mouse. 
 import qualified XMonad.StackSet as W -- for W.focusDown
 
 main = do
@@ -26,12 +28,19 @@ myManageHook = composeAll
  , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
  ]
 -- M - modMask, M1 - Alt, C - Control, S - Shift  
-myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
-          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")   
-          , ("<XF86Launch1>",           spawn "brightness toggle")
-          , ("<XF86AudioRaiseVolume>",  spawn "volume inc 5")
+myKeysP = [-- ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
+--          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")   
+--          , ("<XF86Launch1>",           spawn "brightness toggle")
+            ("<XF86AudioRaiseVolume>",  spawn "volume inc 5")
           , ("<XF86AudioLowerVolume>",  spawn "volume dec 5")
           , ("<XF86AudioMute>",         spawn "volume toggle")
+          , ("M-]",                     spawn "brightness inc 15")
+          , ("M-[",                     spawn "brightness dec 15")
+          , ("M-\\",                    spawn "brightness toggle")
+          , ("M-S-]",                   spawn "volume inc 5")
+          , ("M-S-[",                   spawn "volume dec 5")
+          , ("M-S-\\",                  spawn "volume toggle")
+
           , ("<Pause>",                 spawn "slock")
           , ("M-f",                     spawn "firefox")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox")
@@ -43,4 +52,9 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("S-M1-q",                  spawn "translate.sh")
           , ("C-;",                     spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
           , ("M-d",                     spawn "showdate.sh")
+
+          , ("M-z",                     spawn "allmount.sh 1")
+          , ("M-x",                     spawn "allmount.sh 0")
+
+          , ("M-g",                     goToSelected defaultGSConfig) -- GridSelect
           ]

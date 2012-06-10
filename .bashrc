@@ -4,6 +4,10 @@
 
 PATH=$PATH:~/bin
 
+#printf "\n "
+#fortune ru lorquotes rus_poslovicy
+#echo
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

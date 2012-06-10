@@ -9,7 +9,7 @@ alias yr='yaourt -Rs'
 # Search installed pkg
 alias yq='yaourt -Qs'
 # Clean
-alias yc='yaourt -Sc'
+alias yc='yaourt -Sc --noconfirm'
 
 alias ':q'='exit'
 alias q='exit'

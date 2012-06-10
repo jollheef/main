@@ -1,13 +1,15 @@
 xsetroot -cursor_name left_ptr
 xsetroot -solid "#333333"
 xhost local:
-syndaemon -K -d -i 1 &
+#syndaemon -K -d -i 1 &
 
+aarchup &
 ifexping &
 touchpad.sh &
+parcellite &
 
 firefox &
-emacsclient -c &
+emacsscript && emacsclient -c &
 vlc &
 pidgin &
 thunderbird &
