@@ -1,3 +1,6 @@
+;; Package list:
+;; community/emacs-w3m-cvs
+
 ;; Disable all bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -33,13 +36,23 @@
 					;(setq display-time-interval 1)		; in seconds, default value 60
 (setq display-time-format "%H:%M")
 (display-time-mode)
-
+;;
+;;
 ;; Key bindings
+;;
+;;
+
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;;
+;;
 ;; Color-theme
+;;
+;;
+
 ;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
 ;; ~/.emacs.d/lisp/color-theme.el
 (require 'zenburn)
@@ -123,3 +136,7 @@
 (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+
+(require 'w3m-load)
+(setq w3m-use-cookies t)
+
