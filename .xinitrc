@@ -6,7 +6,6 @@ xhost local:
 aarchup &
 ifexping &
 touchpad.sh &
-parcellite &
 
 firefox &
 emacsscript && emacsclient -c &
