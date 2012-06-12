@@ -170,6 +170,3 @@
 (add-hook 'text-mode-hook             (lambda () (auto-fill-mode +1)))
 (add-hook 'text-mode-hook             (lambda () (ispell-minor-mode +1)))
 (add-hook 'text-mode-hook             (lambda () (flyspell-mode +1)))
-
-
-
