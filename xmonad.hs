@@ -40,6 +40,8 @@ myKeysP = [-- ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-]",                   spawn "volume inc 5")
           , ("M-S-[",                   spawn "volume dec 5")
           , ("M-S-\\",                  spawn "volume toggle")
+          , ("M-b",                     spawn "battery")
+          , ("M-t",                     spawn "temperature")
 
           , ("<Pause>",                 spawn "slock")
           , ("M-f",                     spawn "firefox")
