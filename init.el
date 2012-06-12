@@ -4,8 +4,8 @@
 ;; crontab-mode-1.2 dired+-21.2 haskell-mode-2.8.0 paredit-22
 ;; windresize-0.1
 ;; Lisp List:
-;; auto-complete-1.3.1  color-theme.el  linum-relative.el  nyan-img
-;; nyan-mode.el  slime  workspaces.el  zenburn.el
+;; auto-complete-1.3.1 color-theme.el linum-relative.el nyan-mode.el
+;; slime workspaces.el zenburn.el
 
 ;;
 ;;
