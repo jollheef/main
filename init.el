@@ -15,7 +15,6 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
-
 ;; Load-path for lisp files
 (let ((default-directory "~/.emacs.d/lisp/"))
   (setq load-path
