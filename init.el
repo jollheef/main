@@ -89,7 +89,7 @@
 
 ;; DONE with date in todo-list
 (setq org-log-done t) 
-;; Dired use one buffer
+;; Dired+ use one buffer
 (toggle-diredp-find-file-reuse-dir t)
 ;; y-or-n instead of yes-or-no in kill buffer
 (defalias 'yes-or-no-p 'y-or-n-p)
