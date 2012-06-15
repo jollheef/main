@@ -1,6 +1,6 @@
 #!/bin/bash
 GIT_PATH="/home/michael/dev/main"
-GIT_REMOTE="git@github.com:jollheef/main.git"
+GIT_REMOTE="git@github.com:jollheef/main.git -i ~/.ssh/github_rsa"
 CURDIR="$(pwd)"
 
 usage(){
