@@ -16,3 +16,5 @@
 /home/michael/bin/translate.sh
 /home/michael/.inputrc
 /home/michael/.emacs.d/init.el
+/home/michael/.emacs.d/lisp/zenburn.el
+/home/michael/.emacs.d/lisp/linum-relative.el
