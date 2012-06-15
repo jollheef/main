@@ -4,6 +4,8 @@ alias yi='yaourt -S'
 alias ys='yaourt -Ss'
 # Update pkgs
 alias yu='yaourt -Syua'
+# Update pkgs withoun confirmation
+alias yun='yaourt -Syua --noconfirm'
 # Remove pkg
 alias yr='yaourt -Rs'
 # Search installed pkg

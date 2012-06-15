@@ -10,7 +10,7 @@ touchpad.sh &
 firefox &
 emacsscript && emacsclient -c &
 #vlc &
-#pidgin &
+pidgin &
 thunderbird &
 
 exec xmonad
