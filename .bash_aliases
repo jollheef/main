@@ -4,7 +4,7 @@ alias yi='yaourt -S'
 alias ys='yaourt -Ss'
 # Update pkgs
 alias yu='yaourt -Syua'
-# Update pkgs withoun confirmation
+# Update pkgs without confirmation
 alias yun='yaourt -Syua --noconfirm'
 # Remove pkg
 alias yr='yaourt -Rs'
