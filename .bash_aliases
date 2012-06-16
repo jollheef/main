@@ -32,3 +32,5 @@ alias 'shutdown'='sudo shutdown'
 alias 'torrestart'='rc.d restart tor'
 
 alias 'gitucp'='gitconf update all && gitconf commit && gitconf push'
+
+alias 'kusu'='ssh root@kusu'

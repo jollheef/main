@@ -17,11 +17,11 @@ main = do
 --    , layoutHook = myLayout
     } `additionalKeysP` myKeysP
 -- Define amount and names of workspaces  
-myWorkspaces = ["1:web","2:edit","3:whatever","4:media","5:im","6:mail"]
+myWorkspaces = ["1:emacs","2:web","3:whatever","4:media","5:im","6:mail"]
 -- appName/className/title to workspace
 myManageHook = composeAll  
- [ className =? "Firefox"       --> doShift "1:web"
- , className =? "Emacs"         --> doShift "2:edit"
+ [ className =? "Emacs"         --> doShift "1:emacs"
+ , className =? "Firefox"       --> doShift "2:web"
  , className =? "Vlc"           --> doShift "4:media"
  , className =? "Pidgin"        --> doShift "5:im"
  , className =? "Thunderbird"   --> doShift "6:mail"

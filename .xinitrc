@@ -7,7 +7,7 @@ aarchup &
 ifexping &
 touchpad.sh &
 
-firefox &
+#firefox &
 emacsscript && emacsclient -c &
 #vlc &
 pidgin &

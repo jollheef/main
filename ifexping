@@ -11,12 +11,12 @@ while [ 1 ]; do
                 # set $? to 127
                 - >/dev/null 2>&1
                 while [ $? != 0 ]; do
-                    sleep 10s
+                    sleep 1s
                     $pathping -c 1 google.com >/dev/null 2>&1
                 done
                 $pathnotify Интернет появился
             fi
         fi
-        sleep 5s
+        sleep 1s
 done
 
