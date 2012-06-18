@@ -163,6 +163,8 @@
 ;; For aspell, need aspell, aspell-ru, aspell-en
 (setq-default ispell-program-name "aspell")
 (setq ispell-list-command "list")
+;; Lush
+(load "/usr/share/lush2/etc/lush.el")
 
 ;;
 ;;
