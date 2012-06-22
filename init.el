@@ -41,8 +41,9 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
-(global-set-key (kbd "C-c C-m") 'execute-extended-command)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x C-m") 'smex)
+(global-set-key (kbd "C-c C-m") 'smex)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "<f12>")
@@ -165,6 +166,10 @@
 (setq ispell-list-command "list")
 ;; Lush
 ;(load "/usr/share/lush2/etc/lush.el")
+;; Smex - M-x replacement
+(require 'smex)
+(smex-initialize)
+(smex-auto-update)
 
 ;;
 ;;
