@@ -1,5 +1,7 @@
 # Install pkg
 alias yi='yaourt -S'
+# Install pkg --noconfirm
+alias yi='yaourt -S --noconfirm'
 # Search pkg
 alias ys='yaourt -Ss'
 # Update pkgs
