@@ -164,7 +164,7 @@
 (setq-default ispell-program-name "aspell")
 (setq ispell-list-command "list")
 ;; Lush
-(load "/usr/share/lush2/etc/lush.el")
+;(load "/usr/share/lush2/etc/lush.el")
 
 ;;
 ;;
