@@ -13,15 +13,16 @@
 ;;
 ;;
 
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/"))
+;(add-to-list 'package-archives
+;             '("elpa" . "http://tromey.com/elpa/"))
 ;; Add the user-contributed repository
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+;(add-to-list 'package-archives
+;             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
-;; Load-path for lisp files
+; Load-path for lisp files
 (let ((default-directory "~/.emacs.d/lisp/"))
   (setq load-path
 	(append
@@ -95,7 +96,7 @@
 ;; DONE with date in todo-list
 (setq org-log-done t) 
 ;; Dired+ use one buffer
-(toggle-diredp-find-file-reuse-dir t)
+;(toggle-diredp-find-file-reuse-dir t)
 ;; y-or-n instead of yes-or-no in kill buffer
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
@@ -170,6 +171,19 @@
 (require 'smex)
 (smex-initialize)
 (smex-auto-update)
+;; Elim
+(add-to-list 'load-path "~/.emacs.d/lisp/elim")
+(load-library "garak")
+;; truncate long chat buffers,
+;; enable spell checking in all lui buffers
+;; and use the american dictionary in them
+(setq lui-max-buffer-size 30000
+      lui-flyspell-p t
+      lui-flyspell-alist '(("." "american")))
+;If you’re not seeing images in the Garak account tree you need to add this code:
+;
+;(setq tree-widget-image-enable t)
+
 
 ;;
 ;;
@@ -177,10 +191,12 @@
 ;;
 ;;
 
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
-(add-hook 'text-mode-hook             (lambda () (auto-fill-mode +1)))
-(add-hook 'text-mode-hook             (lambda () (ispell-minor-mode +1)))
-(add-hook 'text-mode-hook             (lambda () (flyspell-mode +1)))
+;(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+;(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+;(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+;(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+;(add-hook 'text-mode-hook             (lambda () (auto-fill-mode +1)))
+;(add-hook 'text-mode-hook             (lambda () (ispell-minor-mode +1)))
+;(add-hook 'text-mode-hook             (lambda () (flyspell-mode +1)))
+
+

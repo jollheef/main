@@ -28,12 +28,12 @@ function Main
         inc)
             PlusOrMinus="+"
             ChangeVolume
-            SendNotify
+#            SendNotify
             ;;
         dec)
             PlusOrMinus="-"
             ChangeVolume
-            SendNotify
+#            SendNotify
             ;;
         set)
             amixer sset 'Master' $Quantity% >/dev/null
@@ -45,7 +45,7 @@ function Main
             else
                 notif="Volume::on"
             fi
-            SendNotify
+#            SendNotify
             ;;
         show)
             notif=$(amixer sget Master |grep "Mono:" |awk '{print $4}' | sed 's/\[//;s/\]//')            

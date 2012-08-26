@@ -1,19 +1,19 @@
-# Install pkg
-alias yi='yaourt -S'
-# Install pkg --noconfirm
-alias yin='yaourt -S --noconfirm'
-# Search pkg
-alias ys='yaourt -Ss'
-# Update pkgs
-alias yu='yaourt -Syua'
-# Update pkgs without confirmation
-alias yun='yaourt -Syua --noconfirm'
-# Remove pkg
-alias yr='yaourt -Rs'
-# Search installed pkg
-alias yq='yaourt -Qs'
-# Clean
-alias yc='yaourt -Sc --noconfirm'
+## Install pkg
+#alias yi='yaourt -S'
+## Install pkg --noconfirm
+#alias yin='yaourt -S --noconfirm'
+## Search pkg
+#alias ys='yaourt -Ss'
+## Update pkgs
+#alias yu='yaourt -Syua'
+## Update pkgs without confirmation
+#alias yun='yaourt -Syua --noconfirm'
+## Remove pkg
+#alias yr='yaourt -Rs'
+## Search installed pkg
+#alias yq='yaourt -Qs'
+## Clean
+#alias yc='yaourt -Sc --noconfirm'
 
 alias ':q'='exit'
 alias q='exit'
@@ -24,14 +24,18 @@ SHOWIP='ip.icanhazip.com'
 alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
 alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'
 
-alias 'emacs'='emacsscript && emacsclient -t -c'
+#alias 'emacs'='emacsscript && emacsclient -t -c'
+
+alias mc='mc -b'
 
 # As ROOT
-alias 'rc.d'='sudo rc.d'
+#alias 'rc.d'='sudo rc.d'
 
 alias 'reboot'='sudo reboot'
+
+alias 'sbopkg'='sudo sbopkg'
 alias 'shutdown'='sudo shutdown'
-alias 'torrestart'='rc.d restart tor'
+#alias 'torrestart'='rc.d restart tor'
 
 alias 'gitucp'='gitconf update all && gitconf commit && gitconf push'
 

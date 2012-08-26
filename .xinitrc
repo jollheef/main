@@ -3,12 +3,13 @@ xsetroot -solid "#333333"
 xhost local:
 #syndaemon -K -d -i 1 &
 
-aarchup &
+#aarchup &
 ifexping &
 touchpad.sh &
 
 #firefox &
-emacsscript && emacsclient -c &
+emacs &
+#emacsscript && emacsclient -c &
 #vlc &
 pidgin &
 thunderbird &

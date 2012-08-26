@@ -19,8 +19,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export TERM=xterm-256color
-export EDITOR=/usr/bin/zile
-export VIEWER=less
+#export EDITOR=/usr/bin/zile
+#export VIEWER=less
 
 # Coloring less (include man's)
 #export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -30,3 +30,4 @@ export VIEWER=less
 #export LESS_TERMCAP_so=$'\E[01;44;33m'
 #export LESS_TERMCAP_ue=$'\E[0m'
 #export LESS_TERMCAP_us=$'\E[01;32m'
+export PATH=$PATH:/sbin:/usr/sbin
