@@ -57,7 +57,10 @@
 		  (ispell-change-dictionary "en" nil)))
 (global-set-key (kbd "<f9>") 'flyspell-mode)
 (global-set-key [?\C-q] 'workspace-goto)
-
+(global-set-key (kbd "<f8>")
+		(lambda ()
+		  (interactive)
+		  (kill-buffer "*Completions*")))
 ;;
 ;;
 ;; Appearance
