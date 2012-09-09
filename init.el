@@ -109,6 +109,9 @@
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
+;; Use firefox as default browser for open link
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
 
 ;;
 ;;
