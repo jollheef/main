@@ -63,3 +63,6 @@ Changes:
 
 	for wvdial:
 	    ln -s /etc/ppp/resolv.conf /etc/resolv.conf
+
+	comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
+
