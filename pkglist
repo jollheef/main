@@ -10,6 +10,9 @@ Install from internet:
 
 	skype (static)
 
+Install from slapt-get:
+	koffice
+
 Install with sbopkg(slackbuilds.org):
 	flash-player-plugin
 
