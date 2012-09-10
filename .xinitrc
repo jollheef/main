@@ -6,6 +6,7 @@ xhost local:
 #aarchup &
 ifexping &
 touchpad.sh &
+autorun3gmodem.sh &
 
 #firefox &
 emacs &
