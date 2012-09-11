@@ -1,0 +1,69 @@
+#!/bin/bash
+#Slackware startup deamon script
+ 
+# Name of Service
+NAME="Transmission Daemon"
+ 
+# Command to run
+CMD="/usr/bin/transmission-daemon"
+ 
+# Option to run with deamon
+# -a means from where to accept incoming connections, comma separated
+# you may want to add your local network if you have multiple clients
+OPTIONS="-a 127.0.0.1"
+ 
+# Process name of daemon, for killing it.
+PROCESSNAME="/usr/bin/transmission-daemon"
+ 
+# The name of the user that should run Transmission.
+# It's RECOMENDED to run Transmission in it's own user,
+# by default, this is set to 'transmission'.
+# For the sake of security you shouldn't set a password
+# on this user
+USERNAME="michael"
+ 
+func_stop() {
+        if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+                echo -n "Stopping $NAME ... "
+                killall $PROCESSNAME
+                sleep 2
+        fi
+ 
+        if [ ! "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+                echo "Done!"
+        else
+                echo "Error!"
+        fi
+}
+ 
+func_start() {
+        echo -n "Starting $NAME ... "
+        su - $USERNAME -c "$CMD $OPTIONS"
+        sleep 2
+ 
+        if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+                echo "Done!"
+        else
+                echo "Error!"
+        fi
+}
+ 
+ 
+case $1 in
+        "start")
+                func_start
+                ;;
+ 
+        "stop")
+                func_stop
+                ;;
+ 
+        "restart")
+                func_stop
+                sleep 2
+                func_start
+                ;;
+        *)
+                echo "Usage; start|stop|restart"
+                ;;
+esac
