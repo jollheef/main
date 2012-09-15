@@ -55,6 +55,7 @@ Install with sbopkg(slackbuilds.org):
 	wvstreams
 	wvdial
 
+	scilab
 Changes:
 
 	Add user to sudoers

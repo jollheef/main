@@ -34,7 +34,7 @@ alias mc='mc -b'
 alias 'reboot'='sudo reboot'
 
 alias 'sbopkg'='sudo sbopkg'
-alias 'shutdown'='sudo shutdown'
+alias 'shutdown'='sudo shutdown -h now'
 #alias 'torrestart'='rc.d restart tor'
 
 alias 'gitucp'='gitconf update all && gitconf commit && gitconf push'
