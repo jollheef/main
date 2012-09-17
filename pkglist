@@ -67,3 +67,4 @@ Changes:
 
 	comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 
+	uncomment mirror in /etc/slackpkg/mirrors

@@ -1,19 +1,18 @@
-## Install pkg
-#alias yi='yaourt -S'
-## Install pkg --noconfirm
-#alias yin='yaourt -S --noconfirm'
-## Search pkg
-#alias ys='yaourt -Ss'
-## Update pkgs
-#alias yu='yaourt -Syua'
-## Update pkgs without confirmation
-#alias yun='yaourt -Syua --noconfirm'
-## Remove pkg
-#alias yr='yaourt -Rs'
-## Search installed pkg
-#alias yq='yaourt -Qs'
-## Clean
-#alias yc='yaourt -Sc --noconfirm'
+# Install pkg
+alias yi='slapt-get -i'
+# Search pkg
+alias ys='slapt-get --search'
+# Update pkgs
+alias yu='slackpkg update && slackpkg upgrade-all && slackpkg install-new'
+alias yus='slapt-get -u && slapt-get --upgrade'
+# Remove pkg
+alias yr='slapt-get --remove'
+# Search installed pkg
+alias yq='slapt-get --installed |grep '
+# Auto clean
+alias yca='slapt-get --autoclean'
+# Clean
+alias yc='slapt-get --clean'
 
 alias ':q'='exit'
 alias q='exit'
@@ -33,6 +32,8 @@ alias mc='mc -b'
 
 alias 'reboot'='sudo reboot'
 
+alias 'slackpkg'='sudo slackpkg'
+alias 'slapt-get'='sudo slapt-get'
 alias 'sbopkg'='sudo sbopkg'
 alias 'shutdown'='sudo shutdown -h now'
 #alias 'torrestart'='rc.d restart tor'
