@@ -10,6 +10,7 @@ Install from internet:
 	src2pkg
 	skype (static)
 
+	conkeror (self-write slackbuild)
 Install from slapt-get:
 
 	xulrunner
