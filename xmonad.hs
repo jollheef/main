@@ -46,7 +46,7 @@ myKeysP = [-- ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("M-f",                     spawn "firefox")
-          , ("M-c",                     spawn "conkeror")
+          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox")
           , ("M-C-a",                   spawn "sudo rc.d restart tor && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")

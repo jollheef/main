@@ -81,3 +81,5 @@ Changes:
 	comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 
 	uncomment mirror in /etc/slackpkg/mirrors
+
+	add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
