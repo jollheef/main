@@ -21,6 +21,7 @@ myWorkspaces = ["1:emacs","2:web","3:whatever","4:media","5:im","6:mail"]
 -- appName/className/title to workspace
 myManageHook = composeAll  
  [ className =? "Emacs"         --> doShift "1:emacs"
+ , className =? "Conkeror"      --> doShift "2:web"
  , className =? "Firefox"       --> doShift "2:web"
  , className =? "Vlc"           --> doShift "4:media"
  , className =? "Pidgin"        --> doShift "5:im"
@@ -45,6 +46,7 @@ myKeysP = [-- ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("M-f",                     spawn "firefox")
+          , ("M-c",                     spawn "conkeror")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox")
           , ("M-C-a",                   spawn "sudo rc.d restart tor && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")
