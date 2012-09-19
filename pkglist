@@ -7,12 +7,18 @@ Install from disk (13.37):
 Install from internet:
 	sbopkg
 	slapt-get
-
+	src2pkg
 	skype (static)
 
 Install from slapt-get:
-	koffice
 
+	xulrunner
+	ORBit2
+	
+	abiword
+	gnumeric
+
+	openoffice.org
 Install with sbopkg(slackbuilds.org):
 	flash-player-plugin
 
@@ -56,6 +62,12 @@ Install with sbopkg(slackbuilds.org):
 	wvdial
 
 	scilab
+
+	gconf
+
+#	texlive
+		libsigsegv
+
 Changes:
 
 	Add user to sudoers

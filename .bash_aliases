@@ -5,6 +5,8 @@ alias ys='slapt-get --search'
 # Update pkgs
 alias yu='slackpkg update && slackpkg upgrade-all && slackpkg install-new'
 alias yus='slapt-get -u && slapt-get --upgrade'
+alias yub='sbopkg -u && sbopkg -c'
+alias yuall='yu && yus && yub'
 # Remove pkg
 alias yr='slapt-get --remove'
 # Search installed pkg
