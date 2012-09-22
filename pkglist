@@ -63,11 +63,12 @@ Install with sbopkg(slackbuilds.org):
 	wvdial
 
 	scilab
-
+		hdf5
 	gconf
 
 #	texlive
 		libsigsegv
+	wmname
 
 Changes:
 

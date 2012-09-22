@@ -7,6 +7,7 @@ xhost local:
 ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
+wmname LG3D &
 
 #firefox &
 emacs &
