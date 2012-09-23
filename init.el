@@ -61,6 +61,8 @@
 		(lambda ()
 		  (interactive)
 		  (kill-buffer "*Completions*")))
+(global-set-key (kbd "C-x C-a") 'org-agenda)
+
 ;;
 ;;
 ;; Appearance
