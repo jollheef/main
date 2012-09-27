@@ -43,3 +43,5 @@ alias 'shutdown'='sudo shutdown -h now'
 alias 'gitucp'='gitconf update all && gitconf commit && gitconf push'
 
 alias 'kusu'='ssh root@kusu'
+
+alias 'scilab'='scilab-adv-cli'

@@ -191,7 +191,7 @@
 ;If you’re not seeing images in the Garak account tree you need to add this code:
 ;
 ;(setq tree-widget-image-enable t)
-
+(require 'org-habit)
 
 ;;
 ;;

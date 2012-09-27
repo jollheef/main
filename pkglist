@@ -69,7 +69,8 @@ Install with sbopkg(slackbuilds.org):
 #	texlive
 		libsigsegv
 	wmname
-
+	pptp
+	zile
 Changes:
 
 	Add user to sudoers
