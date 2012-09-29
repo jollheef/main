@@ -62,6 +62,7 @@
 		  (interactive)
 		  (kill-buffer "*Completions*")))
 (global-set-key (kbd "C-x C-a") 'org-agenda)
+(global-set-key (kbd "C-x C-l") 'org-agenda-list)
 
 ;;
 ;;
