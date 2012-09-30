@@ -1,13 +1,10 @@
 /home/michael/bin/brightness
-/etc/rc.conf
-/etc/rc.d/emacsd
 /home/michael/bin/gitconf
 /home/michael/bin/volume
 /home/michael/.xmonad/xmonad.hs
 /home/michael/.bashrc
 /home/michael/.bash_aliases
 /home/michael/.bash_profile
-/home/michael/.bash_logout
 /home/michael/.xinitrc
 /home/michael/.fonts.conf
 /home/michael/bin/ifexping
@@ -19,11 +16,9 @@
 /home/michael/.emacs.d/lisp/zenburn.el
 /home/michael/.emacs.d/lisp/linum-relative.el
 /home/michael/dev/main/linum-relative.el
-/etc/wvdial.conf
 /home/michael/doc/pkglist
 /home/michael/etc/bin-archive/wikiparse.pl
 /home/michael/bin/autorun3gmodem.sh
 /etc/rc.d/rc.local
-/etc/rc.d/rc.transmissiond
 /home/michael/dev/conkeror.SlackBuild
 /home/michael/bin/slocktogglevolume.sh

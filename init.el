@@ -13,21 +13,20 @@
 ;;
 ;;
 
-(add-to-list 'load-path "~/.emacs.d/elpa/")
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
-;(add-to-list 'package-archives
-;             '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/"))
 ;; Add the user-contributed repository
-;(add-to-list 'package-archives
-;             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
-; Load-path for lisp files
+;; Load-path for lisp files
 (let ((default-directory "~/.emacs.d/lisp/"))
   (setq load-path
 	(append
          (let ((load-path (copy-sequence load-path))) ;; Shadow
-           (append 
+           (append
             (copy-sequence (normal-top-level-add-to-load-path '(".")))
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
@@ -48,10 +47,10 @@
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "<f12>")
-		(lambda () 
-		  (interactive) 
+		(lambda ()
+		  (interactive)
 		  (ispell-change-dictionary "ru" nil)))
-(global-set-key (kbd "<f11>") 
+(global-set-key (kbd "<f11>")
 		(lambda ()
 		  (interactive)
 		  (ispell-change-dictionary "en" nil)))
@@ -63,6 +62,7 @@
 		  (kill-buffer "*Completions*")))
 (global-set-key (kbd "C-x C-a") 'org-agenda)
 (global-set-key (kbd "C-x C-l") 'org-agenda-list)
+
 
 ;;
 ;;
@@ -83,7 +83,7 @@
 (require 'zenburn)
 (zenburn)
 ;; Show time
-;(setq display-time-interval 1)		; in seconds, default value 60
+					;(setq display-time-interval 1) ; in seconds, default value 60
 (setq display-time-format "%H:%M")
 (display-time-mode)
 ;; Show column (line,column)
@@ -100,9 +100,9 @@
 ;;
 
 ;; DONE with date in todo-list
-(setq org-log-done t) 
+(setq org-log-done t)
 ;; Dired+ use one buffer
-;(toggle-diredp-find-file-reuse-dir t)
+(toggle-diredp-find-file-reuse-dir t)
 ;; y-or-n instead of yes-or-no in kill buffer
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
@@ -165,17 +165,17 @@
 ;; Relative linum line-number mode
 (require 'linum-relative)
 ;; Common Lisp developer environment
-(setq inferior-lisp-program  "sbcl")
+(setq inferior-lisp-program "sbcl")
 (add-to-list 'load-path "~/.emacsd/lisp/slime/")
 (require 'slime)
 (slime-setup)
-(require 'w3m-load)
-(setq w3m-use-cookies t)
+;;(require 'w3m-load)
+;;(setq w3m-use-cookies t)
 ;; For aspell, need aspell, aspell-ru, aspell-en
 (setq-default ispell-program-name "aspell")
 (setq ispell-list-command "list")
 ;; Lush
-;(load "/usr/share/lush2/etc/lush.el")
+;;(load "/usr/share/lush2/etc/lush.el")
 ;; Smex - M-x replacement
 (require 'smex)
 (smex-initialize)
@@ -200,12 +200,10 @@
 ;;
 ;;
 
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-;(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-;(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
-(add-hook 'text-mode-hook             (lambda () (auto-fill-mode +1)))
-;(add-hook 'text-mode-hook             (lambda () (ispell-minor-mode +1)))
-;(add-hook 'text-mode-hook             (lambda () (flyspell-mode +1)))
-
-
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
+(add-hook 'text-mode-hook (lambda () (ispell-minor-mode +1)))
+(add-hook 'text-mode-hook (lambda () (flyspell-mode +1)))
