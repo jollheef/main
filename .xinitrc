@@ -16,4 +16,5 @@ emacs &
 pidgin &
 thunderbird &
 
-exec xmonad
+exec ck-launch-session /usr/bin/xmonad
+
