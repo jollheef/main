@@ -29,10 +29,10 @@ myManageHook = composeAll
  , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
  ]
 -- M - modMask, M1 - Alt, C - Control, S - Shift  
-myKeysP = [-- ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
---          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")   
---          , ("<XF86Launch1>",           spawn "brightness toggle")
-            ("<XF86AudioRaiseVolume>",  spawn "volume inc 5")
+myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
+          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")   
+          , ("<XF86Launch1>",           spawn "brightness toggle")
+          , ("<XF86AudioRaiseVolume>",  spawn "volume inc 5")
           , ("<XF86AudioLowerVolume>",  spawn "volume dec 5")
           , ("<XF86AudioMute>",         spawn "volume toggle")
           , ("M-]",                     spawn "brightness inc 15")

@@ -89,7 +89,7 @@ function SetBrightness
     # -le == less than or equal to, -ge == greater than or equal to
     if [ "$Quantity" -le "255" ] && [ "$Quantity" -ge "0" ];
     then
-#        SendNotify
+        SendNotify
         # Convert from decimal to hexadecimal
         Quantity=`echo "ibase=10;obase=16; $Quantity" |bc`
         # Set brightness
