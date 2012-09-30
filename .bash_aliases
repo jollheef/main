@@ -22,8 +22,6 @@ alias exi='exit'
 SHOWIP='ip.icanhazip.com'
 alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
 
-alias mc='mc -b'
-
 # As ROOT
 alias 'reboot'='sudo reboot'
 alias 'slackpkg'='sudo slackpkg'
