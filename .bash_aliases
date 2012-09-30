@@ -27,6 +27,7 @@ alias 'reboot'='sudo reboot'
 alias 'slackpkg'='sudo slackpkg'
 alias 'sbopkg'='sudo sbopkg'
 alias 'shutdown'='sudo shutdown -h now'
+alias 'installpkg'='sudo installpkg'
 
 alias 'gitucp'='gitconf update all && gitconf commit && gitconf push'
 

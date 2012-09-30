@@ -14,7 +14,7 @@ while [ 1 ]; do
                     sleep 1s
                     $pathping -c 1 google.com >/dev/null 2>&1
                 done
-                $pathnotify Интернет появился
+                $pathnotify -t 1000 Интернет появился
             fi
         fi
         sleep 1s
