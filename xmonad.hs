@@ -23,6 +23,7 @@ myManageHook = composeAll
  [ className =? "Emacs"         --> doShift "1:emacs"
  , className =? "Conkeror"      --> doShift "2:web"
  , className =? "Firefox"       --> doShift "2:web"
+ , className =? "VirtualBox"    --> doShift "4:media"
  , className =? "Vlc"           --> doShift "4:media"
  , className =? "Pidgin"        --> doShift "5:im"
  , className =? "Thunderbird"   --> doShift "6:mail"
