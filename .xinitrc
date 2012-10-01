@@ -8,6 +8,7 @@ ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
 wmname LG3D &
+nm-applet &
 
 #firefox &
 emacs &

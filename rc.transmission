@@ -51,7 +51,7 @@ func_start() {
 
 case $1 in
         "start")
-                func_start
+        	func_start
                 ;;
 
         "stop")
