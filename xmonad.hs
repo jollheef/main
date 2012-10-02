@@ -17,17 +17,25 @@ main = do
 --    , layoutHook = myLayout
     } `additionalKeysP` myKeysP
 -- Define amount and names of workspaces  
-myWorkspaces = ["1:emacs","2:web","3:whatever","4:media","5:im","6:mail"]
+myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
 -- appName/className/title to workspace
 myManageHook = composeAll  
  [ className =? "Emacs"         --> doShift "1:emacs"
+
  , className =? "Conkeror"      --> doShift "2:web"
  , className =? "Firefox"       --> doShift "2:web"
- , className =? "VirtualBox"    --> doShift "4:media"
- , className =? "Vlc"           --> doShift "4:media"
- , className =? "Pidgin"        --> doShift "5:im"
- , className =? "Thunderbird"   --> doShift "6:mail"
+
+ , className =? "midnight"    --> doShift "3:term"
+
+ , className =? "VirtualBox"    --> doShift "5:virtualization"
+
+
+ , className =? "Vlc"           --> doShift "6:media"
+ , className =? "Audacious"     --> doShift "7:music"
+ , className =? "Pidgin"        --> doShift "8:im"
+ , className =? "Thunderbird"   --> doShift "9:mail"
  , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
+ , className =? "stalonetray"   --> doShift "9:mail" <+> doF W.focusDown
  ]
 -- M - modMask, M1 - Alt, C - Control, S - Shift  
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
@@ -66,4 +74,8 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-x",                     spawn "allmount.sh 0")
 
           , ("M-g",                     goToSelected defaultGSConfig) -- GridSelect
+
+          , ("M-<F9>",                  spawn "audacious -t")
+          , ("M-<F10>",                 spawn "audacious -r")
+          , ("M-<F11>",                 spawn "audacious -f")
           ]

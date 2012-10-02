@@ -355,6 +355,11 @@ if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission start
 fi
 
+# Start vboxdrv:
+if [ -x /etc/rc.d/rc.vboxdrv ]; then
+  sh /etc/rc.d/rc.vboxdrv start
+fi
+
 # Start OpenLDAP:
 if [ -x /etc/rc.d/rc.openldap ]; then
   . /etc/rc.d/rc.openldap start

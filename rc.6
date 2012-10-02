@@ -63,6 +63,11 @@ if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission stop
 fi
 
+# Stop vboxdrv:
+if [ -x /etc/rc.d/rc.vboxdrv ]; then
+  sh /etc/rc.d/rc.vboxdrv stop
+fi
+
 # Stop the Apache web server:
 if [ -x /etc/rc.d/rc.httpd ]; then
   /etc/rc.d/rc.httpd stop

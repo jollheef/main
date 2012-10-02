@@ -9,5 +9,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export TERM=xterm-256color
+
 #export EDITOR=/usr/bin/emacs
 #export VIEWER=less
