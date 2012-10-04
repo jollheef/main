@@ -63,6 +63,16 @@ if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission stop
 fi
 
+# Stop I2P Service:
+if [ -x /etc/rc.d/rc.i2p ]; then
+  sh /etc/rc.d/rc.i2p stop
+fi
+
+# Stop The Onion Router:
+if [ -x /etc/rc.d/rc.tor ]; then
+  sh /etc/rc.d/rc.tor stop
+fi
+
 # Stop vboxdrv:
 if [ -x /etc/rc.d/rc.vboxdrv ]; then
   sh /etc/rc.d/rc.vboxdrv stop

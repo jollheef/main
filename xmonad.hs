@@ -35,7 +35,7 @@ myManageHook = composeAll
  , className =? "Pidgin"        --> doShift "8:im"
  , className =? "Thunderbird"   --> doShift "9:mail"
  , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
- , className =? "stalonetray"   --> doShift "9:mail" <+> doF W.focusDown
+ , className =? "stalonetray"   --> doF W.focusDown <+> doShift "9:mail"
  ]
 -- M - modMask, M1 - Alt, C - Control, S - Shift  
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
@@ -55,7 +55,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("M-f",                     spawn "firefox")
-          , ("M-c",                     spawn "conkeror-run")
+--          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox")
           , ("M-C-a",                   spawn "sudo rc.d restart tor && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")

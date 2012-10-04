@@ -355,6 +355,16 @@ if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission start
 fi
 
+# Start I2P Service:
+if [ -x /etc/rc.d/rc.i2p ]; then
+  sh /etc/rc.d/rc.i2p start
+fi
+
+# Start The Onion Router:
+if [ -x /etc/rc.d/rc.tor ]; then
+  sh /etc/rc.d/rc.tor start
+fi
+
 # Start vboxdrv:
 if [ -x /etc/rc.d/rc.vboxdrv ]; then
   sh /etc/rc.d/rc.vboxdrv start

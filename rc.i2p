@@ -1,0 +1,51 @@
+#!/bin/bash
+#Slackware startup deamon script
+
+# Name of Service
+NAME="I2P Service"
+
+# Command to run
+CMD="/home/i2p/i2p/i2prouter"
+
+USERNAME="i2p"
+
+func_stop() {
+    sudo -u $USERNAME -H $CMD status >> /dev/null
+    case $? in
+	1)
+	    echo "Error! $NAME is not running."
+	    ;;
+	0)
+	    sudo -u $USERNAME -H $CMD graceful
+	    while [ "$(ps aux |grep /home/i2p/i2p/i2psvc |grep -v grep)" ]; do
+		sleep 10s
+	    done
+	    ;;
+	*)
+	    ;;
+    esac
+}
+
+func_start() {
+    sudo -u i2p -H /home/i2p/i2p/i2prouter start
+}
+
+case $1 in
+    "start")
+        func_start
+        ;;
+    "stop")
+        func_stop
+        ;;
+    "restart")
+        func_stop
+        sleep 2
+        func_start
+        ;;
+    "status")
+	sudo -u $USERNAME -H $CMD status
+	;;
+    *)
+	echo "Usage; start|stop|restart|status"
+	;;
+esac

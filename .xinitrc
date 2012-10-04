@@ -1,9 +1,7 @@
 xsetroot -cursor_name left_ptr
 xsetroot -solid "#333333"
 xhost local:
-#syndaemon -K -d -i 1 &
 
-#aarchup &
 ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
@@ -13,7 +11,6 @@ stalonetray --icon-gravity E --geometry +1100 -p &
 
 firefox &
 emacs &
-#emacsscript && emacsclient -c &
 #vlc &
 pidgin &
 thunderbird &
