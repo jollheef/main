@@ -3,20 +3,16 @@ pathping=`which ping`
 pathnotify=`which notify-send`
 sleep 1m
 while [ 1 ]; do
-        $pathping -c 1 google.com >/dev/null 2>&1
-        if [ $? != 0 ]; then
+    $pathping -c 5 google.com >/dev/null 2>&1
+    if [ $? != 0 ]; then
+        $pathnotify -t 1000 Интернет упал
+        # set $? to 127
+        - >/dev/null 2>&1
+        while [ $? != 0 ]; do
+            sleep 1s
             $pathping -c 1 google.com >/dev/null 2>&1
-            if [ $? != 0 ]; then
-                $pathnotify -t 1000 Интернет упал
-                # set $? to 127
-                - >/dev/null 2>&1
-                while [ $? != 0 ]; do
-                    sleep 1s
-                    $pathping -c 1 google.com >/dev/null 2>&1
-                done
-                $pathnotify -t 1000 Интернет появился
-            fi
-        fi
-        sleep 1s
+        done
+        $pathnotify -t 1000 Интернет появился
+    fi
 done
 

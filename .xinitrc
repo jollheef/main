@@ -6,7 +6,8 @@ ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
 wmname LG3D &
-nm-applet &
+#nm-applet &
+nmvpn_auto &
 stalonetray --icon-gravity E --geometry +1100 -p &
 
 firefox &
