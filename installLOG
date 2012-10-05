@@ -1,0 +1,91 @@
+installed slackware 14 all without KDE and KDEL
+
+rusification
+remap caps to ctrl in rc.local
+add user to sudo
+add user
+lock (sudo passwd -l root) root
+uncomment rol mirror in /etc/slackpkg/mirrors
+comment 3,4,5,6 tty
+add .bashrc, .bash_profile and .inputrc in ~/
+comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
+add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
+add in /etc/profile line to support qt_gtk theme
+
+install jre and jdk from /extra/ on SlackDVD
+
+install from rpm
+	openoffice
+
+install from source (sbopkg)
+	networkmanager-pptp (0.9.4) and chmod+x rc.networkmanager
+		pptp
+	sbopkg (from i-net)
+	src2pkg (from i-net)
+	skype
+	xmonad
+		ghc
+		haskell-utf8-string
+		haskell-transormers
+		haskell-mtl
+		haskell-syb
+		haskell-X11
+		xmonad-contrib
+			haskell-random
+
+	flash-player-plugin
+
+	sakura
+	slock
+
+	pmount
+	xsel
+	unclutter
+	lame
+	stalonetray
+	antiword
+	catdoc
+
+	transmission
+		libevent
+	acpi
+
+	unrar
+
+	sbcl ;; ln -s /usr/lib/sbcl/ /usr/local/lib/sbcl  
+
+	scilab
+		hdf5
+
+
+	scrot	
+		giblib
+		imlib2
+	feh
+		(giblib)
+		(imlib2)
+	wmname
+	lxappearance
+	ffmpeg
+		x264
+	gmrun
+
+	wine
+		fontforge
+		webcore-fonts
+	virtualbox
+		virtualbox-kernel
+		acpica
+	girara
+	zathura
+
+	xulrunner (for conkeror)
+
+#	gparted
+#		gtkmm
+#			atkmm
+#			pangomm
+#				glibmm
+#					libsigc++
+#			mm-common
+####
