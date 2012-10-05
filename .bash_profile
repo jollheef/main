@@ -4,6 +4,8 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+export TMOUT=600
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] &&  ! [[ -e /tmp/.X11-unix/X0 ]] && (( EUID )); then
     while true; do
 	read -p 'Set brightness (0-255): '

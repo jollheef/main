@@ -2,17 +2,14 @@ xsetroot -cursor_name left_ptr
 xsetroot -solid "#333333"
 xhost local:
 
+nmvpn_auto2 &
 ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
 wmname LG3D &
-#nm-applet &
-nmvpn_auto &
-stalonetray --icon-gravity E --geometry +1100 -p &
 
 firefox &
 emacs &
-#vlc &
 pidgin &
 thunderbird &
 audacious &
