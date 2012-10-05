@@ -49,7 +49,7 @@ fi
 
 # Stop I2P Service:
 if [ -x /etc/rc.d/rc.i2p ]; then
-  sh /etc/rc.d/rc.i2p stop
+  sh /etc/rc.d/rc.i2p graceful
 fi
 
 # Stop The Onion Router:

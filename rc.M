@@ -355,11 +355,6 @@ if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission start
 fi
 
-# Start I2P Service:
-if [ -x /etc/rc.d/rc.i2p ]; then
-  sh /etc/rc.d/rc.i2p start
-fi
-
 # Start The Onion Router:
 if [ -x /etc/rc.d/rc.tor ]; then
   sh /etc/rc.d/rc.tor start
@@ -389,6 +384,11 @@ fi
 # If there are SystemV init scripts for this runlevel, run them.
 if [ -x /etc/rc.d/rc.sysvinit ]; then
   . /etc/rc.d/rc.sysvinit
+fi
+
+# Start I2P Service:
+if [ -x /etc/rc.d/rc.i2p ]; then
+  sh /etc/rc.d/rc.i2p start
 fi
 
 # Start the local setup procedure.
