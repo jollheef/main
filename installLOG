@@ -14,6 +14,9 @@ add in /etc/profile line to support qt_gtk theme
 
 install jre and jdk from /extra/ on SlackDVD
 
+install from alien slackbuilds 
+	vlc
+
 install from rpm
 	openoffice
 
@@ -81,11 +84,13 @@ install from source (sbopkg)
 
 	xulrunner (for conkeror)
 
-#	gparted
-#		gtkmm
-#			atkmm
-#			pangomm
-#				glibmm
-#					libsigc++
-#			mm-common
-####
+	gtkmm3
+
+	gparted
+		gtkmm
+			atkmm
+			pangomm
+				cairomm
+				glibmm
+					libsigc++
+			mm-common

@@ -18,19 +18,21 @@ main = do
     } `additionalKeysP` myKeysP
 -- Define amount and names of workspaces  
 myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
--- appName/className/title to workspace
+-- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll  
  [ className =? "Emacs"         --> doShift "1:emacs"
 
  , className =? "Conkeror"      --> doShift "2:web"
  , className =? "Firefox"       --> doShift "2:web"
 
- , className =? "midnight"    --> doShift "3:term"
+ , className =? "midnight"      --> doShift "3:term"
 
  , className =? "VirtualBox"    --> doShift "5:virtualization"
 
 
  , className =? "Vlc"           --> doShift "6:media"
+ , className =? "Gimp"          --> doShift "6:media"
+
  , className =? "Audacious"     --> doShift "7:music"
  , className =? "Pidgin"        --> doShift "8:im"
  , className =? "Thunderbird"   --> doShift "9:mail"

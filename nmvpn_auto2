@@ -10,6 +10,10 @@ ETH="eth0"
 ETH_UUID="73ea227c-25d4-4b08-93ac-f2ccdab5d870"
 # UUID подключения по VPN
 VPN_UUID="38be0e58-00b0-448b-8440-040d64f44730"
+# Адрес для проверки сети
+ETHPING="172.16.254.254"
+# Адрес для проверки интернета
+PPPPING="google.com"
 
 NMCLI="ck-launch-session nmcli"
 
@@ -72,21 +76,21 @@ function EthAvailable
 
 function NetUp
 {
-    ping -I $ETH -c 3 google.com >/dev/null 2>&1
+    ping -I $ETH -c 3 $ETHPING >/dev/null 2>&1
     if [ $? == "0" ]; then
-	return 1
-    else
 	return 0
+    else
+	return 1
     fi
 }
 
 function InetUp
 {
-    ping -I $PPP -c 10 google.com >/dev/null 2>&1
+    ping -I $PPP -c 10 $PPPPING >/dev/null 2>&1
     if [ $? == "0" ]; then
-	return 1
-    else
 	return 0
+    else
+	return 1
     fi
 }
 
