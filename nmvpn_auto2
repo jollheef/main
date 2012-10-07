@@ -52,7 +52,7 @@ function Main
 	else
 	    echo Нет активных соединений. Поднимаю ETH.
     	    $NMCLI con up uuid $ETH_UUID >/dev/null 2>&1
-	    sleep 1s
+	    sleep 5s
 	fi
     else
 	sleep 1s
@@ -78,9 +78,9 @@ function NetUp
 {
     ping -I $ETH -c 3 $ETHPING >/dev/null 2>&1
     if [ $? == "0" ]; then
-	return 1
-    else
 	return 0
+    else
+	return 1
     fi
 }
 
