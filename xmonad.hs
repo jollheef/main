@@ -62,7 +62,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-C-a",                   spawn "sudo /etc/rc.d/rc.tor restart && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")
 --          , ("M-e",                     spawn "emacsscript && emacsclient -c")
---          , ("M-C-e",                   spawn "sudo rc.d restart emqacsd && emacsclient -c")
+--          , ("M-C-e",                   spawn "sudo rc.d restart emacsd && emacsclient -c")
           , ("M-s",                     spawn "sakura")
           , ("<XF86PowerOff>",          spawn "slocktogglevolume.sh & sudo pm-suspend")
           , ("S-<XF86PowerOff>",        spawn "sudo shutdown -h now")
@@ -74,6 +74,8 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("M-z",                     spawn "allmount.sh 1")
           , ("M-x",                     spawn "allmount.sh 0")
+
+--          , ("<insert>"                 spawn "gmrun")
 
           , ("M-g",                     goToSelected defaultGSConfig) -- GridSelect
 

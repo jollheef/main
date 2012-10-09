@@ -76,7 +76,7 @@ function EthAvailable
 
 function NetUp
 {
-    ping -I $ETH -c 3 $ETHPING >/dev/null 2>&1
+    ping -I $ETH -c 2 -w 10 $ETHPING >/dev/null 2>&1
     if [ $? == "0" ]; then
 	return 0
     else
@@ -86,7 +86,7 @@ function NetUp
 
 function InetUp
 {
-    ping -I $PPP -c 10 $PPPPING >/dev/null 2>&1
+    ping -I $PPP -c 2 -w 10 $PPPPING >/dev/null 2>&1
     if [ $? == "0" ]; then
 	return 1
     else

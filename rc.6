@@ -58,6 +58,11 @@ if [ -x /etc/rc.d/rc.local_shutdown ]; then
   /etc/rc.d/rc.local_shutdown stop
 fi
 
+# Stop Emacs daemon:
+if [ -x /etc/rc.d/rc.emacsd ]; then
+  sh /etc/rc.d/rc.emacsd stop
+fi
+
 # Stop transmission:
 if [ -x /etc/rc.d/rc.transmission ]; then
   sh /etc/rc.d/rc.transmission stop

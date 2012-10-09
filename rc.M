@@ -391,6 +391,11 @@ if [ -x /etc/rc.d/rc.i2p ]; then
   sh /etc/rc.d/rc.i2p start
 fi
 
+# Start Emacs daemon:
+if [ -x /etc/rc.d/rc.emacsd ]; then
+  sh /etc/rc.d/rc.emacsd start
+fi
+
 # Start the local setup procedure.
 if [ -x /etc/rc.d/rc.local ]; then
   . /etc/rc.d/rc.local

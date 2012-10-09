@@ -62,7 +62,7 @@
 		  (kill-buffer "*Completions*")))
 (global-set-key (kbd "C-x C-a") 'org-agenda)
 (global-set-key (kbd "C-x C-l") 'org-agenda-list)
-
+(global-set-key (kbd "C-c C-c") 'eval-defun)
 
 ;;
 ;;
@@ -78,6 +78,7 @@
 (scroll-bar-mode -1)
 ;; Set font
 (set-default-font "Monospace-11")
+(setq default-frame-alist '((font . "Monospace-11")))
 ;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
 ;; ~/.emacs.d/lisp/color-theme.el
 (require 'zenburn)
@@ -143,6 +144,28 @@
   (if arg
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+(defun reverse-input-method (input-method)
+  "Build the reverse mapping of single letters from INPUT-METHOD."
+  (interactive
+   (list (read-input-method-name "Use input method (default current): ")))
+  (if (and input-method (symbolp input-method))
+      (setq input-method (symbol-name input-method)))
+  (let ((current current-input-method)
+        (modifiers '(nil (control) (meta) (control meta))))
+    (when input-method
+      (activate-input-method input-method))
+    (when (and current-input-method quail-keyboard-layout)
+      (dolist (map (cdr (quail-map)))
+        (let* ((to (car map))
+               (from (quail-get-translation
+                      (cadr map) (char-to-string to) 1)))
+          (when (and (characterp from) (characterp to))
+            (dolist (mod modifiers)
+              (define-key local-function-key-map
+                (vector (append mod (list from)))
+                (vector (append mod (list to)))))))))
+    (when input-method
+      (activate-input-method current))))
 
 ;;
 ;;
@@ -189,10 +212,12 @@
 (setq lui-max-buffer-size 30000
       lui-flyspell-p t
       lui-flyspell-alist '(("." "american")))
-;If you’re not seeing images in the Garak account tree you need to add this code:
-;
-;(setq tree-widget-image-enable t)
+;;If you’re not seeing images in the Garak account tree you need to add this code:
+;;
+;;(setq tree-widget-image-enable t)
 (require 'org-habit)
+;; Hotkeys on russian layout
+(reverse-input-method 'russian-computer)
 
 ;;
 ;;
