@@ -31,5 +31,6 @@ alias 'slackpkg'='sudo slackpkg'
 alias 'sbopkg'='sudo sbopkg'
 alias 'shutdown'='sudo shutdown -h now'
 alias 'installpkg'='sudo installpkg'
+alias 'removepkg'='sudo removepkg'
 
 alias 'scilab'='scilab-adv-cli'

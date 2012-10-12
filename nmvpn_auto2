@@ -14,43 +14,49 @@ VPN_UUID="38be0e58-00b0-448b-8440-040d64f44730"
 ETHPING="172.16.254.254"
 # Адрес для проверки интернета
 PPPPING="google.com"
+# Команда для вывода даты
+DATE="date +%d.%m.%y-%R"
 
 NMCLI="ck-launch-session nmcli"
+
 
 function Main
 {
     if EthAvailable; then
-	echo Кабель подключен.
+	echo $($DATE) Кабель подключен.
 	if [ "$($NMCLI -t -f uuid con status)" ]; then
-	    echo Есть активные соединения.
+	    echo $($DATE) Есть активные соединения.
 	    if [ "$($NMCLI con status| grep $ETH_UUID)" ]; then
-		echo ETH подключен.
+		echo $($DATE) ETH подключен.
 		if NetUp; then
-		    echo Сеть работает.
+		    echo $($DATE) Сеть работает.
 		    if [ "$($NMCLI con status |grep $VPN_UUID)" ]; then
-			echo VPN работает.
-			until InetUp; do
+			echo $($DATE) VPN работает.
+			if ! InetDown; then
+			    echo $($DATE) Интернет работает.
+			fi
+			until InetDown; do
 			    sleep 1s
 			done
-			echo Интернет упал, отключаю VPN.
+			echo $($DATE) Интернет упал, отключаю VPN.
 			$NMCLI con down uuid $VPN_UUID >/dev/null 2>&1			
-			echo Интернет упал, отключаю ETH.
+			echo $($DATE) Интернет упал, отключаю ETH.
 			$NMCLI con down uuid $ETH_UUID >/dev/null 2>&1			
 		    else
-			echo VPN не работает, поднимаю VPN.
+			echo $($DATE) VPN не работает, поднимаю VPN.
 			$NMCLI con up uuid $VPN_UUID >/dev/null 2>&1
 			sleep 10s
 		    fi
 		else
-		    echo Сеть не работает, отключаю ETH.
+		    echo $($DATE) Сеть не работает, отключаю ETH.
 	    	    $NMCLI con down uuid $ETH_UUID >/dev/null 2>&1
 		fi
 	    else
-		echo Активно не-ETH соединение.
+		echo $($DATE) Активно не-ETH соединение.
 		sleep 10s
 	    fi
 	else
-	    echo Нет активных соединений. Поднимаю ETH.
+	    echo $($DATE) Нет активных соединений. Поднимаю ETH.
     	    $NMCLI con up uuid $ETH_UUID >/dev/null 2>&1
 	    sleep 5s
 	fi
@@ -84,7 +90,7 @@ function NetUp
     fi
 }
 
-function InetUp
+function InetDown
 {
     ping -I $PPP -c 2 -w 10 $PPPPING >/dev/null 2>&1
     if [ $? == "0" ]; then

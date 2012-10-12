@@ -1,12 +1,13 @@
 import XMonad
+--import XMonad.Core
 import XMonad.Util.EZConfig  -- key/mouse bindings
 import XMonad.Actions.CopyWindow -- for copyToAll
 import XMonad.Actions.GridSelect -- GridSelect displays items(e.g. the opened windows)
-                                 -- in a 2D grid and lets the user select from it with the cursor/hjkl keys or the mouse. 
+                                 -- in a 2D grid and lets the user select from it with the cursor/hjkl keys or the mouse.
 import qualified XMonad.StackSet as W -- for W.focusDown
 
 main = do
-  xmonad $ defaultConfig 
+  xmonad $ defaultConfig
     { terminal    = "sakura"
     , borderWidth = 0
     , focusedBorderColor = "#2f2f2f" -- "#000000"
@@ -16,10 +17,10 @@ main = do
     , workspaces = myWorkspaces
 --    , layoutHook = myLayout
     } `additionalKeysP` myKeysP
--- Define amount and names of workspaces  
+-- Define amount and names of workspaces
 myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
 -- appName/className/title to workspace. Use xprop.
-myManageHook = composeAll  
+myManageHook = composeAll
  [ className =? "Emacs"         --> doShift "1:emacs"
 
  , className =? "Conkeror"      --> doShift "2:web"
@@ -39,9 +40,9 @@ myManageHook = composeAll
  , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
  , className =? "stalonetray"   --> doF W.focusDown <+> doShift "9:mail"
  ]
--- M - modMask, M1 - Alt, C - Control, S - Shift  
+-- M - modMask, M1 - Alt, C - Control, S - Shift
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
-          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")   
+          , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")
           , ("<XF86Launch1>",           spawn "brightness toggle")
           , ("<XF86AudioRaiseVolume>",  spawn "volume inc 5")
           , ("<XF86AudioLowerVolume>",  spawn "volume dec 5")

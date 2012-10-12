@@ -16,4 +16,3 @@ audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
 
 exec ck-launch-session /usr/bin/xmonad
-
