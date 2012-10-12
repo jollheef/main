@@ -14,7 +14,7 @@ add in /etc/profile line to support qt_gtk theme
 
 install jre and jdk from /extra/ on SlackDVD
 
-install from alien slackbuilds 
+install from alien slackbuilds
 	vlc
 
 install from rpm
@@ -55,13 +55,13 @@ install from source (sbopkg)
 
 	unrar
 
-	sbcl ;; ln -s /usr/lib/sbcl/ /usr/local/lib/sbcl  
+	sbcl ;; ln -s /usr/lib/sbcl/ /usr/local/lib/sbcl
 
 	scilab
 		hdf5
 
 
-	scrot	
+	scrot
 		giblib
 		imlib2
 	feh
@@ -94,3 +94,5 @@ install from source (sbopkg)
 				glibmm
 					libsigc++
 			mm-common
+
+	gcolor2
