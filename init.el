@@ -46,14 +46,6 @@
 (global-set-key (kbd "C-c C-m") 'smex)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
-(global-set-key (kbd "<f12>")
-		(lambda ()
-		  (interactive)
-		  (ispell-change-dictionary "ru" nil)))
-(global-set-key (kbd "<f11>")
-		(lambda ()
-		  (interactive)
-		  (ispell-change-dictionary "en" nil)))
 (global-set-key (kbd "<f9>") 'flyspell-mode)
 (global-set-key [?\C-q] 'workspace-goto)
 (global-set-key (kbd "<f8>")
@@ -62,7 +54,12 @@
 		  (kill-buffer "*Completions*")))
 (global-set-key (kbd "C-x C-a") 'org-agenda)
 (global-set-key (kbd "C-x C-l") 'org-agenda-list)
-(global-set-key (kbd "C-c C-c") 'eval-defun)
+(add-hook 'emacs-lisp-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c C-c") 'eval-defun)))
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)))
 
 ;;
 ;;
@@ -247,5 +244,4 @@
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
-(add-hook 'text-mode-hook (lambda () (ispell-minor-mode +1)))
-(add-hook 'text-mode-hook (lambda () (flyspell-mode +1)))
+
