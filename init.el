@@ -93,6 +93,9 @@
 ;; files: ~/.emacs.d/lisp/nyan-mode.el, ~/.emacs.d/lisp/nyan-img/*
 (require 'nyan-mode)
 (nyan-mode)
+;; Indent style
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 ;;
 ;;
