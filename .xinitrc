@@ -8,7 +8,7 @@ touchpad.sh &
 autorun3gmodem.sh &
 wmname LG3D &
 
-firefox &
+firefox >/dev/null &
 emacs &
 pidgin &
 thunderbird &

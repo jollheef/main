@@ -350,10 +350,6 @@ if [ -x /etc/rc.d/rc.httpd ]; then
   . /etc/rc.d/rc.httpd start
 fi
 
-# Start transmission:
-if [ -x /etc/rc.d/rc.transmission ]; then
-  sh /etc/rc.d/rc.transmission start
-fi
 
 # Start The Onion Router:
 if [ -x /etc/rc.d/rc.tor ]; then
@@ -394,6 +390,11 @@ fi
 # Start Emacs daemon:
 if [ -x /etc/rc.d/rc.emacsd ]; then
   sh /etc/rc.d/rc.emacsd start
+fi
+
+# Start transmission:
+if [ -x /etc/rc.d/rc.transmission ]; then
+  sh /etc/rc.d/rc.transmission start
 fi
 
 # Start the local setup procedure.
