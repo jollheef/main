@@ -232,7 +232,8 @@
 (require 'org-habit)
 ;; Hotkeys on russian layout
 (reverse-input-method 'russian-computer)
-
+;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
+;;(load "scilab-startup")
 ;;
 ;;
 ;; Hooks

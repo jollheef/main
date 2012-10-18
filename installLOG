@@ -97,3 +97,5 @@ install from source (sbopkg)
 
 	gcolor2
 	enca
+	fpc
+	mirage
