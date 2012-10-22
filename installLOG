@@ -99,3 +99,4 @@ install from source (sbopkg)
 	enca
 	fpc
 	mirage
+	mit-scheme

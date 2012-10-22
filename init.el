@@ -202,8 +202,9 @@
 ;; Relative linum line-number mode
 (require 'linum-relative)
 ;; Common Lisp developer environment
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
-(add-to-list 'load-path "~/.emacsd/lisp/slime/")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/slime/")
 (require 'slime)
 (slime-setup)
 ;;(require 'w3m-load)
@@ -234,6 +235,7 @@
 (reverse-input-method 'russian-computer)
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
 ;;(load "scilab-startup")
+
 ;;
 ;;
 ;; Hooks
@@ -241,8 +243,11 @@
 ;;
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
+
 
