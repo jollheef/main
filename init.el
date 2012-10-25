@@ -81,7 +81,7 @@
 (require 'zenburn)
 (zenburn)
 ;; Show time
-					;(setq display-time-interval 1) ; in seconds, default value 60
+;;(setq display-time-interval 1) ;; in seconds, default value 60
 (setq display-time-format "%H:%M")
 (display-time-mode)
 ;; Show column (line,column)
@@ -93,6 +93,10 @@
 ;; Indent style
 (setq c-default-style "linux"
       c-basic-offset 4)
+(global-hl-line-mode 1)
+;; highlight just parens
+(show-paren-mode)
+(setq show-paren-style 'parenthesis)
 
 ;;
 ;;

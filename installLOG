@@ -100,3 +100,4 @@ install from source (sbopkg)
 	fpc
 	mirage
 	mit-scheme
+	odt2txt
