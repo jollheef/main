@@ -7,6 +7,7 @@ ifexping &
 touchpad.sh &
 autorun3gmodem.sh &
 wmname LG3D &
+battery-notify &
 
 firefox >/dev/null &
 emacs &

@@ -101,3 +101,4 @@ install from source (sbopkg)
 	mirage
 	mit-scheme
 	odt2txt
+	postgresql

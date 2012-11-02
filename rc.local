@@ -8,3 +8,6 @@
 # commands in there.
 
 setkeycodes 3a 29
+
+#echo "michael:$(/sbin/genpass)"|chpasswd
+

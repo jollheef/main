@@ -97,6 +97,9 @@
 ;; highlight just parens
 (show-paren-mode)
 (setq show-paren-style 'parenthesis)
+;; Set table-cell color (WHATTHEFUCK?)
+;;(set-face-background 'table-cell "#3f3f3f")
+;;(set-face- 'table-cell "#dcdccc")
 
 ;;
 ;;
@@ -133,6 +136,9 @@
 (defun fill-buffer ()
   (interactive)
   (fill-region (point-min) (point-max)))
+(defun compile-buffer ()
+  (interactive)
+  (slime-compile-region (point-min) (point-max)))
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
   (interactive)
@@ -239,6 +245,7 @@
 (reverse-input-method 'russian-computer)
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
 ;;(load "scilab-startup")
+(require 'dired+)
 
 ;;
 ;;
