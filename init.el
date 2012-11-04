@@ -2,7 +2,7 @@
 ;; community/emacs-w3m-cvs, aspell, aspell-ru, aspell-en, lush
 ;; Elpa list:
 ;; crontab-mode-1.2 dired+-21.2 haskell-mode-2.8.0 paredit-22
-;; windresize-0.1 smex-1.1.2 
+;; windresize-0.1 smex-1.1.2 sunrise-commander-6.441
 ;; Lisp List:
 ;; auto-complete-1.3.1 color-theme.el linum-relative.el nyan-mode.el
 ;; slime workspaces.el zenburn.el
@@ -15,8 +15,9 @@
 
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/"))
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+			 ("gnu"  . "http://elpa.gnu.org/packages/")
+			 ("SC"   . "http://joseito.republika.pl/sunrise-commander/")))
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
