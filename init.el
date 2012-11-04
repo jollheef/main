@@ -260,5 +260,3 @@
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
-
-
