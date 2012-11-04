@@ -59,6 +59,7 @@ map -b <C-x><C-s> :saveas<CR>
 map -b <C-x><C-u> gU
 map -b <C-x><C-v> O
 
+map <C-q> <Nop>
 map <C-d> <Nop>
 map <C-u> <Nop>
 map <C-x> <Nop>

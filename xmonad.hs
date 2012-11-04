@@ -21,24 +21,26 @@ main = do
 myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
- [ className =? "Emacs"         --> doShift "1:emacs"
+ [ className =? "Emacs"                --> doShift "1:emacs"
 
- , className =? "Conkeror"      --> doShift "2:web"
- , className =? "Firefox"       --> doShift "2:web"
+ , className =? "Conkeror"             --> doShift "2:web"
+ , className =? "Firefox"              --> doShift "2:web"
 
- , className =? "midnight"      --> doShift "3:term"
+ , className =? "midnight"             --> doShift "3:term"
 
- , className =? "VirtualBox"    --> doShift "5:virtualization"
+ , className =? "OpenOffice.org 3.4.1" --> doShift "4:work"
+ 
+ , className =? "VirtualBox"           --> doShift "5:virtualization"
 
 
- , className =? "Vlc"           --> doShift "6:media"
- , className =? "Gimp"          --> doShift "6:media"
+ , className =? "Vlc"                  --> doShift "6:media"
+ , className =? "Gimp"                 --> doShift "6:media"
 
- , className =? "Audacious"     --> doShift "7:music"
- , className =? "Pidgin"        --> doShift "8:im"
- , className =? "Thunderbird"   --> doShift "9:mail"
- , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doF copyToAll
- , className =? "stalonetray"   --> doF W.focusDown <+> doShift "9:mail"
+ , className =? "Audacious"            --> doShift "7:music"
+ , className =? "Pidgin"               --> doShift "8:im"
+ , className =? "Thunderbird"          --> doShift "9:mail"
+ , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
+ , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
  ]
 -- M - modMask, M1 - Alt, C - Control, S - Shift
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
