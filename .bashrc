@@ -10,5 +10,5 @@ fi
 
 export TERM=xterm-256color
 
-#export EDITOR=/usr/bin/emacs
+export EDITOR="/usr/bin/jed"
 #export VIEWER=less

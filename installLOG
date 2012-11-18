@@ -12,6 +12,9 @@ comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
 add in /etc/profile line to support qt_gtk theme
 
+install from source (plain)
+	lci (lambda calculus interpreter)
+
 install jre and jdk from /extra/ on SlackDVD
 
 install from alien slackbuilds
@@ -103,3 +106,10 @@ install from source (sbopkg)
 	odt2txt
 	postgresql
 	zathura-djvu-0
+	exiftool
+	xchm
+	wxPython
+	p7zip
+	convmv
+	beep
+	aircrack-ng

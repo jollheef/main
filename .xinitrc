@@ -5,9 +5,11 @@ xhost local:
 nmvpn_auto2 &
 ifexping &
 touchpad.sh &
-autorun3gmodem.sh &
+#autorun3gmodem.sh &
 wmname LG3D &
 battery-notify &
+
+synclient TouchpadOff=1 &
 
 firefox >/dev/null &
 emacs &

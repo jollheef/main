@@ -57,6 +57,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-\\",                  spawn "volume toggle")
           , ("M-S-b",                   spawn "battery")
           , ("M-S-t",                   spawn "temperature")
+          , ("M-S-u",                   spawn "uptime.sh")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("S-<Pause>",               spawn "slock-toggle-br.sh")

@@ -101,6 +101,7 @@
 ;; Set table-cell color (WHATTHEFUCK?)
 ;;(set-face-background 'table-cell "#3f3f3f")
 ;;(set-face- 'table-cell "#dcdccc")
+;; SET FILL COLUMN 67 !!!
 
 ;;
 ;;
@@ -256,8 +257,14 @@
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (auto-complete-mode +1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
+
 (add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
+
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
+;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
+
+
