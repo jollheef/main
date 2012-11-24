@@ -113,3 +113,23 @@ install from source (sbopkg)
 	convmv
 	beep
 	aircrack-ng
+	hydra
+	macchanger
+	mumble
+		celt
+		protobuf
+		speex 
+	winetrics
+	cabextract
+	xfburn
+		libburn
+		libisofs
+	driconf
+	hexedit
+	wireshark
+	dissy
+		pywebkitgtk
+			webkitgtk
+			webkitgtk3
+
+			

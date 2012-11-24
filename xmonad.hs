@@ -31,12 +31,15 @@ myManageHook = composeAll
  , className =? "OpenOffice.org 3.4.1" --> doShift "4:work"
  
  , className =? "VirtualBox"           --> doShift "5:virtualization"
-
+ , className =? "Wine"                 --> doShift "5:virtualization"
 
  , className =? "Vlc"                  --> doShift "6:media"
  , className =? "Gimp"                 --> doShift "6:media"
+ , className =? "MPlayer"              --> doShift "6:media"
 
  , className =? "Audacious"            --> doShift "7:music"
+ , className =? "Mumble"               --> doShift "7:music"
+
  , className =? "Pidgin"               --> doShift "8:im"
  , className =? "Thunderbird"          --> doShift "9:mail"
  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
@@ -88,4 +91,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-<F9>",                  spawn "audacious -t")
           , ("M-<F10>",                 spawn "audacious -r")
           , ("M-<F11>",                 spawn "audacious -f")
+
+          , ("M-m",                     spawn "mumble")
+          , ("M-S-e",                   spawn "eveonline")
           ]

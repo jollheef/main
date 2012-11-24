@@ -20,7 +20,7 @@ PROCESSNAME="/usr/bin/transmission-daemon"
 # by default, this is set to 'transmission'.
 # For the sake of security you shouldn't set a password
 # on this user
-USERNAME="michael"
+USERNAME="transmission"
 
 func_stop() {
         if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
