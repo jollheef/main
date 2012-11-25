@@ -40,3 +40,5 @@ alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 .
 alias 'aw'='audacious'
 
 alias 'wireshark'='sudo wireshark'
+
+alias 'pastebin'='pastebin | xclip -i'
