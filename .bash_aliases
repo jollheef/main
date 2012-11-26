@@ -41,4 +41,5 @@ alias 'aw'='audacious'
 
 alias 'wireshark'='sudo wireshark'
 
-alias 'pastebin'='pastebin | xclip -i'
+alias 'pastebin'='pastebinit | xclip -i'
+
