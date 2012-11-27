@@ -43,3 +43,4 @@ alias 'wireshark'='sudo wireshark'
 
 alias 'pastebin'='pastebinit | xclip -i'
 
+alias 'du'='du -h'

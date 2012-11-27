@@ -92,6 +92,10 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-<F10>",                 spawn "audacious -r")
           , ("M-<F11>",                 spawn "audacious -f")
 
+          , ("M-<F7>",                  spawn "record 600 >/dev/null 2>&1")
+          , ("M-<F8>",                  spawn "record stop >/dev/null 2>&1")
+
+
           , ("M-m",                     spawn "mumble")
           , ("M-S-e",                   spawn "eveonline")
           ]
