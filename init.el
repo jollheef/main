@@ -125,6 +125,8 @@
 ;; Use firefox as default browser for open link
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
+;; Scilab
+;;(load "scilab-startup")
 
 ;;
 ;;
