@@ -44,3 +44,6 @@ alias 'wireshark'='sudo wireshark'
 alias 'pastebin'='pastebinit | xclip -i'
 
 alias 'du'='du -h'
+
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
