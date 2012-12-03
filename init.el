@@ -102,7 +102,7 @@
 ;;(set-face-background 'table-cell "#3f3f3f")
 ;;(set-face- 'table-cell "#dcdccc")
 ;; Set fill column
- (setq-default fill-column 67)
+ (setq-default fill-column 66)
 
 ;;
 ;;
