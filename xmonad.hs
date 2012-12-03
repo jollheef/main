@@ -41,6 +41,8 @@ myManageHook = composeAll
  , className =? "Mumble"               --> doShift "7:music"
 
  , className =? "Pidgin"               --> doShift "8:im"
+ , className =? "Skype"                --> doShift "8:im"
+
  , className =? "Thunderbird"          --> doShift "9:mail"
  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
  , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"

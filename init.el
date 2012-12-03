@@ -75,8 +75,8 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 ;; Set font
-(set-default-font "Monospace-11")
-(setq default-frame-alist '((font . "Monospace-11")))
+(set-default-font "Ubuntu Mono-13")
+(setq default-frame-alist '((font . "Ubuntu Mono-13")))
 ;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
 ;; ~/.emacs.d/lisp/color-theme.el
 (require 'zenburn)
@@ -101,7 +101,8 @@
 ;; Set table-cell color (WHATTHEFUCK?)
 ;;(set-face-background 'table-cell "#3f3f3f")
 ;;(set-face- 'table-cell "#dcdccc")
-;; SET FILL COLUMN 67 !!!
+;; Set fill column
+ (setq-default fill-column 67)
 
 ;;
 ;;
@@ -269,5 +270,3 @@
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
-
-

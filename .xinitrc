@@ -15,7 +15,10 @@ synclient TouchpadOff=1 &
 
 firefox >/dev/null &
 emacs &
+
 pidgin &
+skype &
+
 thunderbird &
 audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
