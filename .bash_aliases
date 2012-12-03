@@ -45,5 +45,4 @@ alias 'pastebin'='pastebinit | xclip -i'
 
 alias 'du'='du -hs --apparent-size'
 
-#alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
