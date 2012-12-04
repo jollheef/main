@@ -4,6 +4,19 @@ import XMonad.Util.EZConfig  -- key/mouse bindings
 import XMonad.Actions.CopyWindow -- for copyToAll
 import XMonad.Actions.GridSelect -- GridSelect displays items(e.g. the opened windows)
                                  -- in a 2D grid and lets the user select from it with the cursor/hjkl keys or the mouse.
+import XMonad.Layout
+import XMonad.Layout.PerWorkspace  -- use different layouts on different WSs
+import XMonad.Layout.Master
+import XMonad.Hooks.ManageDocks
+
+--import XMonad.Layout.Named
+--import XMonad.Layout.Reflect
+
+import XMonad.Layout.IM   
+import XMonad.Layout.Grid   
+import Data.Ratio ((%))   
+import XMonad.Layout.Spacing   
+
 import qualified XMonad.StackSet as W -- for W.focusDown
 
 main = do
@@ -15,10 +28,28 @@ main = do
     , modMask     = mod4Mask
     , manageHook = myManageHook
     , workspaces = myWorkspaces
---    , layoutHook = myLayout
+    , layoutHook = myLayout
     } `additionalKeysP` myKeysP
 -- Define amount and names of workspaces
 myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
+
+gridLayout = spacing 8 $ Grid      
+pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout   
+--skypeLayout = withIM (1%7) (And (ClassName "Skype")  (Role "MainWindow")) gridLayout
+tiled50 = Tall 2 (3/100) (50/100)
+--tiled75 = Tall 2 (3/100) (75/100)
+myLayout = avoidStruts $ 
+             onWorkspace "1:emacs"              Full $
+             onWorkspace "2:web"                Full $
+             onWorkspace "3:term"               tiled50 $
+             onWorkspace "4:work"               Full $
+             onWorkspace "5:virtualization"     Full $
+             onWorkspace "6:media"              Full $
+             onWorkspace "7:music"              tiled50 $
+             onWorkspace "8:im"                 pidginLayout $
+             onWorkspace "9:mail"               tiled50 $
+                 tiled50 ||| Mirror tiled50 ||| Full
+ 
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
  [ className =? "Emacs"                --> doShift "1:emacs"
@@ -101,3 +132,4 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-m",                     spawn "mumble")
           , ("M-S-e",                   spawn "eveonline")
           ]
+

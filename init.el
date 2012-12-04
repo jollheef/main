@@ -98,7 +98,7 @@
 ;; highlight just parens
 (show-paren-mode)
 (setq show-paren-style 'parenthesis)
-;; Set table-cell color (WHATTHEFUCK?)
+;; Set table-cell color (WHATTHEFUCK? NEED FIX)
 ;;(set-face-background 'table-cell "#3f3f3f")
 ;;(set-face- 'table-cell "#dcdccc")
 ;; Set fill column
