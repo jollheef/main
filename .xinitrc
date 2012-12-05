@@ -11,6 +11,8 @@ touchpad.sh &
 wmname LG3D &
 battery-notify &
 
+parcellite -dn &
+
 synclient TouchpadOff=1 &
 
 firefox >/dev/null &

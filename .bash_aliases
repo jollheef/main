@@ -41,7 +41,7 @@ alias 'aw'='audacious'
 
 alias 'wireshark'='sudo wireshark'
 
-alias 'pastebin'='pastebinit | xclip -i'
+alias 'pastebin'='pastebinit'
 
 alias 'du'='du -hs --apparent-size'
 
