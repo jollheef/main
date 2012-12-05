@@ -41,7 +41,7 @@ tiled50 = Tall 2 (3/100) (50/100)
 myLayout = avoidStruts $ 
              onWorkspace "1:emacs"              Full $
              onWorkspace "2:web"                Full $
-             onWorkspace "3:term"               tiled50 $
+--             onWorkspace "3:term"               tiled50 $
              onWorkspace "4:work"               Full $
              onWorkspace "5:virtualization"     Full $
              onWorkspace "6:media"              Full $
