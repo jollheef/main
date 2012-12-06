@@ -43,6 +43,15 @@ alias 'wireshark'='sudo wireshark'
 
 alias 'pastebin'='pastebinit'
 
-alias 'du'='du -hs --apparent-size'
+alias 'du'='du -hcs --apparent-size'
 
 alias grep='grep --colour=auto'
+
+alias    '..'='cd ..'
+alias   '...'='cd ../..'
+alias  '....'='cd ../../..'
+alias '.....'='cd ../../../..'
+alias     '~'='cd ~'
+# "--" неизвестный мне хак (а может и не хак), без него не работает.
+alias  -- '-'='cd -'
+

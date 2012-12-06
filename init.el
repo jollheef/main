@@ -57,10 +57,15 @@
 (global-set-key (kbd "C-x C-l") 'org-agenda-list)
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
-	    (local-set-key (kbd "C-c C-c") 'eval-defun)))
+	    (local-set-key (kbd "C-c C-c")
+			   'eval-defun)))
 (add-hook 'c-mode-hook
 	  (lambda ()
-	    (local-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)))
+	    (local-set-key (kbd "C-c C-c")
+			   'comment-or-uncomment-region)))
+(global-set-key (kbd "C-x C-/") "…")
+(global-set-key (kbd "C-x C-.") "…")
+(global-set-key (kbd "C-S-u") 'ucs-insert)
 
 ;;
 ;;
@@ -234,8 +239,8 @@
 (smex-initialize)
 (smex-auto-update)
 ;; Elim
-(add-to-list 'load-path "~/.emacs.d/lisp/elim")
-(load-library "garak")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/elim")
+;;(load-library "garak")
 ;; truncate long chat buffers,
 ;; enable spell checking in all lui buffers
 ;; and use the american dictionary in them
