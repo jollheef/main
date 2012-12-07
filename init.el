@@ -207,11 +207,12 @@
       (defvar ucs-names-list
 	(loop for i in (ucs-names) collect (car i))))
   (let ((char (cdr (assoc-string
-		    (ido-completing-read "Unicode (name or hex): "
+		    (ido-completing-read "Unicode (name): "
 					 ucs-names-list nil t)
 		    ucs-names))))
     (when char
-      (ucs-insert char))))
+      (ucs-insert char))
+    (message (format "%x" char))))
 ;;
 ;;
 ;; Plugins
