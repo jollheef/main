@@ -200,17 +200,16 @@
   (interactive)
   (sgml-mode)
   (sgml-tags-invisible 0))
-;; Нечеткий ввод символа юникода
 (defun insert-unicode-char ()
+  "Insert unicode char"
   (interactive)
   (if (boundp 'ucs-names-list)
       (defvar ucs-names-list
 	(loop for i in (ucs-names) collect (car i))))
-  (let ((char
-	 (cdr (assoc-string
-	       (ido-completing-read "Unicode (name or hex): "
-			      ucs-names-list nil t)
-	       ucs-names))))
+  (let ((char (cdr (assoc-string
+		    (ido-completing-read "Unicode (name or hex): "
+					 ucs-names-list nil t)
+		    ucs-names))))
     (when char
       (ucs-insert char))))
 ;;
