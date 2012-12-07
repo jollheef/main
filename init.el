@@ -52,7 +52,11 @@
 (global-set-key (kbd "<f8>")
 		(lambda ()
 		  (interactive)
-		  (kill-buffer "*Completions*")))
+		  (kill-buffer "*Completions*")
+		  ;;FIXME! Need kill all buffers at down
+		  ;;(kill-buffer "*Help*")
+		  ;;(kill-buffer "*Disassemble*")
+		  ))
 (global-set-key (kbd "C-x C-a") 'org-agenda)
 (global-set-key (kbd "C-x C-l") 'org-agenda-list)
 (add-hook 'emacs-lisp-mode-hook
@@ -75,6 +79,9 @@
 
 ;; Disable startup-message (show *scratch* buffer)
 (setq inhibit-startup-message t)
+;; Set *scratch* buffer text
+(setq initial-scratch-message
+      ";; This buffer is for notes you don't want to save.\n\n")
 ;; Disable all bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -213,6 +220,10 @@
     (when char
       (ucs-insert char))
     (message (format "%x" char))))
+(defun show-unicode-char ()
+  (interactive)
+  (message (format "%x" (char-after))))
+
 ;;
 ;;
 ;; Plugins
