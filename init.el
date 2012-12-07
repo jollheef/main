@@ -203,7 +203,7 @@
 (defun insert-unicode-char ()
   "Insert unicode char"
   (interactive)
-  (if (boundp 'ucs-names-list)
+  (if (not (boundp 'ucs-names-list))
       (defvar ucs-names-list
 	(loop for i in (ucs-names) collect (car i))))
   (let ((char (cdr (assoc-string
