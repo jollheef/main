@@ -115,6 +115,9 @@
 ;;(set-face- 'table-cell "#dcdccc")
 ;; Set fill column
 (setq-default fill-column 66)
+;; Display battery state in mode-line
+(setq battery-mode-line-format " (%L %p%% %t)")
+(display-battery-mode 1)
 
 ;;
 ;;

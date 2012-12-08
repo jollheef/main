@@ -19,44 +19,43 @@ DATE="date +%d.%m.%y-%R"
 
 NMCLI="ck-launch-session nmcli"
 
-
 function Main
 {
     if EthAvailable; then
-#	echo $($DATE) Кабель подключен.
+	echo -e "$($DATE) Кабель подключен."
 	if [ "$($NMCLI -t -f uuid con status)" ]; then
-#	    echo $($DATE) Есть активные соединения.
+	    echo -e "\t$($DATE) Есть активные соединения."
 	    if [ "$($NMCLI con status| grep $ETH_UUID)" ]; then
-#		echo $($DATE) ETH подключен.
+		echo -e "\t\t$($DATE) ETH подключен."
 		if NetUp; then
-#		    echo $($DATE) Сеть работает.
+		    echo -e "\t\t\t$($DATE) Сеть работает."
 		    if [ "$($NMCLI con status |grep $VPN_UUID)" ]; then
-#			echo $($DATE) VPN работает.
-#			if ! InetDown; then
-#			    echo $($DATE) Интернет работает.
-#			fi
+			echo -e "\t\t\t\t$($DATE) VPN работает."
+			if ! InetDown; then
+			    echo -e "\t\t\t\t\t$($DATE) Интернет работает."
+			fi
 			until InetDown; do
 			    sleep 1s
 			done
-#			echo $($DATE) Интернет упал, отключаю VPN.
+			echo -e "\t\t\t\t\t$($DATE) Интернет упал, отключаю VPN."
 			$NMCLI con down uuid $VPN_UUID >/dev/null 2>&1			
-#			echo $($DATE) Интернет упал, отключаю ETH.
+			echo -e "\t\t\t\t\t$($DATE) Интернет упал, отключаю ETH."
 			$NMCLI con down uuid $ETH_UUID >/dev/null 2>&1			
 		    else
-#			echo $($DATE) VPN не работает, поднимаю VPN.
+			echo -e "\t\t\t\t$($DATE) VPN не работает, поднимаю VPN."
 			$NMCLI con up uuid $VPN_UUID >/dev/null 2>&1
 			sleep 10s
 		    fi
 		else
-#		    echo $($DATE) Сеть не работает, отключаю ETH.
+		    echo -e "\t\t\t $($DATE) Сеть не работает, отключаю ETH."
 	    	    $NMCLI con down uuid $ETH_UUID >/dev/null 2>&1
 		fi
 	    else
-#		echo $($DATE) Активно не-ETH соединение.
+		echo -e "\t\t $($DATE) Активно не-ETH соединение."
 		sleep 10s
 	    fi
 	else
-#	    echo $($DATE) Нет активных соединений. Поднимаю ETH.
+	    echo -e "\t$($DATE) Нет активных соединений. Поднимаю ETH."
     	    $NMCLI con up uuid $ETH_UUID >/dev/null 2>&1
 	    sleep 5s
 	fi
@@ -100,7 +99,15 @@ function InetDown
     fi
 }
 
-while [ 1 ]; do
-    Main
-    sleep 1s
-done
+
+if [[ "$1" == "debug" ]]; then
+    while [ 1 ]; do
+	Main
+	sleep 1s
+    done
+else
+    while [ 1 ]; do
+	Main >/dev/null 2>&1
+	sleep 1s
+    done
+fi
