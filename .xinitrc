@@ -13,7 +13,6 @@ battery-notify &
 
 parcellite -dn &
 
-synclient TouchpadOff=1 &
 
 firefox >/dev/null &
 emacs &
