@@ -57,8 +57,10 @@
 		  ;;(kill-buffer "*Help*")
 		  ;;(kill-buffer "*Disassemble*")
 		  ))
-(global-set-key (kbd "C-x C-a") 'org-agenda)
-(global-set-key (kbd "C-x C-l") 'org-agenda-list)
+(global-set-key (kbd "C-x C-/") "…")
+(global-set-key (kbd "C-x C-.") "…")
+(global-set-key (kbd "C-S-u") 'ucs-insert)
+
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-c C-c")
@@ -67,9 +69,14 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-c C-c")
 			   'comment-or-uncomment-region)))
-(global-set-key (kbd "C-x C-/") "…")
-(global-set-key (kbd "C-x C-.") "…")
-(global-set-key (kbd "C-S-u") 'ucs-insert)
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-x C-a")
+			   'org-agenda)))
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-x C-l")
+			   'org-timeline)))
 
 ;;
 ;;

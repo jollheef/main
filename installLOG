@@ -14,6 +14,8 @@ add in /etc/profile line to support qt_gtk theme
 
 install from source (plain)
 	lci (lambda calculus interpreter)
+	alien (package converter)
+	wireshark -1.8.4 with remote-pcap (self-write slackbuild)
 
 install jre and jdk from /extra/ on SlackDVD
 
@@ -126,7 +128,6 @@ install from source (sbopkg)
 		libisofs
 	driconf
 	hexedit
-	wireshark
 	pastebinit
 		configobj
 	xclip
