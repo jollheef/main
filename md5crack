@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# Cracking md5 script
+# Copyright (C) 2012 Mikhail Klementyev aka jollheef <jollheef@riseup.net>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+if [ "$#" -ne "1" ]; then
+    echo "Use: $0 <md5 hash>"
+    exit
+fi
+
+Hash=$1
+LengthOfHash=$(echo "${#Hash}")
+
+if [ "$LengthOfHash" -ne "32" ]; then
+    echo "md5 hash should be 32 characters"
+    exit
+fi
+
+Pass1="$(curl -s -d "md5=${Hash}" "http://md5-db.de/${Hash}.html" \
+  | sed -e 's#<[^>]*>##g' | grep -E 'verwenden:' \
+  | awk -F':' '{print $2}')"
+if [[ $Pass1 ]]; then
+    echo $Pass1
+else
+    Pass2="$(curl -s "http://md5.gromweb.com/query/${Hash}")"
+    if [[ $Pass2 ]]; then
+	echo $Pass2
+    else
+	Pass3="$(curl -s -d "hash=${Hash}&submit=Decrypt+It%21" \
+	  "http://md5decryption.com/" | grep -iE "Decrypted Text:" \
+	  | sed -e 's#<[^>]*>##g' -e 's#<!--##g' \
+	  | awk '{print $5}')"
+	if [[ $Pass3 ]]; then
+	    echo $Pass3
+	else
+	    Pass4="$(curl -s -d \
+	      "pass=${Hash}&option=hash2text&send=Submit" \
+	      "http://md5online.net/" | sed 's#<[^>]*>##g' \
+	      | grep -E 'pass :' | awk '{print $5}')"
+	    if [[ $Pass4 ]]; then
+		echo $Pass4
+	    else
+		Pass5="$(curl -s \
+	      "http://md5.hashcracking.com/search.php?md5=${Hash}" \
+	      | awk '{print $5}'| sed 's#^[ \t]*##;s#[ \t]*$##')"
+		if [[ $Pass5 ]]; then
+		    echo $Pass5
+		fi
+	    fi
+	fi
+    fi
+fi
