@@ -47,7 +47,7 @@ myLayout = avoidStruts $
              onWorkspace "6:media"              Full $
              onWorkspace "7:music"              tiled50 $
              onWorkspace "8:im"                 pidginLayout $
-             onWorkspace "9:mail"               tiled50 $
+--             onWorkspace "9:mail"               tiled50 $
                  tiled50 ||| Mirror tiled50 ||| Full
  
 -- appName/className/title to workspace. Use xprop.

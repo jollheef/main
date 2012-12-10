@@ -13,14 +13,14 @@ battery-notify &
 
 parcellite -dn &
 
-
 firefox >/dev/null &
 emacs &
 
-pidgin &
-skype &
+sleep 30s && pidgin &
+# Skype run auto with skype plugin in pidgin
+sleep 30s && skype &
 
-thunderbird &
+sleep 30s && thunderbird &
 audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
 

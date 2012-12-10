@@ -12,6 +12,10 @@ comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
 add in /etc/profile line to support qt_gtk theme
 
+install from i-net
+	slapt-get
+	slapt-src
+
 install from source (plain)
 	lci (lambda calculus interpreter)
 	alien (package converter)
@@ -135,4 +139,17 @@ install from source (sbopkg)
 	ttf-ubuntu-font-family
 	skype4pidgin
 	parcellite
-
+	john
+	w3af
+		PyXML 
+		      fpconst SOAPpy
+		 graphviz lxml 
+		 	  PyYAML
+		  nltk
+		   pyOpenSSL
+		    pygtksourceview 
+ 	   	    gtksourceview
+			pysvn
+				pycxx
+				 scapy
+	framework (metasploit)
