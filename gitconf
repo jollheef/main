@@ -1,5 +1,5 @@
 #!/bin/bash
-GIT_PATH="/home/michael/dev/main"
+GIT_PATH="/home/michael/dev/.main"
 GIT_REMOTE="git@github.com:jollheef/main.git"
 CURDIR="$(pwd)"
 
