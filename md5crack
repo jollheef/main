@@ -36,7 +36,7 @@ Pass1="$(curl -s -d "md5=${Hash}" "http://md5-db.de/${Hash}.html" \
 if [[ $Pass1 ]]; then
     echo $Pass1
 else
-    Pass2="$(curl -s "http://md5.gromweb.com/query/${Hash}")"
+#    Pass2="$(curl -s "http://md5.gromweb.com/query/${Hash}")"
     if [[ $Pass2 ]]; then
 	echo $Pass2
     else
