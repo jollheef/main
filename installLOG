@@ -19,7 +19,8 @@ install from i-net
 install from source (plain)
 	lci (lambda calculus interpreter)
 	alien (package converter)
-	wireshark -1.8.4 with remote-pcap (self-write slackbuild)
+	fbless 	
+	wireshark (1.8.4)
 
 install jre and jdk from /extra/ on SlackDVD
 
@@ -153,3 +154,8 @@ install from source (sbopkg)
 				pycxx
 				 scapy
 	framework (metasploit)
+	extundelete
+	html2text
+		pysetuptools
+
+	

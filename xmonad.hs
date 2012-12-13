@@ -39,7 +39,7 @@ pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
 tiled50 = Tall 2 (3/100) (50/100)
 --tiled75 = Tall 2 (3/100) (75/100)
 myLayout = avoidStruts $ 
-             onWorkspace "1:emacs"              Full $
+--             onWorkspace "1:emacs"              Full $
              onWorkspace "2:web"                Full $
 --             onWorkspace "3:term"               tiled50 $
 --             onWorkspace "4:work"               Full $

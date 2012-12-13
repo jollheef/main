@@ -69,3 +69,11 @@ alias 'o_O'="echo '           ___
   \___/___\___/ 
      |_____|    
 '"
+alias 'gdb'='gdb -q'
+alias 'objdump'='objdump -M intel'
+alias 'dis'='objdump -M intel -D'
+alias 'psgrep'='ps aux | grep -v grep | grep'
+alias 'df'='df -h'
+
+alias 'idal'='/home/michael/bin/idaadv/idal'
+alias 'idal64'='/home/michael/bin/idaadv/idal64'
