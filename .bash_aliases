@@ -77,3 +77,4 @@ alias 'df'='df -h'
 
 alias 'idal'='/home/michael/bin/idaadv/idal'
 alias 'idal64'='/home/michael/bin/idaadv/idal64'
+alias 'netcat'='nc'

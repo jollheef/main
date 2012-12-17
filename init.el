@@ -248,6 +248,26 @@ This command does the reverse of `fill-region'."
 (defun unfill-buffer ()
   (interactive)
   (unfill-region (point-min) (point-max)))
+;; Hacker typer :)
+(defun deactivate-hacker-type ()
+  (interactive)
+  (define-key fake-hacker-type-map [remap self-insert-command] nil))
+(defun inject_contents (&optional n)
+  (interactive)
+  (setq end (+ start insert_by))
+  (insert-file-contents filename nil start end)
+  (forward-char insert_by)
+  (setq start (+ start insert_by)))
+(defun hacker-type (arg)
+  (interactive (list (read-file-name "Filename: ")))
+  (setq fake-hacker-type-map (make-sparse-keymap))
+  (setq filename arg)
+  (setq start 0)
+  (setq insert_by 3)
+  (define-key fake-hacker-type-map [remap self-insert-command] 'inject_contents)
+  (use-local-map fake-hacker-type-map))
+;; End of Hacker Typer
+
 ;;
 ;;
 ;; Plugins
@@ -322,3 +342,6 @@ This command does the reverse of `fill-region'."
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
+
+
+
