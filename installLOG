@@ -12,6 +12,9 @@ comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
 add in /etc/profile line to support qt_gtk theme
 
+install by python setup
+	uncompyler.py
+
 install from i-net
 	slapt-get
 	slapt-src
@@ -157,6 +160,8 @@ install from source (sbopkg)
 	extundelete
 	html2text
 		pysetuptools
-
-	
 	dosbox
+	dissy
+		pywebkitgtk (slacky.eu)
+		webkitgtk (slacky.eu)
+
