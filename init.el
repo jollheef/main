@@ -15,22 +15,22 @@
 
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
 			 ("gnu"  . "http://elpa.gnu.org/packages/")
 			 ("SC"   . "http://joseito.republika.pl/sunrise-commander/")))
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 ;; Load-path for lisp files
 (let ((default-directory "~/.emacs.d/lisp/"))
   (setq load-path
 	(append
-         (let ((load-path (copy-sequence load-path))) ;; Shadow
-           (append
-            (copy-sequence (normal-top-level-add-to-load-path '(".")))
-            (normal-top-level-add-subdirs-to-load-path)))
-         load-path)))
+	 (let ((load-path (copy-sequence load-path))) ;; Shadow
+	   (append
+	    (copy-sequence (normal-top-level-add-to-load-path '(".")))
+	    (normal-top-level-add-subdirs-to-load-path)))
+	 load-path)))
 
 ;;
 ;;
@@ -188,19 +188,19 @@
   (if (and input-method (symbolp input-method))
       (setq input-method (symbol-name input-method)))
   (let ((current current-input-method)
-        (modifiers '(nil (control) (meta) (control meta))))
+	(modifiers '(nil (control) (meta) (control meta))))
     (when input-method
       (activate-input-method input-method))
     (when (and current-input-method quail-keyboard-layout)
       (dolist (map (cdr (quail-map)))
-        (let* ((to (car map))
-               (from (quail-get-translation
-                      (cadr map) (char-to-string to) 1)))
-          (when (and (characterp from) (characterp to))
-            (dolist (mod modifiers)
-              (define-key local-function-key-map
-                (vector (append mod (list from)))
-                (vector (append mod (list to)))))))))
+	(let* ((to (car map))
+	       (from (quail-get-translation
+		      (cadr map) (char-to-string to) 1)))
+	  (when (and (characterp from) (characterp to))
+	    (dolist (mod modifiers)
+	      (define-key local-function-key-map
+		(vector (append mod (list from)))
+		(vector (append mod (list to)))))))))
     (when input-method
       (activate-input-method current))))
 ;; Авто определение формата по расширению файла
@@ -318,6 +318,15 @@ This command does the reverse of `fill-region'."
 ;;
 ;;(setq tree-widget-image-enable t)
 (require 'org-habit)
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)" "IN PROGRESS(p)") 
+	(sequence "|" "CANCELED(c@)" "FAILED(f@)")))
+(setq org-todo-keyword-faces
+      '(("TODO" . (:foreground "LightPink" :weight bold))
+        ("IN PROGRESS" . (:foreground "AliceBlue" :weight bold))
+        ("DONE" . (:foreground "LightGreen" :weight bold))
+        ("CANCELED" . (:foreground "LightYellow" :weight bold))
+        ("FAILED" . (:foreground "IndianRed" :weight bold))))
 ;; Hotkeys on russian layout
 (reverse-input-method 'russian-computer)
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
@@ -342,6 +351,3 @@ This command does the reverse of `fill-region'."
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
-
-
-

@@ -77,7 +77,11 @@ alias 'df'='df -h'
 
 alias 'idal'='/home/michael/bin/idaadv/idal'
 alias 'idal64'='/home/michael/bin/idaadv/idal64'
+alias 'ida'='idal'
+alias 'idawin'='wine /home/michael/bin/idaadv-win/idaq.exe'
+
 alias 'netcat'='nc'
 alias 'python-decompiler'='uncompyler.py'
 alias 'hex'='hexedit'
 alias 'upload'='ompload'
+alias 'bc'='bc -q'
