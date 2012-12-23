@@ -25,7 +25,7 @@ install from i-net
 install from source (plain)
 	lci (lambda calculus interpreter)
 	alien (package converter)
-	fbless 	
+	fbless
 	wireshark (1.8.4)
 
 install jre and jdk from /extra/ on SlackDVD
@@ -131,7 +131,7 @@ install from source (sbopkg)
 	mumble
 		celt
 		protobuf
-		speex 
+		speex
 	winetrics
 	cabextract
 	xfburn
@@ -148,14 +148,14 @@ install from source (sbopkg)
 	parcellite
 	john
 	w3af
-		PyXML 
+		PyXML
 		      fpconst SOAPpy
-		 graphviz lxml 
-		 	  PyYAML
+		 graphviz lxml
+			  PyYAML
 		  nltk
 		   pyOpenSSL
-		    pygtksourceview 
- 	   	    gtksourceview
+		    pygtksourceview
+		    gtksourceview
 			pysvn
 				pycxx
 				 scapy
@@ -167,4 +167,3 @@ install from source (sbopkg)
 	dissy
 		pywebkitgtk (slacky.eu)
 		webkitgtk (slacky.eu)
-
