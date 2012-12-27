@@ -12,6 +12,11 @@ comment in /etc/acpi/acpi/acpi_handler.sh #      power) /sbin/init 0
 add in /etc/rc.d/rc.6 string: "rm -rf /tmp/*"
 add in /etc/profile line to support qt_gtk theme
 
+
+    inkscape
+	  gc gsl libwpg numpy inkscape 
+
+
 install by gem (RubyGems)
 	ompload
 
@@ -167,3 +172,6 @@ install from source (sbopkg)
 	dissy
 		pywebkitgtk (slacky.eu)
 		webkitgtk (slacky.eu)
+		
+	pwgen
+	gksu
