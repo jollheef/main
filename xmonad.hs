@@ -97,6 +97,8 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("S-<Pause>",               spawn "slock-toggle-br.sh")
+          , ("C-<Pause>",               spawn "xautolock -toggle")
+
           , ("M-f",                     spawn "firefox >/dev/null 2>&1")
 --          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox >/dev/null 2>&1")

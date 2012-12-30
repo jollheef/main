@@ -32,6 +32,7 @@ install from source (plain)
 	alien (package converter)
 	fbless
 	wireshark (1.8.4)
+	xautolock
 
 install jre and jdk from /extra/ on SlackDVD
 

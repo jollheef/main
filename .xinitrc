@@ -4,6 +4,8 @@ xsetroot -cursor_name left_ptr
 xsetroot -solid "#333333"
 xhost local:
 
+xautolock -time 1 -locker "slocktogglevolume.sh" \
+    -nowlocker "slocktogglevolume.sh" -detectsleep &
 nmvpn_auto2 &
 ifexping &
 touchpad.sh &
@@ -25,3 +27,4 @@ audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
 
 exec ck-launch-session /usr/bin/xmonad
+
