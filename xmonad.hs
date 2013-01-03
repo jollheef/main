@@ -60,6 +60,7 @@ myManageHook = composeAll
  , className =? "midnight"             --> doShift "3:term"
 
  , className =? "OpenOffice.org 3.4.1" --> doShift "4:work"
+ , className =? "Mathematica"          --> doShift "4:work"
  
  , className =? "VirtualBox"           --> doShift "5:virtualization"
  , className =? "Wine"                 --> doShift "5:virtualization"
@@ -130,8 +131,9 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-<F7>",                  spawn "record 600 >/dev/null 2>&1")
           , ("M-<F8>",                  spawn "record stop >/dev/null 2>&1")
 
+          , ("M-m",                     spawn "mathematica")
 
-          , ("M-m",                     spawn "mumble")
+          , ("M-S-m",                   spawn "mumble")
           , ("M-S-e",                   spawn "eveonline")
           ]
 

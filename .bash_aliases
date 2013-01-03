@@ -33,6 +33,9 @@ alias 'shutdown'='sudo shutdown -h now'
 alias 'installpkg'='sudo installpkg'
 alias 'removepkg'='sudo removepkg'
 
+alias 'slapt-get'='sudo slapt-get'
+alias 'slapt-src'='sudo slapt-src'
+
 alias 'scilab'='scilab-adv-cli'
 
 alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./snapshot.jpg 2>/dev/null'
@@ -88,3 +91,5 @@ alias 'bc'='bc -q'
 alias 'substract-from-file'='grep -F -x -v -f'
 alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
 alias '?'='echo $?'
+alias 'exifremove'='exiftool -all= '
+alias 'exif'='exiftool'
