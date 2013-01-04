@@ -306,6 +306,7 @@ This command does the reverse of `fill-region'."
 (smex-initialize)
 (smex-auto-update)
 ;; Elim
+;; (FIXME: Бинарник elim в пути ниже для x86_64. Нужно рекомпилировать.
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/elim")
 ;;(load-library "garak")
 ;; truncate long chat buffers,
