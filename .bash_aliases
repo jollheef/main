@@ -94,3 +94,9 @@ alias '?'='echo $?'
 alias 'exifremove'='exiftool -all= '
 alias 'exif'='exiftool'
 alias 'wherein'='slackpkg file-search'
+
+alias 'ssh-roman'='ssh root@172.16.194.93 -p27'
+
+alias 'torrent'='transmission-remote'
+alias 'pingt'='ping -c3 google.com'
+alias 'pingn'='ping -c3 8.8.8.8'

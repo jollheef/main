@@ -23,50 +23,49 @@ PROCESSNAME="/usr/bin/transmission-daemon"
 USERNAME="transmission"
 
 func_stop() {
-        if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
-                echo -n "Stopping $NAME ... "
-                killall $PROCESSNAME
-                sleep 2
-        fi
+    if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo -n "Stopping $NAME ... "
+        killall $PROCESSNAME
+        sleep 2
+    fi
 
-        if [ ! "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
-                echo "Done!"
-        else
-                echo "Error!"
-        fi
+    if [ ! "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo "Done!"
+    else
+        echo "Error!"
+    fi
 }
 
 func_start() {
-        echo -n "Starting $NAME ... "
-        if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
-	    echo "Already started!"
-	else
-            su - $USERNAME -c "$CMD $OPTIONS"
-            sleep 2
-	fi
-        if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
-                echo "Done!"
-        else
-                echo "Error!"
-        fi
+    echo -n "Starting $NAME ... "
+    if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+	echo "Already started!"
+    else
+        su - $USERNAME -c "$CMD $OPTIONS"
+        sleep 2
+    fi
+    if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo "Done!"
+    else
+        echo "Error!"
+    fi
 }
 
 
 case $1 in
-        "start")
-        	func_start
-                ;;
+    "start")
+        func_start
+        ;;
 
-        "stop")
-                func_stop
-                ;;
-
-        "restart")
-                func_stop
-                sleep 2
-                func_start
-                ;;
-        *)
-                echo "Usage; start|stop|restart"
-                ;;
+    "stop")
+        func_stop
+        ;;
+    "restart")
+        func_stop
+        sleep 2
+        func_start
+        ;;
+    *)
+        echo "Usage; start|stop|restart"
+        ;;
 esac

@@ -9,5 +9,7 @@
 
 setkeycodes 3a 29
 
+mkdir -p /tmp/SBo/
+
 #echo "michael:$(/sbin/genpass)"|chpasswd
 
