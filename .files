@@ -16,10 +16,8 @@
 /home/michael/.emacs.d/lisp/zenburn.el
 /home/michael/.emacs.d/lisp/linum-relative.el
 /home/michael/dev/.main/linum-relative.el
-/home/michael/etc/bin-archive/wikiparse.pl
 /home/michael/bin/autorun3gmodem.sh
 /etc/rc.d/rc.local
-/home/michael/dev/conkeror.SlackBuild
 /home/michael/bin/slocktogglevolume.sh
 /etc/rc.d/rc.transmission
 /home/michael/bin/rc.d
@@ -29,6 +27,5 @@
 /home/michael/bin/nmvpn_auto2
 /home/michael/.pentadactyl/plugins/emacs.penta
 /home/michael/.pentadactylrc
-/home/michael/etc/xorzen256.ini
 /home/michael/bin/screenshot
 /home/michael/bin/md5crack
