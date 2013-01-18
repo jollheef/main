@@ -95,10 +95,12 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-b",                   spawn "battery")
           , ("M-S-t",                   spawn "temperature")
           , ("M-S-u",                   spawn "uptime.sh")
+          , ("M-C-t",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(transmission-remote -l)\"")
 
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("S-<Pause>",               spawn "slock-toggle-br.sh")
-          , ("C-<Pause>",               spawn "xautolock -toggle")
+          , ("C-<Pause>",               spawn "xautolock -disable")
+          , ("C-S-<Pause>",             spawn "xautolock -enable")
 
           , ("M-f",                     spawn "firefox >/dev/null 2>&1")
 --          , ("M-c",                     spawn "conkeror-run")
@@ -136,4 +138,3 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-m",                   spawn "mumble")
           , ("M-S-e",                   spawn "eveonline")
           ]
-
