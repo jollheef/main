@@ -1,0 +1,19 @@
+#!/bin/bash
+TMPDIR="/tmp/git2pkg/"
+
+if [ ! ${1} ]; then
+    echo Use: git2pkg [URL]
+fi
+
+PKGDIR="${TMPDIR}/${RANDOM}"
+while [ -d ${PKGDIR} ]; do
+    PKGDIR="${TMPDIR}/${RANDOM}"
+    echo ${PKGDIR}
+done
+mkdir -p ${PKGDIR}
+
+cd ${PKGDIR}
+git clone ${1}
+PKGNAME="$(ls)"
+tar cvfz ${PKGNAME}.tar.gz ${PKGNAME}
+src2pkg ${PKGNAME}.tar.gz
