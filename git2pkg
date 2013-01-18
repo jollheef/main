@@ -3,6 +3,7 @@ TMPDIR="/tmp/git2pkg/"
 
 if [ ! ${1} ]; then
     echo Use: git2pkg [URL]
+    exit 1
 fi
 
 PKGDIR="${TMPDIR}/${RANDOM}"
