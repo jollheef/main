@@ -75,6 +75,8 @@ myManageHook = composeAll
  , className =? "Pidgin"               --> doShift "8:im"
  , className =? "Skype"                --> doShift "8:im"
 
+ , className =? "Zenity"               --> doFloat
+
  , className =? "Thunderbird"          --> doShift "9:mail"
  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
  , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
@@ -137,4 +139,6 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 
           , ("M-S-m",                   spawn "mumble")
           , ("M-S-e",                   spawn "eveonline")
+
+          , ("M-v",                     spawn "vkplay")
           ]

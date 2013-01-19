@@ -1,0 +1,242 @@
+#!/bin/bash
+
+#################################################################
+########### VKSearch script (c) snoopcatt, 2010-2012 ############
+########### Licensed under GNU GPL v2. ##########################
+#################################################################
+
+# 2013 Fix by Mikhail Klementyev (jollheef <AT> riseup.net)
+#  for use with audacious
+
+######################################################
+sys_version="0.5a"
+sys_temp='/tmp' 
+sys_method='audio.search'
+
+vkapi_secret='dTckAoaSzH' 
+vkapi_appid='1696393'
+vkapi_id="5807425" 
+
+cfg_save_to="/tmp/vksearch/"
+cfg_new_playlist='1'
+cfg_write_tags='1'
+cfg_search_count='1'
+cfg_mplayer='/usr/bin/audacious -e'
+cfg_wget="/usr/bin/curl -#"
+cfg_mode='play'
+cfg_silent_mode='0'
+cfg_single_get='0'
+######################################################
+
+Info() {
+ [ "$cfg_silent_mode" -ne 1 ] && echo "[$(date +%k:%M:%S)] $1"
+ [ "$2" == "die" ] && exit 1
+}
+
+ShowHelp() {
+ echo  "VKSearch $sys_version: Поиск, прослушивание и закачка музыки с сайта VKontakte.ru!"
+ echo "Для работы скрипта не требуется авторизация ВКонтакте. by snoopcatt, © 2010-2011. Лицензировано под GNU GPL v2."
+ echo -e "* Использование: vksearch [опции] запрос"
+ echo -e "\t--help: показать это сообщение и закрыть vksearch\n"
+ echo -e "\t--user-playlist: использовать плейлист пользователя по ID"
+ echo -e "\t--search: использовать поиск по всей коллекции ВК\n"
+ echo -e "\t--play: проиграть найденный список треков"
+ echo -e "\t--get: скачать найденный список треков"
+ echo -e "\t--play-one: проиграть один из найденных треков"
+ echo -e "\t--get-one: скачать один трек"
+ echo -e "\t--make-playlist: создать плейлист\n"
+ echo -e "\t--count=N: искать N треков"
+ echo -e "\t--save-to=PATH: сохранять плейлист и треки в указанный PATH"
+ echo -e "\t--write-tags: записывать Id3v2 теги в скачанные треки"
+ echo -e "\t--get-lyrics: скачать текст песни"
+ echo -e "\t--get-album: скачать альбом"
+ echo -e "\t--silent: тихий режим"
+
+ exit 0
+}
+
+GetParams() {
+for var in $@ 
+do
+ case $var in
+  --help) ShowHelp;;
+
+  --user-playlist) sys_method='audio.get' ;;
+  --search) sys_method='audio.search' ;;
+
+  --play) cfg_mode=play ;;
+  --get) cfg_mode=get ;;
+  --play-one) cfg_mode=play && cfg_search_count=1 ;;
+  --get-one) cfg_mode=get && cfg_search_count=1 ;;
+  --get-album) cfg_mode=get-album && cfg_search_count=1 && cfg_silent_mode=1 ;;
+  --get-lyrics) cfg_mode=get-lyrics && cfg_search_count=1 && cfg_request_lyrics=1;;
+  --make-playlist) cfg_mode=make-playlist ;;
+
+  --count=*) cfg_search_count=$(echo $var | cut -d '=' -f 2) ;;
+  --save-to=*) cfg_save_to=$(echo $var | cut -d '=' -f 2) ;;
+  --write-tags) cfg_write_tags=1 ;;
+
+  --silent) cfg_silent_mode=1 && cfg_wget="$cfg_wget --silent";;
+
+  --*) Info "Ошибка разбора аргументов: Неизвестный параметр $var" die ;;
+
+  *) [ -z "$query" ] && query="${var}" || query="${query} ${var}"  ;;
+ esac
+done
+[ -z "$query" ] && ShowHelp
+}
+
+GetIdByLink() {
+   wget -qO - "vk.com/$1"|grep -oE 'href="/photos[0-9]{1,20}">'|grep -oE '[0-9]{1,20}'
+   #Info "Адрес ВК успешно конвертирован в ID: $query" 
+}
+
+Request() { 
+ Info "Добро пожаловать в VKSearch $sys_version!"
+ Info "Загрузка списка треков..."
+ case $sys_method in
+  "audio.get")
+    echo "$query" | grep -qE '[a-zA-Zа-яА-Я]' && query=$(GetIdByLink $query)
+    vkapi_signature=$(echo -n "${vkapi_id}api_id=${vkapi_appid}method=audio.gettest_mode=1uid=${query}v=2.0${vkapi_secret}"|md5sum|awk '{print $1}')
+    wget "http://api.vkontakte.ru/api.php?api_id=${vkapi_appid}&method=audio.get&uid=${query}&test_mode=1&v=2.0&sig=${vkapi_signature}" -qO ${sys_temp}/vksearch.out
+    found=$(cat ${sys_temp}/vksearch.out | grep '<url>'|wc -l) ;;
+  "audio.search")
+    vkapi_signature=$(echo -n "${vkapi_id}api_id=1696393count=${cfg_search_count}lyrics=${cfg_request_lyrics}method=audio.searchq=${query}test_mode=1v=2.0${vkapi_secret}"|md5sum|awk '{print $1}')
+    wget "http://api.vkontakte.ru/api.php?api_id=1696393&count=${cfg_search_count}&v=2.0&lyrics=${cfg_request_lyrics}&method=audio.search&sig=${vkapi_signature}&test_mode=1&q=$query" -qO ${sys_temp}/vksearch.out
+    found=$(cat ${sys_temp}/vksearch.out | sed -ne 's,<count>\([^<]*\)</count>,\1,p'|sed 's/^[ \t]*//') ;;
+  "audio.getLyrics")
+    query="$(cat ${sys_temp}/vksearch.out | sed -n 's|<lyrics_id>\(.*\)</lyrics_id>|\1|p'|sed 's/^[ \t]*//')"
+    vkapi_signature=$(echo -n "${vkapi_id}api_id=${vkapi_appid}lyrics_id=${query}method=audio.getLyricstest_mode=1v=2.0${vkapi_secret}"|md5sum|awk '{print $1}')
+    wget "http://api.vkontakte.ru/api.php?api_id=${vkapi_appid}&method=audio.getLyrics&lyrics_id=${query}&test_mode=1&v=2.0&sig=${vkapi_signature}" -qO ${sys_temp}/vksearch.lyrics
+    found=$(cat ${sys_temp}/vksearch.out | grep '<url>'|wc -l) 
+ esac
+
+ error_msg="$(cat ${sys_temp}/vksearch.out | sed -n 's|<error_msg>\(.*\)</error_msg>|\1|p'|sed 's/^[ \t]*//' )"
+ error_code="$(cat ${sys_temp}/vksearch.out | sed -n 's|<error_code>\(.*\)</error_code>|\1|p'|sed 's/^[ \t]*//')"
+ [ -n "$error_msg" ] && Info "Ошибка: $error_msg (Код $error_code)" die
+ 
+ song_count=$(cat ${sys_temp}/vksearch.out | grep '<url>'|wc -l )
+ [ $song_count -eq 0 ] && Info "По запросу ${query} не найдено ни одного трека..." die || Info "По запросу ${query} найдено ${found} композиций. Обработка первых ${song_count}."
+}
+
+Parse() { 
+ OLD_IFS=$IFS
+ IFS=$'\n'
+ song_urls=( `cat ${sys_temp}/vksearch.out | sed -n 's|<url>\(.*\)</url>|\1|p'|sed 's/^[ \t]*//' ` )
+ song_artists=( `cat ${sys_temp}/vksearch.out | sed -n 's|<artist>\(.*\)</artist>|\1|p'|sed 's/^[ \t]*//' ` )
+ song_titles=( `cat ${sys_temp}/vksearch.out | sed -n 's|<title>\(.*\)</title>|\1|p'|sed 's/^  //' ` )
+ song_durations=( `cat ${sys_temp}/vksearch.out |sed -n 's|<duration>\(.*\)</duration>|\1|p'|sed 's/^[ \t]*//' ` )
+ song_counts=$(( ${#song_urls[@]} - 1 ))
+ IFS=$OLD_IFS
+}
+
+RemoveDoubles() {
+ rm ${sys_temp}/vksearch.pars* 2>&-
+ Info "Начинаю удаление треков с одинаковой длительностью..."
+ for i in `seq 0 $song_counts`
+ do
+  echo "<1>${song_durations[$i]}<2>${song_artists[$i]}<3>${song_titles[$i]}<4>${song_urls[$i]}<5>" >> ${sys_temp}/vksearch.parsing 
+ done
+ cat ${sys_temp}/vksearch.parsing | /bin/sort -n | uniq -w 6 > ${sys_temp}/vksearch.parsed
+ OLD_IFS=$IFS
+ IFS=$'\n'
+ song_urls=( `cat ${sys_temp}/vksearch.parsed |sed -ne 's,.*<4>\([^<]*\)<5>.*,\1,p' ` )
+ song_artists=( `cat ${sys_temp}/vksearch.parsed |sed -ne 's,.*<2>\([^<]*\)<3>.*,\1,p' ` )
+ song_titles=( `cat ${sys_temp}/vksearch.parsed | sed -ne 's,.*<3>\([^<]*\)<4>.*,\1,p' ` )
+ song_durations=( `cat ${sys_temp}/vksearch.parsed |sed -ne 's,.*<1>\([^<]*\)<2>.*,\1,p' ` )
+ song_counts=$(( ${#song_urls[@]} - 1 ))
+ IFS=$OLD_IFS
+ Info "В плейлисте осталось ${#song_urls[@]} треков." 
+} 
+
+MakePlaylist() {
+ [ $cfg_new_playlist -eq 1 ] && rm $cfg_save_to/VKontakte_PlayList.m3u 2>&-
+ [ -f "$cfg_save_to/VKontakte_PlayList.m3u" ] || echo -ne "#EXTM3U\n" > $cfg_save_to/VKontakte_PlayList.m3u
+ for i in `seq 0 $song_counts` 
+ do
+     echo -e "${song_urls[$i]}" >> $cfg_save_to/VKontakte_PlayList.m3u
+ done
+ Info "Плейлист сохранен как $cfg_save_to/VKontakte_PlayList.m3u"
+}
+
+GetFiles() {
+ cd "$cfg_save_to"
+ for i in `seq 0 $song_counts` 
+  do
+   Info "Начинаю закачку: ${song_artists[$i]} - ${song_titles[$i]}"
+   $cfg_wget "${song_urls[$i]}" > "${song_artists[$i]} - ${song_titles[$i]}.mp3" 
+   Info "Файл ${song_artists[$i]} - ${song_titles[$i]} был загружен!"
+   [ "$cfg_write_tags" -eq 1 ]  &&  id3v2 -2 -a "${song_artists[$i]}" -t "${song_titles[$i]}" "${song_artists[$i]} - ${song_titles[$i]}.mp3"
+  done
+ [ "$cfg_silent_mode" -eq 1 ] && echo "${song_artists[$i]} - ${song_titles[$i]}.mp3" 
+}
+
+GetLyrics() {
+ cd "$cfg_save_to"
+ cat ${sys_temp}/vksearch.lyrics|sed 's/<.*>//g;/^[[:space:]]*$/d' > "${song_artists[0]} - ${song_titles[0]}.txt"
+ Info "Текст песни ${song_artists[0]} - ${song_titles[0]} сохранён!"
+ [ "$cfg_silent_mode" -eq 1 ] && echo "${song_artists[$i]} - ${song_titles[$i]}.txt" 
+
+}
+
+GetAlbum() {
+ cd "$cfg_save_to"
+ rm ${sys_temp}/lastfm_tracks 2>/dev/null
+ artist="$(echo $query | cut -d '-' -f 1|sed 's/[ \t]$//')"
+ album="$(echo $query | cut -d '-' -f 2|sed 's/^[ \t]*//')"
+ [ -d "$album" ] || mkdir "$album" 
+ cd "$album"
+ [ -d lyrics ] || mkdir lyrics 
+ wget "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=efe0e53182441c48f5b11f3565306e30&artist=$artist&album=$album" -qO ${sys_temp}/lastfm_request
+ album_art="$( grep -oE 'http://.*(png|jpg)' ${sys_temp}/lastfm_request|tail -n1 )";
+ year="$(grep release ${sys_temp}/lastfm_request|awk '{ print $4 }'|sed 's/,//')"
+ echo "Saving album art..."
+ [ -n "$album_art" ] && wget -qO cover.`basename $album_art|awk -F . '{print $NF}'` $album_art
+ grep -n '<duration>' ${sys_temp}/lastfm_request|while read line; do 
+  ln="$(( ` echo $line | awk '{ print $1 }'|sed 's/://g' ` - 1 ))";
+  sed -n ${ln}p ${sys_temp}/lastfm_request|sed -n 's|<name>\(.*\)</name>|\1|p'|sed 's/^[ \t]*//' >> ${sys_temp}/lastfm_tracks
+ done  
+ count=`cat ${sys_temp}/lastfm_tracks | wc -l`
+ current=1
+
+ OLD_IFS="$IFS"
+ IFS=$'\n'
+
+ for track in $(cat ${sys_temp}/lastfm_tracks) ; do
+  echo -n "[$current/$count] Saving $track.. "
+  saved="$($0 --silent --get-one $artist - $track)"
+  real="$artist - $track"
+  mv "$saved" "$real.mp3" 2>/dev/null
+  echo -n "Writing tags.. "
+  id3v2 -D "$real.mp3" >/dev/null 2>&1
+  id3v2 -2 -a "$artist" -A "$album" -t "$track" -y $year -T $current/$count "$real.mp3" >/dev/null 2>&1
+  echo "Saving lyrics.."
+  saved_lyrics="$($0 --silent --get-lyrics $artist - $track)"
+  mv "$saved_lyrics" "lyrics/$real.txt"
+  let current++;
+ done
+
+ IFS="$OLD_IFS"
+}
+
+mkdir -p $cfg_save_to
+GetParams $*
+Request
+Parse
+RemoveDoubles
+
+case $cfg_mode in
+ play)
+    MakePlaylist
+    ${cfg_mplayer} "$cfg_save_to/VKontakte_PlayList.m3u" >/dev/null 2>&1 ;;
+ get)
+    GetFiles ;; 
+ make-playlist)
+    MakePlaylist ;;
+ get-lyrics)
+    sys_method="audio.getLyrics"
+    Request
+    GetLyrics ;;
+ get-album)
+    GetAlbum;;
+esac
