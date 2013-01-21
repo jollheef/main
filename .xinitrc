@@ -18,11 +18,11 @@ parcellite -dn &
 firefox >/dev/null &
 emacs &
 
-sleep 30s && pidgin &
+sleep-while-inet-down && pidgin &
 # Skype run auto with skype plugin in pidgin
 #sleep 30s && skype &
 
-sleep 30s && thunderbird &
+sleep-while-inet-down && thunderbird &
 audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
 

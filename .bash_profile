@@ -17,10 +17,11 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] &&  ! [[ -e /tmp/.X11-unix/X0 ]
 	fi
     done
     while true; do
-	read -p 'Do you want to start X? (y/n/u): '
+	read -p 'Do you want to start X? (y/n/u/e): '
 	case $REPLY in
 	    [Yy]) exec startx ;;
 	    [Uu]) exec startx ~/.xinitrc-univer ;;
+	    [Ee]) exec startx ~/.xinitrc-escapism ;;
 	    [Nn]) break ;;
 	    *) printf '%s\n' 'Please answer y or n.' ;;
 	esac

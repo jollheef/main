@@ -104,3 +104,4 @@ alias 'feh-preview-save'='feh -t -Sfilename -E 240 -y 426 -W 1366 -O ./preview.j
 alias 'feh-preview'='feh -t -Sfilename -E 240 -y 426 -W 1366 ./ &'
 alias 'md5'="cat /dev/urandom |head |md5sum |awk '{print \$1}'"
 alias 'shred'='shred -n 10 -uz'
+alias 'modfind'='find /lib/modules/`uname -r` -name '*.ko' |grep '
