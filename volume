@@ -21,57 +21,59 @@ Action=$1
 Quantity=$2
 NotifyExpireTime=500
 
-function Main 
+function Main
 {
     TestRun
     case $Action in
-        inc)
-            PlusOrMinus="+"
-            ChangeVolume
-            SendNotify
-            ;;
-        dec)
-            PlusOrMinus="-"
-            ChangeVolume
-            SendNotify
-            ;;
-        set)
-            amixer sset 'Master' $Quantity% >/dev/null
-            ;;
-        toggle)
-            if [[ ''$(amixer sset 'Master' toggle | grep "Mono:" | awk '{print $6}')'' == '[off]' ]] 
-            then
-                notif="Volume::off"
-            else
-                notif="Volume::on"
-            fi
-            SendNotify
-            ;;
-        show)
-            notif=$(amixer sget Master |grep "Mono:" |awk '{print $4}' | sed 's/\[//;s/\]//')            
+	inc)
+	    PlusOrMinus="+"
+	    ChangeVolume
+	    SendNotify
+	    ;;
+	dec)
+	    PlusOrMinus="-"
+	    ChangeVolume
+	    SendNotify
+	    ;;
+	set)
+	    amixer sset 'Master' $Quantity% >/dev/null
+	    ;;
+	toggle)
+	    if [[ ''$(amixer sset 'Master' toggle | grep "Mono:" | awk '{print $6}')'' == '[off]' ]]
+	    then
+		notif="Volume::off"
+	    else
+		notif="Volume::on"
+	    fi
+	    SendNotify
+	    ;;
+	show)
+	    notif="Volume::$(amixer sget Master |grep "Mono:" |awk '{print $4}' | sed 's/\[//;s/\]//') \
+($(amixer sget 'Master' | grep "Mono:" | awk '{print $6}' | sed 's/\[//' |sed 's/\]//'))"
+	    SendNotify
             echo $notif
-            ;;
-        *)
-            echo "Use: volume [inc,dec,set,toggle,show] [0-100]"
-            ;;
+	    ;;
+	*)
+	    echo "Use: volume [inc,dec,set,toggle,show] [0-100]"
+	    ;;
     esac
 }
 
 function ChangeVolume
 {
-    notif="Volume::$(amixer sset Master $Quantity%$PlusOrMinus |grep "Mono:" |awk '{print $4}' |sed 's/\[//;s/\]//')" 
+    notif="Volume::$(amixer sset Master $Quantity%$PlusOrMinus |grep "Mono:" |awk '{print $4}' |sed 's/\[//;s/\]//')"
 }
 
 function SendNotify
 {
-    notify-send -t $NotifyExpireTime "$notif" 
+    notify-send -t $NotifyExpireTime "$notif"
 }
 
 function TestRun
 {
     PID=`pgrep volume`
     if [[ -z $PID ]]; then
-        exit 1;
+	exit 1;
     fi
 }
 

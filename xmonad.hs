@@ -61,6 +61,7 @@ myManageHook = composeAll
 
  , className =? "OpenOffice.org 3.4.1" --> doShift "4:work"
  , className =? "Mathematica"          --> doShift "4:work"
+ , className =? "XMathematica"         --> doShift "4:work"
  
  , className =? "VirtualBox"           --> doShift "5:virtualization"
  , className =? "Wine"                 --> doShift "5:virtualization"
@@ -99,12 +100,14 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-u",                   spawn "uptime.sh")
           , ("M-C-t",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(transmission-remote -l)\"")
 
+          , ("M-S-v",                   spawn "volume show")
+
           , ("<Pause>",                 spawn "slocktogglevolume.sh")
           , ("S-<Pause>",               spawn "slock-toggle-br.sh")
           , ("C-<Pause>",               spawn "xautolock -disable")
           , ("C-S-<Pause>",             spawn "xautolock -enable")
 
-          , ("M-f",                     spawn "firefox >/dev/null 2>&1")
+          , ("M-f",                     spawn "firefox -private >/dev/null 2>&1")
 --          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox >/dev/null 2>&1")
           , ("M-C-a",                   spawn "sudo /etc/rc.d/rc.tor restart && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
