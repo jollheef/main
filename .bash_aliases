@@ -15,6 +15,7 @@ alias yq='sbopkg -p |grep  '
 # Exit
 alias ':q'='exit'
 alias q='exit'
+alias 'й'='exit'
 alias quit='exit'
 alias exi='exit'
 
