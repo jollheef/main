@@ -1,0 +1,10 @@
+#!/bin/sh
+while [ 1 ]; do
+    while [ "$(transmission-remote -l |grep Downloading)" ]; do
+	while [ "$(transmission-remote -l |grep Downloading)" ]; do
+	    sleep 30s
+	done
+	DISPLAY=:0 notify-send -t 2500 'Torrent::Download Complete'
+    done
+    sleep 30s
+done

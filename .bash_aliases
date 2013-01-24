@@ -39,6 +39,7 @@ alias 'slapt-src'='sudo slapt-src'
 alias 'scilab'='scilab-adv-cli'
 
 alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
+alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
 
 alias 'aw'='audacious'
 
@@ -93,7 +94,7 @@ alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
 alias '?'='echo $?'
 alias 'exifremove'='exiftool -all= '
 alias 'exif'='exiftool'
-alias 'wherein'='slackpkg file-search'
+alias 'wherein'='/usr/sbin/slackpkg file-search'
 
 alias 'ssh-roman'='ssh root@172.16.194.93 -p27'
 
