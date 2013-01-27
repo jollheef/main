@@ -84,11 +84,14 @@
 ;;
 ;;
 
+
 ;; Disable startup-message (show *scratch* buffer)
 (setq inhibit-startup-message t)
 ;; Set *scratch* buffer text
 (setq initial-scratch-message
       ";; This buffer is for notes you don't want to save.\n\n")
+;; Set *scratch* buffer mode
+(setq initial-major-mode 'text-mode)
 ;; Disable all bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -267,6 +270,13 @@ This command does the reverse of `fill-region'."
   (define-key fake-hacker-type-map [remap self-insert-command] 'inject_contents)
   (use-local-map fake-hacker-type-map))
 ;; End of Hacker Typer
+(defun single-lines-only ()
+  "replace multiple blank lines with a single one"
+  (interactive)
+  (goto-char (point-min))
+  (while (re-search-forward "\\(^\\s-*$\\)\n" nil t)
+    (replace-match "\n")
+    (forward-char 1)))
 
 ;;
 ;;
