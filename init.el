@@ -77,13 +77,13 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-x C-l")
 			   'org-timeline)))
+(global-set-key (kbd "C-c C--") "—")
 
 ;;
 ;;
 ;; Appearance
 ;;
 ;;
-
 
 ;; Disable startup-message (show *scratch* buffer)
 (setq inhibit-startup-message t)
@@ -153,6 +153,15 @@
       browse-url-generic-program "firefox")
 ;; Scilab
 ;;(load "scilab-startup")
+(define-abbrev-table 'text-mode-abbrev-table
+  '(("alpha" "α")
+    ("beta" "β")
+    ("gamma" "γ")
+    ("theta" "θ")
+    ("epsilon" "ε")
+    ("omega" "ω")
+    ("lambda" "λ")
+    ("inf" "∞")))
 
 ;;
 ;;
@@ -361,4 +370,5 @@ This command does the reverse of `fill-region'."
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
+(add-hook 'text-mode-hook (lambda () (abbrev-mode +1)))
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
