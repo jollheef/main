@@ -97,8 +97,10 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 ;; Set font
-(set-default-font "Ubuntu Mono-13")
-(setq default-frame-alist '((font . "Ubuntu Mono-13")))
+;;(set-default-font "Ubuntu Mono-13")
+;;(setq default-frame-alist '((font . "Ubuntu Mono-13")))
+(set-default-font "DejaVu Sans Mono-10")
+(setq default-frame-alist '((font . "DejaVu Sans Mono-10")))
 ;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
 ;; ~/.emacs.d/lisp/color-theme.el
 (require 'zenburn)
@@ -158,6 +160,7 @@
     ("beta" "β")     ("бета" "β")
     ("gamma" "γ")    ("гамма" "γ")
     ("delta" "δ")    ("дельта" "δ")
+    ("Delta" "Δ")    ("Дельта" "Δ")
     ("epsilon" "ε")  ("эпсилон" "ε")
     ("dzeta" "ζ")    ("дзета" "ζ")
     ("eta" "η")      ("эта" "η")
@@ -206,6 +209,10 @@
   "Insert a time-stamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
+(defun insert-simple-date ()
+  "Insert a date in a Day/Month/Year format"
+  (interactive)
+  (insert (format-time-string "%d/%m/%y " (current-time))))
 (defun sudo-edit (&optional arg)
   (interactive "p")
   (if arg

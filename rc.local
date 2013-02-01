@@ -6,10 +6,4 @@
 # anything that needs to be run at shutdown time you can
 # make an /etc/rc.d/rc.local_shutdown script and put those
 # commands in there.
-
 setkeycodes 3a 29
-
-mkdir -p /tmp/SBo/
-
-#echo "michael:$(/sbin/genpass)"|chpasswd
-

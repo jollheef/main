@@ -42,31 +42,6 @@ if [ -x /etc/rc.d/rc.local_shutdown ]; then
   /etc/rc.d/rc.local_shutdown stop
 fi
 
-# Stop Emacs daemon:
-if [ -x /etc/rc.d/rc.emacsd ]; then
-  sh /etc/rc.d/rc.emacsd stop
-fi
-
-# Stop transmission:
-if [ -x /etc/rc.d/rc.transmission ]; then
-  sh /etc/rc.d/rc.transmission stop
-fi
-
-# Stop I2P Service:
-if [ -x /etc/rc.d/rc.i2p ]; then
-  sh /etc/rc.d/rc.i2p graceful
-fi
-
-# Stop The Onion Router:
-if [ -x /etc/rc.d/rc.tor ]; then
-  sh /etc/rc.d/rc.tor stop
-fi
-
-# Stop vboxdrv:
-if [ -x /etc/rc.d/rc.vboxdrv ]; then
-  sh /etc/rc.d/rc.vboxdrv stop
-fi
-
 # Stop the Apache web server:
 if [ -x /etc/rc.d/rc.httpd ]; then
   /etc/rc.d/rc.httpd stop

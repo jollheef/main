@@ -350,17 +350,6 @@ if [ -x /etc/rc.d/rc.httpd ]; then
   . /etc/rc.d/rc.httpd start
 fi
 
-
-# Start The Onion Router:
-if [ -x /etc/rc.d/rc.tor ]; then
-  sh /etc/rc.d/rc.tor start
-fi
-
-# Start vboxdrv:
-if [ -x /etc/rc.d/rc.vboxdrv ]; then
-  sh /etc/rc.d/rc.vboxdrv start
-fi
-
 # Start OpenLDAP:
 if [ -x /etc/rc.d/rc.openldap ]; then
   . /etc/rc.d/rc.openldap start
@@ -380,21 +369,6 @@ fi
 # If there are SystemV init scripts for this runlevel, run them.
 if [ -x /etc/rc.d/rc.sysvinit ]; then
   . /etc/rc.d/rc.sysvinit
-fi
-
-# Start I2P Service:
-if [ -x /etc/rc.d/rc.i2p ]; then
-  sh /etc/rc.d/rc.i2p start
-fi
-
-# Start Emacs daemon:
-if [ -x /etc/rc.d/rc.emacsd ]; then
-  sh /etc/rc.d/rc.emacsd start
-fi
-
-# Start transmission:
-if [ -x /etc/rc.d/rc.transmission ]; then
-  sh /etc/rc.d/rc.transmission start
 fi
 
 # Start the local setup procedure.
