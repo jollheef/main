@@ -1,16 +1,24 @@
+#
+# Package management
+#
+
+alias 'apt-get'='sudo apt-get'
+alias 'aptitude'='sudo aptitude'
+
 # Install pkg
-alias yi='sbopkg'
-
+alias yi='sudo aptitude install'
+# Remove pkg
+alias yr='sudo aptitude remove'
 # Search pkg
-alias ys='sbopkg -s'
-
+alias ys='sudo aptitude search'
 # Update pkgs
-alias yu='slackpkg update && slackpkg upgrade-all'
-alias yub='sbopkg -u && sbopkg -c'
-alias yuall='yu && yub'
+alias yu='sudo aptitude update && sudo aptitude upgrade' 
+# Find package by file
+alias 'wherein'='dpkg -S'
 
-# Search installed pkg
-alias yq='sbopkg -p |grep  '
+#
+# Navigation
+#
 
 # Exit
 alias ':q'='exit'
@@ -19,46 +27,54 @@ alias 'й'='exit'
 alias quit='exit'
 alias exi='exit'
 
-# Show IP
-SHOWIP='ip.icanhazip.com'
-alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
-alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'
+alias '..'='cd ..'
+alias '~'='cd ~'
+alias -- '-'='cd -'
 
-alias 'nmcli'='ck-launch-session nmcli'
-
-# As ROOT
-alias 'reboot'='sudo reboot'
-alias 'slackpkg'='sudo slackpkg'
-alias 'sbopkg'='sudo sbopkg'
-alias 'shutdown'='sudo shutdown -h now'
-alias 'installpkg'='sudo installpkg'
-alias 'removepkg'='sudo removepkg'
-
-alias 'slapt-get'='sudo slapt-get'
-alias 'slapt-src'='sudo slapt-src'
-
-alias 'scilab'='scilab-adv-cli'
-
-alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
-alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
-
-alias 'aw'='audacious'
+#
+# Run prefer as root
+#
 
 alias 'wireshark'='sudo wireshark'
+alias 'shutdown'='sudo shutdown -h now'
+
+#
+# Common
+#
+
+alias '?'='echo $?'
+alias 'du'='du -hcs --apparent-size'
+alias grep='grep --colour=auto'
+alias 'psgrep'='ps aux | grep -v grep | grep'
+alias 'df'='df -h'
+alias 'bc'='bc -q'
+alias 'shred'='shred -n 10 -uz'
+alias 'mc'='mc -b'
+
+alias 'gdb'='gdb -q'
+alias 'objdump'='objdump -M intel'
+alias 'dis'='objdump -M intel -D'
 
 alias 'pastebin'='pastebinit'
+alias 'aw'='audacious'
+alias 'netcat'='nc'
+alias 'python-decompiler'='uncompyler.py'
+alias 'hex'='hexedit'
+alias 'upload'='ompload'
+alias 'torrent'='transmission-remote'
 
-alias 'du'='du -hcs --apparent-size'
+alias 'exifremove'='exiftool -all= '
+alias 'exif'='exiftool'
 
-alias grep='grep --colour=auto'
+alias 'idal'='/home/michael/bin/idaadv/idal'
+alias 'idal64'='/home/michael/bin/idaadv/idal64'
+alias 'ida'='idal'
+alias 'idawin'='wine /home/michael/bin/idaadv-win/idaq.exe'
 
-alias    '..'='cd ..'
-alias   '...'='cd ../..'
-alias  '....'='cd ../../..'
-alias '.....'='cd ../../../..'
-alias     '~'='cd ~'
-# "--" неизвестный мне хак (а может и не хак), без него не работает.
-alias  -- '-'='cd -'
+alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
+
+alias 'pingt'='ping -c3 google.com'
+alias 'pingn'='ping -c3 8.8.8.8'
 
 alias 'O_o'="echo '   ___          
   / _ \    ___  
@@ -74,36 +90,20 @@ alias 'o_O'="echo '           ___
   \___/___\___/ 
      |_____|    
 '"
-alias 'gdb'='gdb -q'
-alias 'objdump'='objdump -M intel'
-alias 'dis'='objdump -M intel -D'
-alias 'psgrep'='ps aux | grep -v grep | grep'
-alias 'df'='df -h'
 
-alias 'idal'='/home/michael/bin/idaadv/idal'
-alias 'idal64'='/home/michael/bin/idaadv/idal64'
-alias 'ida'='idal'
-alias 'idawin'='wine /home/michael/bin/idaadv-win/idaq.exe'
+#
+# Pseudo-utils
+#
 
-alias 'netcat'='nc'
-alias 'python-decompiler'='uncompyler.py'
-alias 'hex'='hexedit'
-alias 'upload'='ompload'
-alias 'bc'='bc -q'
 alias 'substract-from-file'='grep -F -x -v -f'
-alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
-alias '?'='echo $?'
-alias 'exifremove'='exiftool -all= '
-alias 'exif'='exiftool'
-alias 'wherein'='/usr/sbin/slackpkg file-search'
-
-alias 'ssh-roman'='ssh root@172.16.194.93 -p27'
-
-alias 'torrent'='transmission-remote'
-alias 'pingt'='ping -c3 google.com'
-alias 'pingn'='ping -c3 8.8.8.8'
 alias 'feh-preview-save'='feh -t -Sfilename -E 240 -y 426 -W 1366 -O ./preview.jpg ./ &'
 alias 'feh-preview'='feh -t -Sfilename -E 240 -y 426 -W 1366 ./ &'
 alias 'md5'="cat /dev/urandom |head |md5sum |awk '{print \$1}'"
-alias 'shred'='shred -n 10 -uz'
 alias 'modfind'='find /lib/modules/`uname -r` -name '*.ko' |grep '
+alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
+alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
+
+# Show IP
+SHOWIP='ip.icanhazip.com'
+alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
+alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'

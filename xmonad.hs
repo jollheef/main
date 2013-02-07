@@ -56,6 +56,7 @@ myManageHook = composeAll
 
  , className =? "Conkeror"             --> doShift "2:web"
  , className =? "Firefox"              --> doShift "2:web"
+ , className =? "Iceweasel"            --> doShift "2:web"
 
  , className =? "midnight"             --> doShift "3:term"
 
