@@ -37,6 +37,8 @@ alias -- '-'='cd -'
 
 alias 'wireshark'='sudo wireshark'
 alias 'shutdown'='sudo shutdown -h now'
+alias 'service'='sudo service'
+alias 'rcconf'='sudo rcconf'
 
 #
 # Common
@@ -60,11 +62,8 @@ alias 'aw'='audacious'
 alias 'netcat'='nc'
 alias 'python-decompiler'='uncompyler.py'
 alias 'hex'='hexedit'
-alias 'upload'='ompload'
+alias 'upload'='/var/lib/gems/1.8/gems/ompload-1.0.2/bin/ompload -q'
 alias 'torrent'='transmission-remote'
-
-alias 'exifremove'='exiftool -all= '
-alias 'exif'='exiftool'
 
 alias 'idal'='/home/michael/bin/idaadv/idal'
 alias 'idal64'='/home/michael/bin/idaadv/idal64'

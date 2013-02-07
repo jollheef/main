@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 pathping=`which ping`
 pathnotify=`which notify-send`
 sleep 1m

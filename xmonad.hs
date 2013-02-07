@@ -80,6 +80,9 @@ myManageHook = composeAll
  , className =? "Zenity"               --> doFloat
 
  , className =? "Thunderbird"          --> doShift "9:mail"
+ , className =? "Mail"                 --> doShift "9:mail"
+ , className =? "Icedove"              --> doShift "9:mail"
+
  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
  , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
  ]
