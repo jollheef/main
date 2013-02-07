@@ -39,6 +39,7 @@ alias 'wireshark'='sudo wireshark'
 alias 'shutdown'='sudo shutdown -h now'
 alias 'service'='sudo service'
 alias 'rcconf'='sudo rcconf'
+alias 'dpkg-reconfigure'='sudo dpkg-reconfigure'
 
 #
 # Common

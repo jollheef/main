@@ -24,7 +24,7 @@ sleep-while-inet-down && pidgin &
 #sleep 30s && skype &
 
 sleep-while-inet-down && icedove &
-audacious &
+#audacious &
 sakura --class='midnight' -e /home/michael/bin/mc.sh &
 
 exec ck-launch-session /usr/bin/xmonad
