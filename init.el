@@ -105,10 +105,8 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 ;; Set font
-;;(set-default-font "Ubuntu Mono-13")
-;;(setq default-frame-alist '((font . "Ubuntu Mono-13")))
-(set-default-font "Monospace-11")
-(setq default-frame-alist '((font . "Monospace-11")))
+(set-default-font "DejaVu Sans Mono-11")
+(setq default-frame-alist '((font .  "DejaVu Sans Mono-11")))
 ;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
 ;; ~/.emacs.d/lisp/color-theme.el
 (require 'zenburn)

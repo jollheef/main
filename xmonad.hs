@@ -60,7 +60,7 @@ myManageHook = composeAll
 
  , className =? "midnight"             --> doShift "3:term"
 
- , className =? "OpenOffice.org 3.4.1" --> doShift "4:work"
+ , className =? "OpenOffice.org 3.2"   --> doShift "4:work"
  , className =? "Mathematica"          --> doShift "4:work"
  , className =? "XMathematica"         --> doShift "4:work"
  
