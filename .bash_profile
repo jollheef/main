@@ -28,4 +28,3 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] &&  ! [[ -e /tmp/.X11-unix/X0 ]
 	esac
     done
 fi
-

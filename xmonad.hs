@@ -7,15 +7,18 @@ import XMonad.Actions.GridSelect -- GridSelect displays items(e.g. the opened wi
 import XMonad.Layout
 import XMonad.Layout.PerWorkspace  -- use different layouts on different WSs
 import XMonad.Layout.Master
+import XMonad.Layout.Reflect -- for gimp layout
 import XMonad.Hooks.ManageDocks
+
+
 
 --import XMonad.Layout.Named
 --import XMonad.Layout.Reflect
 
-import XMonad.Layout.IM   
-import XMonad.Layout.Grid   
-import Data.Ratio ((%))   
-import XMonad.Layout.Spacing   
+import XMonad.Layout.IM
+import XMonad.Layout.Grid
+import Data.Ratio ((%))
+import XMonad.Layout.Spacing
 
 import qualified XMonad.StackSet as W -- for W.focusDown
 
@@ -32,60 +35,67 @@ main = do
     } `additionalKeysP` myKeysP
 -- Define amount and names of workspaces
 myWorkspaces = ["1:emacs","2:web","3:term","4:work","5:virtualization","6:media","7:music","8:im","9:mail"]
-
-gridLayout = spacing 8 $ Grid      
-pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout   
---skypeLayout = withIM (1%7) (And (ClassName "Skype")  (Role "MainWindow")) gridLayout
+gridLayout = spacing 8 $ Grid
+pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
 tiled50 = Tall 2 (3/100) (50/100)
 --tiled75 = Tall 2 (3/100) (75/100)
-myLayout = avoidStruts $ 
+gimpLayout = withIM (0.175) (Role "gimp-toolbox") $
+  reflectHoriz $
+  withIM (0.20) (Role "gimp-dock") $
+  layoutHook defaultConfig
+
+myLayout = avoidStruts $
 --             onWorkspace "1:emacs"              Full $
              onWorkspace "2:web"                Full $
 --             onWorkspace "3:term"               tiled50 $
---             onWorkspace "4:work"               Full $
+             onWorkspace "4:work"               gimpLayout $
              onWorkspace "5:virtualization"     Full $
              onWorkspace "6:media"              Full $
-             onWorkspace "7:music"              tiled50 $
+--             onWorkspace "7:music"              tiled50 $
              onWorkspace "8:im"                 pidginLayout $
 --             onWorkspace "9:mail"               tiled50 $
                  tiled50 ||| Mirror tiled50 ||| Full
- 
+
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
- [ className =? "Emacs"                --> doShift "1:emacs"
+  [ className =? "Emacs"                --> doShift "1:emacs"
 
- , className =? "Conkeror"             --> doShift "2:web"
- , className =? "Firefox"              --> doShift "2:web"
- , className =? "Iceweasel"            --> doShift "2:web"
+  , className =? "Conkeror"             --> doShift "2:web"
+  , className =? "Firefox"              --> doShift "2:web"
+  , className =? "Iceweasel"            --> doShift "2:web"
 
- , className =? "midnight"             --> doShift "3:term"
+  , className =? "midnight"             --> doShift "3:term"
 
- , className =? "OpenOffice.org 3.2"   --> doShift "4:work"
- , className =? "Mathematica"          --> doShift "4:work"
- , className =? "XMathematica"         --> doShift "4:work"
- 
- , className =? "VirtualBox"           --> doShift "5:virtualization"
- , className =? "Wine"                 --> doShift "5:virtualization"
+  , className =? "OpenOffice.org 3.2"   --> doShift "4:work"
+  , className =? "Mathematica"          --> doShift "4:work"
+  , className =? "XMathematica"         --> doShift "4:work"
+  , className =? "Gimp"                 --> doShift "4:work"
+  , role      =? "gimp-layer-new"       --> doFloat
+  , role      =? "gimp-dock"            --> doF W.focusDown
+  , role      =? "gimp-toolbox"         --> doF W.focusDown
 
- , className =? "Vlc"                  --> doShift "6:media"
- , className =? "Gimp"                 --> doShift "6:media"
- , className =? "MPlayer"              --> doShift "6:media"
+  , className =? "VirtualBox"           --> doShift "5:virtualization"
+  , className =? "Wine"                 --> doShift "5:virtualization"
 
- , className =? "Audacious"            --> doShift "7:music"
- , className =? "Mumble"               --> doShift "7:music"
+  , className =? "Vlc"                  --> doShift "6:media"
+  , className =? "MPlayer"              --> doShift "6:media"
 
- , className =? "Pidgin"               --> doShift "8:im"
- , className =? "Skype"                --> doShift "8:im"
+  , className =? "Audacious"            --> doShift "7:music"
+  , className =? "Mumble"               --> doShift "7:music"
 
- , className =? "Zenity"               --> doFloat
+  , className =? "Pidgin"               --> doShift "8:im"
+  , className =? "Skype"                --> doShift "8:im"
 
- , className =? "Thunderbird"          --> doShift "9:mail"
- , className =? "Mail"                 --> doShift "9:mail"
- , className =? "Icedove"              --> doShift "9:mail"
+  , className =? "Zenity"               --> doFloat
 
- , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
- , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
- ]
+  , className =? "Thunderbird"          --> doShift "9:mail"
+  , className =? "Mail"                 --> doShift "9:mail"
+  , className =? "Icedove"              --> doShift "9:mail"
+
+  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
+  , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
+  ]
+ where role = stringProperty "WM_WINDOW_ROLE"
 -- M - modMask, M1 - Alt, C - Control, S - Shift
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")
@@ -115,7 +125,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
 --          , ("M-f",                     spawn "firefox -private >/dev/null 2>&1")
 --          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox >/dev/null 2>&1")
-          , ("M-C-a",                   spawn "sudo /etc/rc.d/rc.tor restart && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
+          , ("M-C-a",                   spawn "sudo service tor restart && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")
 --          , ("M-e",                     spawn "emacsscript && emacsclient -c")
 --          , ("M-C-e",                   spawn "sudo rc.d restart emacsd && emacsclient -c")

@@ -40,6 +40,7 @@ alias 'shutdown'='sudo shutdown -h now'
 alias 'service'='sudo service'
 alias 'rcconf'='sudo rcconf'
 alias 'dpkg-reconfigure'='sudo dpkg-reconfigure'
+alias 'dpkg'='sudo dpkg'
 
 #
 # Common
@@ -58,7 +59,7 @@ alias 'gdb'='gdb -q'
 alias 'objdump'='objdump -M intel'
 alias 'dis'='objdump -M intel -D'
 
-alias 'pastebin'='pastebinit'
+alias 'pastebin'='pastebincl -g -p'
 alias 'aw'='audacious'
 alias 'netcat'='nc'
 alias 'python-decompiler'='uncompyler.py'
