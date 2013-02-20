@@ -36,7 +36,7 @@ Pass1="$(curl -s -d "md5=${Hash}" "http://md5-db.de/${Hash}.html" \
 if [[ $Pass1 ]]; then
     echo $Pass1
 else
-#    Pass2="$(curl -s "http://md5.gromweb.com/query/${Hash}")"
+    Pass2="$(curl -s "http://md5.gromweb.com/query/${Hash}")"
     if [[ $Pass2 ]]; then
 	echo $Pass2
     else
@@ -53,13 +53,13 @@ else
 	      | grep -E 'pass :' | awk '{print $5}')"
 	    if [[ $Pass4 ]]; then
 		echo $Pass4
-	    else
-		Pass5="$(curl -s \
-	      "http://md5.hashcracking.com/search.php?md5=${Hash}" \
-	      | awk '{print $5}'| sed 's#^[ \t]*##;s#[ \t]*$##')"
-		if [[ $Pass5 ]]; then
-		    echo $Pass5
-		fi
+		#	    else
+		#		Pass5="$(curl -s \
+		#	      "http://md5.hashcracking.com/search.php?md5=${Hash}" \
+		#	      | awk '{print $5}'| sed 's#^[ \t]*##;s#[ \t]*$##')"
+		#		if [[ $Pass5 ]]; then
+		#		    echo $Pass5
+		#		fi
 	    fi
 	fi
     fi

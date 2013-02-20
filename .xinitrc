@@ -12,7 +12,7 @@ touchpad.sh &
 #autorun3gmodem.sh &
 wmname LG3D &
 battery-notify &
-transmission-dog &
+#transmission-dog &
 
 parcellite -dn &
 

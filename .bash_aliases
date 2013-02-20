@@ -57,7 +57,6 @@ alias 'mc'='mc -b'
 
 alias 'gdb'='gdb -q'
 alias 'objdump'='objdump -M intel'
-alias 'dis'='objdump -M intel -D'
 
 alias 'pastebin'='pastebincl -g -p'
 alias 'aw'='audacious'

@@ -123,7 +123,7 @@
 (nyan-mode)
 ;; Indent style
 (setq c-default-style "linux"
-      c-basic-offset 4)
+      c-basic-offset 2)
 (global-hl-line-mode 1)
 ;; highlight just parens
 (show-paren-mode)
@@ -248,6 +248,7 @@
       (activate-input-method current))))
 ;; Авто определение формата по расширению файла
 (add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
+(add-to-list 'auto-mode-alist '(".php$" . php-mode))
 ;; Функция для файлов .fb2 в режиме просмотра
 (defun fb2-mode-view()
   (vc-toggle-read-only)

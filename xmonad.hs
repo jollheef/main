@@ -40,21 +40,24 @@ pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
 tiled50 = Tall 2 (3/100) (50/100)
 --tiled75 = Tall 2 (3/100) (75/100)
 gimpLayout = withIM (0.175) (Role "gimp-toolbox") $
+  withIM (0.10) (Role "toolbox_window") $
   reflectHoriz $
   withIM (0.20) (Role "gimp-dock") $
   layoutHook defaultConfig
+--testLayout = Full ||| Grid
 
 myLayout = avoidStruts $
 --             onWorkspace "1:emacs"              Full $
-             onWorkspace "2:web"                Full $
+--             onWorkspace "2:web"                Full $
 --             onWorkspace "3:term"               tiled50 $
              onWorkspace "4:work"               gimpLayout $
-             onWorkspace "5:virtualization"     Full $
-             onWorkspace "6:media"              Full $
+--             onWorkspace "5:virtualization"     Full $
+--             onWorkspace "6:media"              Full $
 --             onWorkspace "7:music"              tiled50 $
              onWorkspace "8:im"                 pidginLayout $
 --             onWorkspace "9:mail"               tiled50 $
-                 tiled50 ||| Mirror tiled50 ||| Full
+                 Full ||| tiled50 ||| Mirror tiled50
+--                 tiled50 ||| Mirror tiled50 ||| Full
 
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
@@ -71,8 +74,10 @@ myManageHook = composeAll
   , className =? "XMathematica"         --> doShift "4:work"
   , className =? "Gimp"                 --> doShift "4:work"
   , role      =? "gimp-layer-new"       --> doFloat
+  , role      =? "gimp-color-selector"  --> doFloat
   , role      =? "gimp-dock"            --> doF W.focusDown
   , role      =? "gimp-toolbox"         --> doF W.focusDown
+  , role      =? "toolbox_window"       --> doF W.focusDown
 
   , className =? "VirtualBox"           --> doShift "5:virtualization"
   , className =? "Wine"                 --> doShift "5:virtualization"
@@ -96,7 +101,7 @@ myManageHook = composeAll
   , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
   ]
  where role = stringProperty "WM_WINDOW_ROLE"
--- M - modMask, M1 - Alt, C - Control, S - Shift
+-- M - modMask, M1 - Alt, C - Control, S - Shift. Use xev.
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")
           , ("<XF86Launch1>",           spawn "brightness toggle")
@@ -159,4 +164,5 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-e",                   spawn "eveonline")
 
           , ("M-v",                     spawn "vkplay")
+          , ("<Print>",                 spawn "screenshot2")
           ]
