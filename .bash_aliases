@@ -102,8 +102,10 @@ alias 'md5'="cat /dev/urandom |head |md5sum |awk '{print \$1}'"
 alias 'modfind'='find /lib/modules/`uname -r` -name '*.ko' |grep '
 alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
 alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
+alias 'makeiso'='genisoimage -v -iso-level 4 -J -o'
 
 # Show IP
 SHOWIP='ip.icanhazip.com'
 alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
 alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'
+

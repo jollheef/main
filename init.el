@@ -404,3 +404,5 @@ This command does the reverse of `fill-region'."
 (add-hook 'text-mode-hook (lambda () (auto-fill-mode +1)))
 (add-hook 'text-mode-hook (lambda () (abbrev-mode +1)))
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
+(add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
+(add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
