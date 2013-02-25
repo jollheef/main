@@ -318,6 +318,16 @@ This command does the reverse of `fill-region'."
   (while (re-search-forward "\\(^\\s-*$\\)\n" nil t)
     (replace-match "\n")
     (forward-char 1)))
+(defun astyle-region (pmin pmax)
+  (interactive "r")
+  (shell-command-on-region
+   pmin pmax
+   "astyle -A7 -x" ;; GNU style formatting/indenting.
+   (current-buffer) t 
+   (get-buffer-create "*Astyle Errors*") t))
+(defun astyle-buffer ()
+  (interactive)
+  (astyle-region (point-min) (point-max)))
 
 ;;
 ;;

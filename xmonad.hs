@@ -99,8 +99,12 @@ myManageHook = composeAll
 
   , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
   , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
+--  , command   =? "192.168.56.102"       --> doShift "4:work"
   ]
- where role = stringProperty "WM_WINDOW_ROLE"
+ where
+   role = stringProperty "WM_WINDOW_ROLE"
+--   command = stringProperty "WM_COMMAND"
+
 -- M - modMask, M1 - Alt, C - Control, S - Shift. Use xev.
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("<XF86MonBrightnessDown>", spawn "brightness dec 25")

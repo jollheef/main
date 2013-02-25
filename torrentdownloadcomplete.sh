@@ -13,9 +13,6 @@
 
 TorrentFiles="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
 
-DISPLAY=:0 notify-send -t 2500 'Torrent::Download Complete' \
-    "${TorrentFiles}"
-
 if [ -d "${TorrentFiles}" ]; then
     # If directory:
     TypeOf=$(
@@ -34,20 +31,38 @@ fi
 case "${TypeOf}" in
     audio)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/msc/" & ;;
+	    "/home/michael/msc/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/msc/"
+	;;
     video)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/vds/" & ;;
+	    "/home/michael/vds/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/vds/"
+	;;
     image)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/img/" & ;;
+	    "/home/michael/img/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/img/"
+	;;
     text)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/etc/" & ;;
+	    "/home/michael/etc/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/etc/"
+	;;
     application)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/iso-install/" & ;;
+	    "/home/michael/iso-install/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/iso-install/"
+	;;
     *)
 	transmission-remote -t ${TR_TORRENT_ID} --move \
-	    "/home/michael/ldd/" & ;;
+	    "/home/michael/ldd/" &
+	DISPLAY=:0 notify-send -t 5000 'Torrent::Download Complete' \
+	    "${TR_TORRENT_NAME} moved to /home/michael/ldd/"
+	;;
 esac
