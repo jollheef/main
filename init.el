@@ -27,9 +27,9 @@
   (setq load-path
 	(append
 	 (let ((load-path (copy-sequence load-path))) ;; Shadow
-	   (append
-	    (copy-sequence (normal-top-level-add-to-load-path '(".")))
-	    (normal-top-level-add-subdirs-to-load-path)))
+  	   (append
+   	    (copy-sequence (normal-top-level-add-to-load-path '(".")))
+   	    (normal-top-level-add-subdirs-to-load-path)))
 	 load-path)))
 
 ;;
@@ -122,7 +122,7 @@
 (require 'nyan-mode)
 (nyan-mode)
 ;; Indent style
-(setq c-default-style "linux"
+(setq c-default-style "gnu"
       c-basic-offset 2)
 (global-hl-line-mode 1)
 ;; highlight just parens
@@ -136,6 +136,10 @@
 ;; Display battery state in mode-line
 (setq battery-mode-line-format " (%L %p%% %t)")
 (display-battery-mode 1)
+;; Colors for highlight-indentation-mode
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#3F533F")
+(set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
 
 ;;
 ;;
@@ -187,8 +191,8 @@
     ("hi" "χ")       ("хи" "χ")
     ("psi" "ψ")      ("пси" "ψ")
     ("omega" "ω")    ("омега" "ω")
-
     ("inf" "∞")      ("бесконечность" "∞")))
+(put 'downcase-region 'disabled nil)
 
 ;;
 ;;
@@ -199,6 +203,10 @@
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
+(defun c-indent-buffer ()
+  (interactive)
+  (astyle-buffer)
+  (indent-buffer))
 (defun fill-buffer ()
   (interactive)
   (fill-region (point-min) (point-max)))
@@ -328,6 +336,41 @@ This command does the reverse of `fill-region'."
 (defun astyle-buffer ()
   (interactive)
   (astyle-region (point-min) (point-max)))
+;; RECODE ENGLISH TO RUSSIAN
+(defvar u:*en/ru-table*
+     '((?q  . ?й) (?w  . ?ц) (?e  . ?у)
+       (?r  . ?к) (?t  . ?е) (?y  . ?н) (?u  . ?г)
+       (?i  . ?ш) (?o  . ?щ) (?p  . ?з) (?[  . ?х)
+       (?]  . ?ъ) (?a  . ?ф) (?s  . ?ы) (?d  . ?в)
+       (?f  . ?а) (?g  . ?п) (?h  . ?р) (?j  . ?о)
+       (?k  . ?л) (?l  . ?д) (?\; . ?ж) (?\' . ?э)
+       (?z  . ?я) (?x  . ?ч) (?c  . ?с) (?v  . ?м)
+       (?b  . ?и) (?n  . ?т) (?m  . ?ь) (?,  . ?б)
+       (?.  . ?ю) (?/  . ?.) (?!  . ?!) (?@  . ?\")
+       (?#  . ?№) (?$  . ?\;) (?%  . ?%) (?^  . ?:)
+       (?&  . ??) (?*  . ?*) (?Q  . ?Й) (?W  . ?Ц)
+       (?E  . ?У) (?R  . ?К) (?T  . ?Е) (?Y  . ?Н)
+       (?U  . ?Г) (?I  . ?Ш) (?O  . ?Щ) (?P  . ?З)
+       (?{  . ?Х) (?}  . ?Ъ) (?A  . ?Ф)
+       (?S  . ?Ы) (?D  . ?В) (?F  . ?А) (?G  . ?П)
+       (?H  . ?Р) (?J  . ?О) (?K  . ?Л) (?L  . ?Д)
+       (?:  . ?Ж) (?\" . ?Э) (?Z  . ?Я) (?X  . ?Ч)
+       (?C  . ?С) (?V  . ?М) (?B  . ?И) (?N  . ?Т)
+       (?M  . ?Ь) (?<  . ?Б) (?>  . ?Ю) (?\? . ?,)))
+;;-----------------------------------------------------------
+(defun recode-region-ru->en (beg end &optional arg)
+  "Recode the given region, that contains Russain text typed in English, into Russian.
+With ARG recode from Russian o English."
+  (interactive "*r\nP")
+  (save-excursion
+    (goto-char beg)
+    (do () ((>= (point) end))
+      (let* ((en-char (char-after (point)))
+             (ru-char (if arg 
+                          (car (rassoc en-char u:*en/ru-table*))
+                        (cdr (assoc en-char u:*en/ru-table*)))))
+        (delete-char 1)
+        (insert (if ru-char ru-char en-char))))))
 
 ;;
 ;;
@@ -404,10 +447,12 @@ This command does the reverse of `fill-region'."
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
 
 (add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
 
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
@@ -416,3 +461,4 @@ This command does the reverse of `fill-region'."
 ;;(add-hook 'text-mode-hook (lambda () (refill-mode +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
+(add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
