@@ -78,6 +78,7 @@ myManageHook = composeAll
   , role      =? "gimp-dock"            --> doF W.focusDown
   , role      =? "gimp-toolbox"         --> doF W.focusDown
   , role      =? "toolbox_window"       --> doF W.focusDown
+  , className =? "Dia"                  --> doShift "4:work"
 
   , className =? "VirtualBox"           --> doShift "5:virtualization"
   , className =? "Wine"                 --> doShift "5:virtualization"

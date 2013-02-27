@@ -86,6 +86,10 @@
 	    (local-set-key (kbd "C-x C-l")
 			   'org-timeline)))
 (global-set-key (kbd "C-c C--") "—")
+(global-set-key (kbd "C-c C-f") 'insert-fixme)
+(global-set-key (kbd "C-c f") 'insert-fixme)
+(global-set-key (kbd "C-c C-s") 'insert-seeme)
+(global-set-key (kbd "C-c s") 'insert-seeme)
 
 ;;
 ;;
@@ -140,6 +144,7 @@
 (require 'highlight-indentation)
 (set-face-background 'highlight-indentation-face "#3F533F")
 (set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
+
 
 ;;
 ;;
@@ -257,6 +262,8 @@
 ;; Авто определение формата по расширению файла
 (add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
 (add-to-list 'auto-mode-alist '(".php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
+
 ;; Функция для файлов .fb2 в режиме просмотра
 (defun fb2-mode-view()
   (vc-toggle-read-only)
@@ -371,6 +378,15 @@ With ARG recode from Russian o English."
                         (cdr (assoc en-char u:*en/ru-table*)))))
         (delete-char 1)
         (insert (if ru-char ru-char en-char))))))
+(defun insert-fixme ()
+  "Insert FIXME"
+  (interactive)
+  (insert "FIXME "))
+(defun insert-seeme ()
+  "Insert SEEME"
+  (interactive)
+  (insert "SEEME "))
+
 
 ;;
 ;;
@@ -437,6 +453,7 @@ With ARG recode from Russian o English."
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
 ;;(load "scilab-startup")
 (require 'dired+)
+(require 'nasm-mode)
 
 ;;
 ;;

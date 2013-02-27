@@ -109,3 +109,4 @@ SHOWIP='ip.icanhazip.com'
 alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
 alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'
 
+alias 'dosd'='dos -dumb'
