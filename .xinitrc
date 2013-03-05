@@ -16,6 +16,7 @@ battery-notify &
 
 parcellite -dn &
 
+sed -i 's/firefox -P escapizm/firefox -P main/' ~/.xmonad/xmonad.hs
 firefox >/dev/null &
 emacs &
 

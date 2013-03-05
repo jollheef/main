@@ -12,7 +12,7 @@ alias yr='sudo aptitude remove'
 # Search pkg
 alias ys='sudo aptitude search'
 # Update pkgs
-alias yu='sudo aptitude update && sudo aptitude upgrade' 
+alias yu='sudo aptitude update && sudo aptitude upgrade'
 # Find package by file
 alias 'wherein'='dpkg -S'
 
@@ -37,6 +37,7 @@ alias -- '-'='cd -'
 
 alias 'wireshark'='sudo wireshark'
 alias 'shutdown'='sudo shutdown -h now'
+alias 'reboot'='sudo reboot'
 alias 'service'='sudo service'
 alias 'rcconf'='sudo rcconf'
 alias 'dpkg-reconfigure'='sudo dpkg-reconfigure'

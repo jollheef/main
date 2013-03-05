@@ -5,7 +5,9 @@
 ;; windresize-0.1 smex-1.1.2 sunrise-commander-6.441
 ;; Lisp List:
 ;; auto-complete-1.3.1 color-theme.el linum-relative.el nyan-mode.el
-;; slime workspaces.el zenburn.el
+;; workspaces.el zenburn.el
+;; Note:
+;; Use last slime from unstable(deb) repository
 
 ;;
 ;;
@@ -260,7 +262,7 @@
     (when input-method
       (activate-input-method current))))
 ;; Авто определение формата по расширению файла
-(add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
+;;(add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
 (add-to-list 'auto-mode-alist '(".php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 
@@ -479,3 +481,4 @@ With ARG recode from Russian o English."
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
