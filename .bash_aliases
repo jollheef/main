@@ -8,9 +8,9 @@ alias 'aptitude'='sudo aptitude'
 # Install pkg
 alias yi='sudo aptitude install'
 # Install pkg from unstable
-alias yi='sudo aptitude -t unstable install'
+alias yiu='sudo aptitude -t unstable install'
 # Install pkg from experimental
-alias yi='sudo aptitude -t experimental install'
+alias yie='sudo aptitude -t experimental install'
 # Remove pkg
 alias yr='sudo aptitude remove'
 # Search pkg
