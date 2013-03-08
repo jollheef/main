@@ -131,7 +131,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("C-<Pause>",               spawn "xautolock -disable")
           , ("C-S-<Pause>",             spawn "xautolock -enable")
 
-          , ("M-f",                     spawn "firefox -P eskapizm >/dev/null 2>&1")
+          , ("M-f",                     spawn "firefox -P main >/dev/null 2>&1")
 --          , ("M-f",                     spawn "firefox -private >/dev/null 2>&1")
 --          , ("M-c",                     spawn "conkeror-run")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox >/dev/null 2>&1")

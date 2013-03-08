@@ -265,6 +265,7 @@
 ;;(add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
 (add-to-list 'auto-mode-alist '(".php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
+(add-to-list 'auto-mode-alist '(".gdb$" . gdb-script-mode))
 
 ;; Функция для файлов .fb2 в режиме просмотра
 (defun fb2-mode-view()
