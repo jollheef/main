@@ -1,0 +1,24 @@
+# Emacs-snapshot unstable repository
+deb http://emacs.naquadah.org/ unstable/
+#deb-src http://emacs.naquadah.org/ unstable/
+
+# Code::Blocks testing repository
+deb http://apt.jenslody.de/testing testing main
+#deb-src http://apt.jenslody.de/testing testing main
+
+# I2P testing repository
+deb http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main
+#deb-src http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main 
+
+# Testing repository
+deb http://mirror.yandex.ru/debian/ testing main
+#deb-src http://mirror.yandex.ru/debian/ testing main
+
+# Unstable repository
+deb http://mirror.yandex.ru/debian/ unstable main
+#deb-src http://mirror.yandex.ru/debian/ unstable main
+
+# Experimental repository
+deb http://mirror.yandex.ru/debian/ experimental main
+#deb-src http://mirror.yandex.ru/debian/ experimental main
+

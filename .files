@@ -35,3 +35,5 @@
 /home/torrents/bin/torrentdownloadcomplete.sh
 /home/michael/etc/goodies/settings.json.work3
 /home/michael/etc/goodies/transmission.settings.json
+/etc/apt/preferences
+/etc/apt/sources.list
