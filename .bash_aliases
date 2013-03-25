@@ -59,6 +59,8 @@ alias 'df'='df -h'
 alias 'bc'='bc -q'
 alias 'shred'='shred -n 10 -uz'
 alias 'mc'='mc -b'
+# Перепроверить в руководстве по gcc
+alias 'gcc'='gcc -Wall'
 
 alias 'gdb'='gdb -q'
 alias 'objdump'='objdump -M intel'
@@ -115,3 +117,5 @@ alias 'show-ext-ip'='echo -n Ext IP: && links          -dump $SHOWIP'
 alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump $SHOWIP'
 
 alias 'dosd'='dos -dumb'
+alias 'hexcalc'='dhex /dev/null'
+

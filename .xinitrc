@@ -20,7 +20,7 @@ parcellite -dn &
 firefox >/dev/null &
 emacs &
 
-sleep-while-inet-down && pidgin &
+sleep-while-inet-down && pidgin-dog &
 # Skype run auto with skype plugin in pidgin
 #sleep 30s && skype &
 

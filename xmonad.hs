@@ -62,6 +62,8 @@ myLayout = avoidStruts $
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
   [ className =? "Emacs"                --> doShift "1:emacs"
+  , className =? "Qtcreator"            --> doShift "1:emacs"
+  , className =? "MonoDevelop"          --> doShift "1:emacs"
 
   , className =? "Conkeror"             --> doShift "2:web"
   , className =? "Firefox"              --> doShift "2:web"
