@@ -1,4 +1,4 @@
-;; Package list:
+; Package list:
 ;; community/emacs-w3m-cvs, aspell, aspell-ru, aspell-en, lush
 ;; Elpa list:
 ;; crontab-mode-1.2 dired+-21.2 haskell-mode-2.8.0 paredit-22
