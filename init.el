@@ -17,9 +17,10 @@
 
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-			 ("gnu"  . "http://elpa.gnu.org/packages/")
-			 ("SC"   . "http://joseito.republika.pl/sunrise-commander/")))
+(setq package-archives
+      '(("ELPA" . "http://tromey.com/elpa/")
+	("gnu"  . "http://elpa.gnu.org/packages/")
+	("SC"     "http://joseito.republika.pl/sunrise-commander/")))
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -29,9 +30,9 @@
   (setq load-path
 	(append
 	 (let ((load-path (copy-sequence load-path))) ;; Shadow
-  	   (append
-   	    (copy-sequence (normal-top-level-add-to-load-path '(".")))
-   	    (normal-top-level-add-subdirs-to-load-path)))
+	   (append
+	    (copy-sequence (normal-top-level-add-to-load-path '(".")))
+	    (normal-top-level-add-subdirs-to-load-path)))
 	 load-path)))
 
 ;;
@@ -146,6 +147,11 @@
 (require 'highlight-indentation)
 (set-face-background 'highlight-indentation-face "#3F533F")
 (set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
+(custom-set-faces
+ '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
+ '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666"))))
+ '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666")))))
+(global-whitespace-mode)
 
 ;;
 ;;
@@ -161,8 +167,12 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/")))))
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
@@ -341,7 +351,7 @@ This command does the reverse of `fill-region'."
   (shell-command-on-region
    pmin pmax
    "astyle -A7 -x" ;; GNU style formatting/indenting.
-   (current-buffer) t 
+   (current-buffer) t
    (get-buffer-create "*Astyle Errors*") t))
 (defun astyle-buffer ()
   (interactive)
@@ -377,11 +387,11 @@ With ARG recode from Russian o English."
     (goto-char beg)
     (do () ((>= (point) end))
       (let* ((en-char (char-after (point)))
-             (ru-char (if arg 
-                          (car (rassoc en-char u:*en/ru-table*))
-                        (cdr (assoc en-char u:*en/ru-table*)))))
-        (delete-char 1)
-        (insert (if ru-char ru-char en-char))))))
+	     (ru-char (if arg
+			  (car (rassoc en-char u:*en/ru-table*))
+			(cdr (assoc en-char u:*en/ru-table*)))))
+	(delete-char 1)
+	(insert (if ru-char ru-char en-char))))))
 (defun insert-fixme ()
   "Insert FIXME"
   (interactive)
@@ -439,19 +449,20 @@ With ARG recode from Russian o English."
 (setq lui-max-buffer-size 30000
       lui-flyspell-p t
       lui-flyspell-alist '(("." "american")))
-;;If you’re not seeing images in the Garak account tree you need to add this code:
+;;If you’re not seeing images in the Garak account
+;; tree you need to add this code:
 ;;
 ;;(setq tree-widget-image-enable t)
 (require 'org-habit)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)" "IN PROGRESS(p)") 
+      '((sequence "TODO(t)" "|" "DONE(d)" "IN PROGRESS(p)")
 	(sequence "|" "CANCELED(c@)" "FAILED(f@)")))
 (setq org-todo-keyword-faces
       '(("TODO" . (:foreground "LightPink" :weight bold))
-        ("IN PROGRESS" . (:foreground "AliceBlue" :weight bold))
-        ("DONE" . (:foreground "LightGreen" :weight bold))
-        ("CANCELED" . (:foreground "LightYellow" :weight bold))
-        ("FAILED" . (:foreground "IndianRed" :weight bold))))
+	("IN PROGRESS" . (:foreground "AliceBlue" :weight bold))
+	("DONE" . (:foreground "LightGreen" :weight bold))
+	("CANCELED" . (:foreground "LightYellow" :weight bold))
+	("FAILED" . (:foreground "IndianRed" :weight bold))))
 ;; Hotkeys on russian layout
 (reverse-input-method 'russian-computer)
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/scilab-emacs")
@@ -483,4 +494,5 @@ With ARG recode from Russian o English."
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))

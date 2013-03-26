@@ -59,7 +59,6 @@ alias 'df'='df -h'
 alias 'bc'='bc -q'
 alias 'shred'='shred -n 10 -uz'
 alias 'mc'='mc -b'
-# Перепроверить в руководстве по gcc
 alias 'gcc'='gcc -Wall'
 
 alias 'gdb'='gdb -q'
@@ -77,6 +76,7 @@ alias 'idal'='/home/michael/bin/idaadv/idal'
 alias 'idal64'='/home/michael/bin/idaadv/idal64'
 alias 'ida'='idal'
 alias 'idawin'='wine /home/michael/bin/idaadv-win/idaq.exe'
+alias 'steganographystudio'='java -jar ~/bin/steganographystudio.jar'
 
 alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
 
@@ -110,6 +110,7 @@ alias 'modfind'='find /lib/modules/`uname -r` -name '*.ko' |grep '
 alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
 alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
 alias 'makeiso'='genisoimage -v -iso-level 4 -J -o'
+
 
 # Show IP
 SHOWIP='ip.icanhazip.com'

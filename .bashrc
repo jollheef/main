@@ -98,7 +98,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:~/bin:/usr/sbin:/sbin
+PATH=$PATH:~/bin:/usr/sbin:/sbin:/usr/share/openstego
 
 export PS1='\[\
 \e[1;33;49m\]\
