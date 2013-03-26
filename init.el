@@ -150,7 +150,8 @@
 (custom-set-faces
  '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
  '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666"))))
- '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666")))))
+ '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
+ '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666")))))
 (global-whitespace-mode)
 
 ;;
@@ -414,7 +415,8 @@ With ARG recode from Russian o English."
 ;; Auto Complete Mode
 ;; files: ~/.emacs.d/lisp/auto-complete-1.3.1/*
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
+(add-to-list 'ac-dictionary-directories
+	     "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
 ;; InteractivelyDoThings
 (ido-mode)
