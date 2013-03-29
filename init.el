@@ -487,6 +487,7 @@ With ARG recode from Russian o English."
 (add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (git-auto-commit-mode +1)))
 
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
@@ -497,4 +498,5 @@ With ARG recode from Russian o English."
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
 (add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
+(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))

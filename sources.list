@@ -11,13 +11,13 @@ deb http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main
 #deb-src http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main 
 
 # Testing repository
-deb http://mirror.yandex.ru/debian/ testing main contrib
+deb http://mirror.yandex.ru/debian/ testing main contrib non-free
 #deb-src http://mirror.yandex.ru/debian/ testing main contrib
 
 # Unstable repository
-deb http://mirror.yandex.ru/debian/ unstable main contrib
+deb http://mirror.yandex.ru/debian/ unstable main contrib non-free
 #deb-src http://mirror.yandex.ru/debian/ unstable main contrib
 
 # Experimental repository
-deb http://mirror.yandex.ru/debian/ experimental main contrib
+deb http://mirror.yandex.ru/debian/ experimental main contrib non-free
 #deb-src http://mirror.yandex.ru/debian/ experimental main contrib

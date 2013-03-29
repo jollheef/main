@@ -83,19 +83,22 @@ alias '2gis'='wine /home/michael/bin/2gis/3.0/grym.exe'
 alias 'pingt'='ping -c3 google.com'
 alias 'pingn'='ping -c3 8.8.8.8'
 
-alias 'O_o'="echo '   ___          
-  / _ \    ___  
- | | | |  / _ \ 
+alias 'gcc-win'='i586-mingw32msvc-gcc'
+alias 'g++-win'='i586-mingw32msvc-g++'
+
+alias 'O_o'="echo '   ___
+  / _ \    ___
+ | | | |  / _ \
  | |_| | | (_) |
-  \___/___\___/ 
-     |_____|    
+  \___/___\___/
+     |_____|
 '"
-alias 'o_O'="echo '           ___  
-   ___    / _ \ 
+alias 'o_O'="echo '           ___
+   ___    / _ \
   / _ \  | | | |
  | (_) | | |_| |
-  \___/___\___/ 
-     |_____|    
+  \___/___\___/
+     |_____|
 '"
 
 #
@@ -119,4 +122,3 @@ alias 'show-tor-ip'='echo -n Tor IP: && links -socks-proxy 127.0.0.1:9050 -dump 
 
 alias 'dosd'='dos -dumb'
 alias 'hexcalc'='dhex /dev/null'
-
