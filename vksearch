@@ -137,7 +137,7 @@ RemoveDoubles() {
  do
   echo "<1>${song_durations[$i]}<2>${song_artists[$i]}<3>${song_titles[$i]}<4>${song_urls[$i]}<5>" >> ${sys_temp}/vksearch.parsing 
  done
- cat ${sys_temp}/vksearch.parsing | /bin/sort -n | uniq -w 6 > ${sys_temp}/vksearch.parsed
+ cat ${sys_temp}/vksearch.parsing | /usr/bin/sort -n | uniq -w 6 > ${sys_temp}/vksearch.parsed
  OLD_IFS=$IFS
  IFS=$'\n'
  song_urls=( `cat ${sys_temp}/vksearch.parsed |sed -ne 's,.*<4>\([^<]*\)<5>.*,\1,p' ` )

@@ -1,5 +1,5 @@
 #!/bin/bash
-LOCKER="i3lock --color=333333"
+LOCKER="i3lock -n --color=333333"
 xautolock -disable
 savebr="$(brightness show)"
 #brightness set 0

@@ -113,7 +113,7 @@ alias 'modfind'='find /lib/modules/`uname -r` -name '*.ko' |grep '
 alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 ./$(date +"%Y-%m-%d-%s".jpg) 2>/dev/null'
 alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
 alias 'makeiso'='genisoimage -v -iso-level 4 -J -o'
-
+alias 'fdisk-watch'='while [ 1 ]; do clear; fdisk -l; sleep 0.1s; done'
 
 # Show IP
 SHOWIP='ip.icanhazip.com'

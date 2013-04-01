@@ -13,6 +13,7 @@ touchpad.sh &
 wmname LG3D &
 battery-notify &
 #transmission-dog &
+audacious &
 
 parcellite -dn &
 

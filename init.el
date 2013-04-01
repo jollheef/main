@@ -93,6 +93,7 @@
 (global-set-key (kbd "C-c f") 'insert-fixme)
 (global-set-key (kbd "C-c C-s") 'insert-seeme)
 (global-set-key (kbd "C-c s") 'insert-seeme)
+(global-set-key (kbd "M-]") 'undo)
 
 ;;
 ;;
@@ -471,6 +472,9 @@ With ARG recode from Russian o English."
 ;;(load "scilab-startup")
 (require 'dired+)
 (require 'nasm-mode)
+;; For ac-latex
+;;(require 'auto-complete-latex)
+;;(setq ac-modes (append ac-modes '(foo-mode)))
 
 ;;
 ;;
@@ -500,3 +504,5 @@ With ARG recode from Russian o English."
 (add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
 (add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
+;;(add-hook 'foo-mode-hook 'ac-l-setup)
+
