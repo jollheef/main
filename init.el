@@ -1,11 +1,49 @@
-; Package list:
+;;;; This file is free software: you can redistribute it and/or
+;;;; modify it under the terms of the GNU General Public License
+;;;; as published by the Free Software Foundation, either version
+;;;; 3 of the License, or (at your option) any later version.
+;;;;
+;;;; This file is distributed in the hope that it will be useful,
+;;;; but WITHOUT ANY WARRANTY; without even the implied warranty
+;;;; of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
+;;;; the GNU General Public License for more details.
+;;;;
+;;;; You should have received a copy of the GNU General Public
+;;;; License along with this program.  If not, see
+;;;; <http://www.gnu.org/licenses/>.
+;;;;
+;;;; Author: Klementyev Mikhail <jollheef@riseup.net>
+;;;;
+;;;; https://github.com/jollheef/main/blob/master/init.el
+;;;;
+
+;;
+;;
+;; Package list:
 ;; community/emacs-w3m-cvs, aspell, aspell-ru, aspell-en, lush
+;;
 ;; Elpa list:
-;; crontab-mode-1.2 dired+-21.2 haskell-mode-2.8.0 paredit-22
-;; windresize-0.1 smex-1.1.2 sunrise-commander-6.441
+;; ac-slime-0.2 auctex-11.86 back-button-0.6.4 button-lock-0.9.10
+;; cm-mode-0.1.0 coffee-mode-0.4.1 crontab-mode-1.2
+;; csharp-mode-0.8.6 dired+-21.2 find-file-in-project-3.2
+;; fixmee-0.8.2 flymake-easy-0.4 flymake-haskell-multi-0.2
+;; flymake-hlint-0.2 gdb-shell-0.4 ghc-1.10.2 ghci-completion-0.1.3
+;; git-commit-0.1 haml-mode-3.0.14 haskell-mode-2.8.0 highlight-21.0
+;; highlight-indentation-0.5.0 highlight-parentheses-1.0.1
+;; ido-ubiquitous-1.5 less-css-mode-0.10 list-utils-0.3.0
+;; markdown-mode-1.8.1 monokai-theme-0.0.8 nav-flash-1.0.8
+;; paredit-20 paredit-22 pcache-0.2.3 persistent-soft-0.8.6
+;; php-mode-1.5.0 pretty-lambdada-22.0 rust-mode-0.1.0
+;; sass-mode-3.0.14 shell-here-1.1 smartrep-0.0.3 smex-1.1.1
+;; smex-2.0 string-utils-0.2.8 sunrise-commander-6.441
+;; switch-window-0.9 tex-math-preview-readme.txt ucs-utils-0.7.2
+;; w3-4.0.46 wgrep-2.1.3 windresize-0.1 yaml-mode-0.0.7
+;;
 ;; Lisp List:
-;; auto-complete-1.3.1 color-theme.el linum-relative.el nyan-mode.el
-;; workspaces.el zenburn.el
+;; auto-complete-1.3.1 auto-complete-latex.el color-theme.el elim
+;; elim-client highlight-indentation.el linum-relative.el
+;; nasm-mode.el nyan-img nyan-mode.el workspaces.el zenburn.el
+;;
 ;; Note:
 ;; Use last slime from unstable(deb) repository
 
@@ -94,6 +132,10 @@
 (global-set-key (kbd "C-c C-s") 'insert-seeme)
 (global-set-key (kbd "C-c s") 'insert-seeme)
 (global-set-key (kbd "M-]") 'undo)
+(global-set-key (kbd "C-x O")
+		(lambda () (interactive) (other-window -1))) ;; back one
+(global-set-key (kbd "C-x C-o")
+		(lambda () (interactive) (other-window 2))) ;; forward two
 
 ;;
 ;;
@@ -382,8 +424,9 @@ This command does the reverse of `fill-region'."
       (?M  . ?Ь) (?<  . ?Б) (?>  . ?Ю) (?\? . ?,)))
 ;;-----------------------------------------------------------
 (defun recode-region-ru->en (beg end &optional arg)
-  "Recode the given region, that contains Russain text typed in English, into Russian.
-With ARG recode from Russian o English."
+  "Recode the given region, that contains Russain
+   text typed in English, into Russian.
+   With ARG recode from Russian o English."
   (interactive "*r\nP")
   (save-excursion
     (goto-char beg)
@@ -393,7 +436,7 @@ With ARG recode from Russian o English."
 			  (car (rassoc en-char u:*en/ru-table*))
 			(cdr (assoc en-char u:*en/ru-table*)))))
 	(delete-char 1)
-	(insert (if ru-char ru-char en-char))))))
+n	(insert (if ru-char ru-char en-char))))))
 (defun insert-fixme ()
   "Insert FIXME"
   (interactive)
@@ -402,7 +445,6 @@ With ARG recode from Russian o English."
   "Insert SEEME"
   (interactive)
   (insert "SEEME "))
-
 
 ;;
 ;;
