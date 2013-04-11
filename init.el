@@ -18,7 +18,6 @@
 ;;;;
 
 ;;
-;;
 ;; Package list:
 ;; community/emacs-w3m-cvs, aspell, aspell-ru, aspell-en, lush
 ;;
@@ -46,6 +45,7 @@
 ;;
 ;; Note:
 ;; Use last slime from unstable(deb) repository
+;;
 
 ;;
 ;;
@@ -136,7 +136,11 @@
 		(lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o")
 		(lambda () (interactive) (other-window 2))) ;; forward two
-
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (save-buffer)
+	    (local-set-key (kbd "C-c C-x C-s")
+			   'latex-compile)))
 ;;
 ;;
 ;; Appearance
@@ -195,7 +199,7 @@
  '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666")))))
-(global-whitespace-mode)
+;;(global-whitespace-mode)
 
 ;;
 ;;
@@ -436,7 +440,7 @@ This command does the reverse of `fill-region'."
 			  (car (rassoc en-char u:*en/ru-table*))
 			(cdr (assoc en-char u:*en/ru-table*)))))
 	(delete-char 1)
-n	(insert (if ru-char ru-char en-char))))))
+	n	(insert (if ru-char ru-char en-char))))))
 (defun insert-fixme ()
   "Insert FIXME"
   (interactive)
@@ -445,6 +449,23 @@ n	(insert (if ru-char ru-char en-char))))))
   "Insert SEEME"
   (interactive)
   (insert "SEEME "))
+(defun latex-compile ()
+  (interactive)
+  (save-buffer)
+  (start-process
+   "latex-compilation" "latex-compile"
+   "textopdf" (buffer-file-name))
+  (let ((filename (buffer-file-name)))
+    (setf filename (concatenate 'string
+				(file-name-directory filename)
+				(file-name-base filename)
+				".pdf"))
+	  (if (file-exists-p filename)
+	      (start-process
+	       "latex-compilation" "latex-compile"
+	       "evince"
+	       filename))))
+
 
 ;;
 ;;
@@ -517,6 +538,7 @@ n	(insert (if ru-char ru-char en-char))))))
 ;; For ac-latex
 ;;(require 'auto-complete-latex)
 ;;(setq ac-modes (append ac-modes '(foo-mode)))
+(yas-global-mode 1)
 
 ;;
 ;;
@@ -533,7 +555,7 @@ n	(insert (if ru-char ru-char en-char))))))
 (add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
-(add-hook 'lisp-mode-hook (lambda () (git-auto-commit-mode +1)))
+;;(add-hook 'lisp-mode-hook (lambda () (git-auto-commit-mode +1)))
 
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook (lambda () (paredit-mode +1)))
@@ -544,7 +566,6 @@ n	(insert (if ru-char ru-char en-char))))))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
 (add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
-(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
+;;(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
 ;;(add-hook 'foo-mode-hook 'ac-l-setup)
-
