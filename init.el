@@ -440,7 +440,7 @@ This command does the reverse of `fill-region'."
 			  (car (rassoc en-char u:*en/ru-table*))
 			(cdr (assoc en-char u:*en/ru-table*)))))
 	(delete-char 1)
-	n	(insert (if ru-char ru-char en-char))))))
+	(insert (if ru-char ru-char en-char))))))
 (defun insert-fixme ()
   "Insert FIXME"
   (interactive)
@@ -460,11 +460,12 @@ This command does the reverse of `fill-region'."
 				(file-name-directory filename)
 				(file-name-base filename)
 				".pdf"))
-	  (if (file-exists-p filename)
-	      (start-process
-	       "latex-compilation" "latex-compile"
-	       "evince"
-	       filename))))
+    (sleep-for 1)
+    (if (file-exists-p filename)
+	(start-process
+	 "latex-compilation" "latex-compile"
+	 "evince"
+	 filename))))
 
 
 ;;
@@ -569,3 +570,4 @@ This command does the reverse of `fill-region'."
 ;;(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
 ;;(add-hook 'foo-mode-hook 'ac-l-setup)
+(add-hook 'LaTeX-mode-hook (lambda () (abbrev-mode -1)))

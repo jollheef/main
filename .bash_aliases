@@ -60,6 +60,7 @@ alias 'bc'='bc -q'
 alias 'shred'='shred -n 10 -uz'
 alias 'mc'='mc -b'
 alias 'gcc'='gcc -Wall'
+alias 'g++'='g++ -Wall'
 
 alias 'gdb'='gdb -q'
 alias 'objdump'='objdump -M intel'
@@ -100,6 +101,7 @@ alias 'o_O'="echo '           ___
   \___/___\___/
      |_____|
 '"
+alias 'haskell-run'='runhaskell'
 
 #
 # Pseudo-utils
