@@ -102,6 +102,7 @@ alias 'o_O'="echo '           ___
      |_____|
 '"
 alias 'haskell-run'='runhaskell'
+alias 'ps-lambda'="PS1='λ> '"
 
 #
 # Pseudo-utils
@@ -128,3 +129,17 @@ alias 'tex2pdf'='textopdf'
 
 alias 'dosd'='dos -dumb'
 alias 'hexcalc'='dhex /dev/null'
+
+# for manage vbox
+function startvm () {
+    vboxmanage startvm "${1}" --type headless
+}
+function listvm () {
+    vboxmanage list vms
+}
+function runvm () {
+    vboxmanage list runningvms
+}
+function stopvm () {
+    vboxmanage controlvm "${1}" acpipowerbutton
+}

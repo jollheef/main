@@ -141,6 +141,8 @@
 	    (save-buffer)
 	    (local-set-key (kbd "C-c C-x C-s")
 			   'latex-compile)))
+(global-set-key (kbd "<f2>") 'toggle-truncate-lines)
+
 ;;
 ;;
 ;; Appearance
@@ -455,12 +457,12 @@ This command does the reverse of `fill-region'."
   (start-process
    "latex-compilation" "latex-compile"
    "textopdf" (buffer-file-name))
+  (sleep-for 3)
   (let ((filename (buffer-file-name)))
     (setf filename (concatenate 'string
 				(file-name-directory filename)
 				(file-name-base filename)
 				".pdf"))
-    (sleep-for 1)
     (if (file-exists-p filename)
 	(start-process
 	 "latex-compilation" "latex-compile"
@@ -566,7 +568,7 @@ This command does the reverse of `fill-region'."
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
-(add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
+;;(add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
 ;;(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
 ;;(add-hook 'foo-mode-hook 'ac-l-setup)
