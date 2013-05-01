@@ -126,6 +126,10 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "brightness inc 25")
           , ("M-S-t",                   spawn "temperature")
           , ("M-S-u",                   spawn "uptime.sh")
           , ("M-C-t",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(transmission-remote -l)\"")
+          , ("M-C-v",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(vboxmanage list runningvms)\"")
+
+          , ("M-C-r",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(rasp t)\"")
+          , ("M-S-r",                   spawn "DISPLAY=:0 notify-send -t 3000 \"$(rasp n)\"")
 
           , ("M-S-v",                   spawn "volume show")
 

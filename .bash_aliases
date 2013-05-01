@@ -56,7 +56,7 @@ alias 'du'='du -hcs --apparent-size'
 alias grep='grep --colour=auto'
 alias 'psgrep'='ps aux | grep -v grep | grep'
 alias 'df'='df -h'
-alias 'bc'='bc -q'
+alias 'bc'='bc -ql'
 alias 'shred'='shred -n 10 -uz'
 alias 'mc'='mc -b'
 alias 'gcc'='gcc -Wall'
@@ -120,6 +120,7 @@ alias 'webcam-get'='ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -f image2 .
 alias 'webcam'='mplayer -fs -fps 30 -tv driver=v4l2:width=640:height=480:device=/dev/video0 tv:// 1>/dev/null 2>&1'
 alias 'makeiso'='genisoimage -v -iso-level 4 -J -o'
 alias 'fdisk-watch'='while [ 1 ]; do clear; fdisk -l; sleep 0.1s; done'
+alias 'lib-search'='cat /home/michael/lib/librusec/LibRusEc_ru.text |grep -i '
 
 # Show IP
 SHOWIP='ip.icanhazip.com'
@@ -134,12 +135,15 @@ alias 'hexcalc'='dhex /dev/null'
 function startvm () {
     vboxmanage startvm "${1}" --type headless
 }
-function listvm () {
+function listvms () {
     vboxmanage list vms
 }
-function runvm () {
+function runningvms () {
     vboxmanage list runningvms
 }
 function stopvm () {
     vboxmanage controlvm "${1}" acpipowerbutton
 }
+alias 'mkvgui'='mmg'
+alias 'c'='clear'
+
