@@ -1,13 +1,12 @@
-#!/bin/bash
-LOCKER="i3lock -n --color=333333"
+#!/usr/bin/env bash
 xautolock -disable
-savebr="$(brightness show)"
+savebr="$(/home/michael/bin/brightness show)"
 #brightness set 0
 if [[ $(amixer sget 'Master' toggle | grep "Mono:" \
     | awk '{print $6}') == '[on]' ]]; then
-    volume toggle && ${LOCKER} && volume toggle
+    volume toggle && i3lock -n --color=333333 && volume toggle
 else
-    ${LOCKER}
+    i3lock -n --color=333333
 fi
-brightness set $savebr
+/home/michael/bin/brightness set $savebr
 xautolock -enable

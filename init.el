@@ -468,6 +468,18 @@ This command does the reverse of `fill-region'."
 	 "latex-compilation" "latex-compile"
 	 "evince"
 	 filename))))
+(defun save-macro (name)                  
+  "save a macro. Take a name as argument
+     and save the last defined macro under 
+     this name at the end of your .emacs"
+  (interactive "SName of the macro :")  ; ask for the name of the macro    
+  (kmacro-name-last-macro name)         ; use this name for the macro    
+  (find-file user-init-file)            ; open ~/.emacs or other user init file 
+  (goto-char (point-max))               ; go to the end of the .emacs
+  (newline)                             ; insert a newline
+  (insert-kbd-macro name)               ; copy the macro 
+  (newline)                             ; insert a newline
+  (switch-to-buffer nil))               ; return to the initial buffer
 
 
 ;;
@@ -573,3 +585,21 @@ This command does the reverse of `fill-region'."
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
 ;;(add-hook 'foo-mode-hook 'ac-l-setup)
 (add-hook 'LaTeX-mode-hook (lambda () (abbrev-mode -1)))
+
+;;
+;;
+;; Macro (MOVE THIS)
+;;
+;;
+
+(fset 'left1
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([60 return] 0 "%d")) arg)))
+(global-set-key (kbd "<f9>") 'left1)
+
+(fset 'right1
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([62 return] 0 "%d")) arg)))
+(global-set-key (kbd "<f11>") 'right1)
+
+(fset 'update1
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([46 return] 0 "%d")) arg)))
+(global-set-key (kbd "<f10>") 'update1)
