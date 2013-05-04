@@ -103,6 +103,7 @@ myManageHook = composeAll
   , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
   , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
 --  , command   =? "192.168.56.102"       --> doShift "4:work"
+  , title     =? "_feh [Paused]"        --> doFloat
   ]
  where
    role = stringProperty "WM_WINDOW_ROLE"
