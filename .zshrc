@@ -1,4 +1,5 @@
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] &&  ! [[ -e /tmp/.X11-unix/X0 ]] && (( EUID )); then
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] \
+    &&  ! [[ -e /tmp/.X11-unix/X0 ]] && (( EUID )); then
     while true; do
 	echo -n 'Set brightness (0-255): '
 	read 
@@ -66,10 +67,15 @@ ZSH_THEME="lambda-me"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego
 
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ $TERM != screen* ]] && [[ $TERM != dumb ]] && exec tmux -2

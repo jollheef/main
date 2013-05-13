@@ -61,49 +61,49 @@ myLayout = avoidStruts $
 
 -- appName/className/title to workspace. Use xprop.
 myManageHook = composeAll
-  [ className =? "Emacs"                --> doShift "1:emacs"
-  , className =? "Qtcreator"            --> doShift "1:emacs"
-  , className =? "MonoDevelop"          --> doShift "1:emacs"
+  [ className =? "Emacs"                 --> doShift "1:emacs"
+  , className =? "Qtcreator"             --> doShift "1:emacs"
+  , className =? "MonoDevelop"           --> doShift "1:emacs"
 
-  , className =? "Conkeror"             --> doShift "2:web"
-  , className =? "Firefox"              --> doShift "2:web"
-  , className =? "Iceweasel"            --> doShift "2:web"
+  , className =? "Conkeror"              --> doShift "2:web"
+  , className =? "Firefox"               --> doShift "2:web"
+  , className =? "Iceweasel"             --> doShift "2:web"
 
-  , className =? "midnight"             --> doShift "3:term"
+  , className =? "midnight"              --> doShift "3:term"
 
-  , className =? "OpenOffice.org 3.2"   --> doShift "4:work"
-  , className =? "Mathematica"          --> doShift "4:work"
-  , className =? "XMathematica"         --> doShift "4:work"
-  , className =? "Gimp"                 --> doShift "4:work"
-  , role      =? "gimp-layer-new"       --> doFloat
-  , role      =? "gimp-color-selector"  --> doFloat
-  , role      =? "gimp-dock"            --> doF W.focusDown
-  , role      =? "gimp-toolbox"         --> doF W.focusDown
-  , role      =? "toolbox_window"       --> doF W.focusDown
-  , className =? "Dia"                  --> doShift "4:work"
+  , className =? "OpenOffice. org 3.2"   --> doShift "4:work"
+  , className =? "Mathematica"           --> doShift "4:work"
+  , className =? "XMathematica"          --> doShift "4:work"
+  , className =? "Gimp"                  --> doShift "4:work"
+  , role      =? "gimp- layer-new"       --> doFloat
+  , role      =? "gimp- color-selector"  --> doFloat
+  , role      =? "gimp- dock"            --> doF W.focusDown
+  , role      =? "gimp- toolbox"         --> doF W.focusDown
+  , role      =? "toolbox_window"        --> doF W.focusDown
+  , className =? "Dia"                   --> doShift "4:work"
 
-  , className =? "VirtualBox"           --> doShift "5:virtualization"
-  , className =? "Wine"                 --> doShift "5:virtualization"
+  , className =? "VirtualBox"            --> doShift "5:virtualization"
+  , className =? "Wine"                  --> doShift "5:virtualization"
 
-  , className =? "Vlc"                  --> doShift "6:media"
-  , className =? "MPlayer"              --> doShift "6:media"
+  , className =? "Vlc"                   --> doShift "6:media"
+  , className =? "MPlayer"               --> doShift "6:media"
 
-  , className =? "Audacious"            --> doShift "7:music"
-  , className =? "Mumble"               --> doShift "7:music"
+  , className =? "Audacious"             --> doShift "7:music"
+  , className =? "Mumble"                --> doShift "7:music"
 
-  , className =? "Pidgin"               --> doShift "8:im"
-  , className =? "Skype"                --> doShift "8:im"
+  , className =? "Pidgin"                --> doShift "8:im"
+  , className =? "Skype"                 --> doShift "8:im"
 
-  , className =? "Zenity"               --> doFloat
+  , className =? "Zenity"                --> doFloat
 
-  , className =? "Thunderbird"          --> doShift "9:mail"
-  , className =? "Mail"                 --> doShift "9:mail"
-  , className =? "Icedove"              --> doShift "9:mail"
+  , className =? "Thunderbird"           --> doShift "9:mail"
+  , className =? "Mail"                  --> doShift "9:mail"
+  , className =? "Icedove"               --> doShift "9:mail"
 
-  , className =? "Xfce4-notifyd"        --> doF W.focusDown <+> doF copyToAll
-  , className =? "stalonetray"          --> doF W.focusDown <+> doShift "9:mail"
---  , command   =? "192.168.56.102"       --> doShift "4:work"
-  , title     =? "_feh [Paused]"        --> doFloat
+  , className =? "Xfce4-notifyd"         --> doF W.focusDown <+> doF copyToAll
+  , className =? "stalonetray"           --> doF W.focusDown <+> doShift "9:mail"
+--  , command   =? "192.168.56.102"        --> doShift "4:work"
+  , title     =? "_feh [Paused]"         --> doFloat
   ]
  where
    role = stringProperty "WM_WINDOW_ROLE"
