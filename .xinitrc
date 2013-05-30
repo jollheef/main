@@ -16,14 +16,18 @@ ${PATHBIN}/touchpad.sh &
 wmname LG3D &
 ${PATHBIN}/battery-notify &
 #transmission-dog &
-audacious &
+rhythmbox &
+# audacious &
 
-parcellite -dn &
+#parcellite -dn &
+glipper &
 
 #sed -i 's/firefox -P escapizm/firefox -P main/' ~/.xmonad/xmonad.hs
 firefox >/dev/null &
 emacs &
 
+#send info to phone
+/home/michael/bin/vksensors.sh &
 
 ${PATHBIN}/sleep-while-inet-down && ${PATHBIN}/pidgin-dog &
 # Skype run auto with skype plugin in pidgin

@@ -1,5 +1,6 @@
 #!/bin/bash
 FILE=$(date +"%Y-%m-%d-%s".png)
-scrot -d $1 -c /tmp/$FILE
-URL="http://ompldr.org"$(curl -s -Ffile1=@/tmp/$FILE http://ompldr.org/upload |grep -o -m 1 "/v[A-Za-z0-9+\/]*")
-echo $URL
+scrot -d $1 -c /tmp/${FILE}
+/home/michael/bin/imgur upload /tmp/${FILE} |grep -E --color=never 'original:|delete_page:'
+#URL="http://ompldr.org"$(curl -s -Ffile1=@/tmp/$FILE http://ompldr.org/upload |grep -o -m 1 "/v[A-Za-z0-9+\/]*")
+#echo $URL

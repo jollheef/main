@@ -6,6 +6,7 @@ alias -s gif="animate"
 
 # Documents
 alias -s pdf="ext evince"
+alias -s djvu="ext evince"
 alias -s doc="ext soffice"
 alias -s odt="ext soffice"
 

@@ -129,6 +129,14 @@
 (global-set-key (kbd "C-c C--") "—")
 (global-set-key (kbd "C-c C-f") 'insert-fixme)
 (global-set-key (kbd "C-c f") 'insert-fixme)
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c C-f")
+			   'latex-insert-fixme)))
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c f")
+			   'latex-insert-fixme)))
 (global-set-key (kbd "C-c C-s") 'insert-seeme)
 (global-set-key (kbd "C-c s") 'insert-seeme)
 (global-set-key (kbd "M-]") 'undo)
@@ -201,6 +209,7 @@
  '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666")))))
+;; Buggy
 ;;(global-whitespace-mode)
 
 ;;
@@ -260,7 +269,14 @@
     ("inf" "∞")      ("бесконечность" "∞")))
 (put 'downcase-region 'disabled nil)
 (defalias 'select-all 'mark-whole-buffer)
-
+;; Don't ask, please 
+(setq kill-buffer-query-functions 
+      (remq 'process-kill-buffer-query-function 
+            kill-buffer-query-functions)) 
+(defadvice save-buffers-kill-emacs
+  (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
 ;;
 ;;
 ;; Functions
@@ -400,7 +416,7 @@ This command does the reverse of `fill-region'."
   (interactive "r")
   (shell-command-on-region
    pmin pmax
-   "astyle -A7 -x" ;; GNU style formatting/indenting.
+   "astyle -A7 -xd" ;; GNU style formatting/indenting.
    (current-buffer) t
    (get-buffer-create "*Astyle Errors*") t))
 (defun astyle-buffer ()
@@ -447,6 +463,10 @@ This command does the reverse of `fill-region'."
   "Insert FIXME"
   (interactive)
   (insert "FIXME "))
+(defun latex-insert-fixme ()
+  "Insert FIXME"
+  (interactive)
+  (insert "{\\color{red}(FIXME)}"))
 (defun insert-seeme ()
   "Insert SEEME"
   (interactive)

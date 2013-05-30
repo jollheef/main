@@ -3,20 +3,21 @@
 #
 
 alias 'apt-get'='sudo apt-get'
-alias 'aptitude'='sudo aptitude'
+alias 'aptitude'='sudo aptitude -V'
 
 # Install pkg
-alias yi='sudo aptitude install'
+alias yi='sudo aptitude -V install'
 # Install pkg from unstable
-alias yiu='sudo aptitude -t unstable install'
+alias yiu='sudo aptitude -V -t unstable install'
 # Install pkg from experimental
-alias yie='sudo aptitude -t experimental install'
+alias yie='sudo aptitude -V -t experimental install'
 # Remove pkg
 alias yr='sudo aptitude remove'
 # Search pkg
 alias ys='sudo aptitude search'
 # Update pkgs
-alias yu='sudo aptitude update && sudo aptitude upgrade'
+#alias yu='sudo aptitude update && sudo aptitude upgrade -V'
+alias yu='sudo aptitude upgrade -V'
 # Find package by file
 alias 'wherein'='dpkg -S'
 
@@ -70,7 +71,7 @@ alias 'aw'='audacious'
 alias 'netcat'='nc'
 alias 'python-decompiler'='uncompyler.py'
 alias 'hex'='hexedit'
-alias 'upload'='/var/lib/gems/1.8/gems/ompload-1.0.2/bin/ompload -q'
+#alias 'upload'='/'
 alias 'torrent'='transmission-remote'
 
 alias 'idal'='/home/michael/bin/idaadv/idal'
@@ -147,3 +148,8 @@ function stopvm () {
 }
 alias 'mkvgui'='mmg'
 alias 'c'='clear'
+alias pwgen="pwgen -0 -s 31 1"
+
+alias 'wicd-cli-eth-list'='wicd-cli --wired --list'
+alias 'wicd-cli-wlan-list'='wicd-cli -y -S && wicd-cli -y -l'
+alias 'wicd-cli-disconnect'='wicd-cli --disconnect'
