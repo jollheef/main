@@ -10,6 +10,7 @@ xhost local:
 xautolock -time 1 -locker "${PATHBIN}/slocktogglevolume.sh" \
     -nowlocker "${PATHBIN}/slocktogglevolume.sh" -detectsleep &
 #nmvpn_auto2 &
+${PATHBIN}/tpvpn_auto &
 ${PATHBIN}/ifexping &
 ${PATHBIN}/touchpad.sh &
 #autorun3gmodem.sh &
@@ -27,7 +28,7 @@ firefox >/dev/null &
 emacs &
 
 #send info to phone
-/home/michael/bin/vksensors.sh &
+#/home/michael/bin/vksensors.sh &
 
 ${PATHBIN}/sleep-while-inet-down && ${PATHBIN}/pidgin-dog &
 # Skype run auto with skype plugin in pidgin

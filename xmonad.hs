@@ -142,7 +142,7 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "/home/michael/bin/brightness inc 
 
           , ("M-f",                     spawn "firefox -P main >/dev/null 2>&1")
 --          , ("M-f",                     spawn "firefox -private >/dev/null 2>&1")
---          , ("M-c",                     spawn "conkeror-run")
+          , ("M-c",                     spawn "conkeror")
           , ("M-a",                     spawn "sudo -u anonfox -H firefox >/dev/null 2>&1")
           , ("M-C-a",                   spawn "sudo service tor restart && DISPLAY=:0 notify-send -t 2500 'Tor::Restarted'")
           , ("M-e",                     spawn "emacs")

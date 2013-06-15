@@ -72,7 +72,7 @@ DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego:/home/michael/bin:/usr/sbin:/sbin:/usr/share/openstego:/home/michael/.cabal/bin
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 

@@ -1,12 +1,15 @@
 # Pictures
 alias -s png="ext feh"
 alias -s jpg="ext feh"
+alias -s jpeg="ext feh"
 alias -s JPG="ext feh"
 alias -s gif="animate"
 
 # Documents
-alias -s pdf="ext evince"
-alias -s djvu="ext evince"
+#alias -s pdf="ext evince"
+#alias -s djvu="ext evince"
+alias -s pdf="ext qpdfview"
+alias -s djvu="ext qpdfview"
 alias -s doc="ext soffice"
 alias -s odt="ext soffice"
 

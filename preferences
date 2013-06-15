@@ -13,3 +13,7 @@ Pin-Priority: 300
 Package: qemu
 Pin: release a=unstable
 Pin-Priority: 1001
+
+Package: pidgin
+Pin: release a=unstable
+Pin-Priority: 1001

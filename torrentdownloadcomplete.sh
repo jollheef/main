@@ -28,6 +28,8 @@ else
 	|cut -d '/' -f 1)
 fi
 
+/usr/bin/send_vk "Torrent::Download Complete ${TR_TORRENT_NAME}"
+
 case "${TypeOf}" in
     audio)
 	transmission-remote -t ${TR_TORRENT_ID} --move \

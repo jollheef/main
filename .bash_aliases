@@ -6,18 +6,18 @@ alias 'apt-get'='sudo apt-get'
 alias 'aptitude'='sudo aptitude -V'
 
 # Install pkg
-alias yi='sudo aptitude -V install'
+alias _yi='sudo aptitude -V install'
 # Install pkg from unstable
-alias yiu='sudo aptitude -V -t unstable install'
+alias _yiu='sudo aptitude -V -t unstable install'
 # Install pkg from experimental
-alias yie='sudo aptitude -V -t experimental install'
+alias _yie='sudo aptitude -V -t experimental install'
 # Remove pkg
-alias yr='sudo aptitude remove'
+alias _yr='sudo aptitude remove'
 # Search pkg
-alias ys='sudo aptitude search'
+alias _ys='sudo aptitude search'
 # Update pkgs
 #alias yu='sudo aptitude update && sudo aptitude upgrade -V'
-alias yu='sudo aptitude upgrade -V'
+alias _yu='sudo aptitude upgrade -V'
 # Find package by file
 alias 'wherein'='dpkg -S'
 
@@ -153,3 +153,22 @@ alias pwgen="pwgen -0 -s 31 1"
 alias 'wicd-cli-eth-list'='wicd-cli --wired --list'
 alias 'wicd-cli-wlan-list'='wicd-cli -y -S && wicd-cli -y -l'
 alias 'wicd-cli-disconnect'='wicd-cli --disconnect'
+
+alias 'iwl'='wicd-cli -yl'
+alias 'iwc'='wicd-cli -ycn'
+alias 'wget-site'='wget -r -k -p -E -nc'
+alias 'wget-site-depth7'='wget -r -k -p -E -nc -l 7'
+
+alias 'bootlog'="sudo sed 's/\^\[/\o33/g;s/\[1G\[/\[27G\[/' /var/log/boot"
+
+function iu () {imgur upload ${1} |grep orig}
+
+function find-urls-by-filenames ()
+{
+    if [[ "${1}" == "" || "${2}" == "" ]]; then
+	echo "Use: ${0} path url-list"; fi
+    filesPath="${1}"
+    urlsList="${2}"
+    for filename in $(ls "${filesPath}"); do
+	cat "${urlsList}" |grep "${filename}"; done
+}

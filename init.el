@@ -54,14 +54,13 @@
 ;;
 
 (require 'package)
-;; Add the original Emacs Lisp Package Archive
+;; Add the Emacs Lisp Package Archive
 (setq package-archives
       '(("ELPA" . "http://tromey.com/elpa/")
 	("gnu"  . "http://elpa.gnu.org/packages/")
-	("SC"     "http://joseito.republika.pl/sunrise-commander/")))
-;; Add the user-contributed repository
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+	("SC"     "http://joseito.republika.pl/sunrise-commander/")
+	("marmalade" . "http://marmalade-repo.org/packages/")
+	("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 ;; Load-path for lisp files
 (let ((default-directory "~/.emacs.d/lisp/"))
@@ -577,6 +576,10 @@ This command does the reverse of `fill-region'."
 ;;(require 'auto-complete-latex)
 ;;(setq ac-modes (append ac-modes '(foo-mode)))
 (yas-global-mode 1)
+;; sage-mode
+(add-to-list 'load-path "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/local/share/emacs")
+(require 'sage "sage")
+(setq sage-command "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/sage")
 
 ;;
 ;;

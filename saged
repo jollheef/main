@@ -1,0 +1,92 @@
+#! /bin/bash
+### BEGIN INIT INFO
+# Provides:          saged
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      S 0 1 6
+# Description:       This file should be placed in /etc/init.d.
+### END INIT INFO
+
+function debug()
+{
+    if [[ "${DEBUG}" == "1" ]]; then
+	if [[ "${1}" == "-n" ]]; then
+	    #echo -n "Debug: ${2}" >&2
+	    echo -n "${2}" >&2
+	else
+	    #echo "Debug: ${1}" >&2
+	    echo "${1}" >&2
+	fi
+    fi
+}
+
+USER="michael"
+SAGE="/home/michael/bin/sage"
+ARGS=" -n automatic_login=True"
+DEBUG=1
+
+# Exit if the package is not installed
+debug -n "Check exist ${SAGE}..."
+[ -x ${SAGE} ] || $(debug -n "fail" && exit 0)
+debug "ok"
+
+function do_start()
+{
+    debug "function do_start"
+    debug "su ${USER} -c screen -dmS saged ${SAGE} ${ARGS}"
+    su ${USER} -c "screen -dmS saged ${SAGE} ${ARGS}"
+}
+
+function do_stop()
+{
+    debug "function do_stop"
+    debug "su ${USER} -c kill /home/michael/.sage/sage_notebook.sagenb/sagenb.pid"
+    su ${USER} -c "kill $(ps aux |grep /home/michael/bin/sage |grep ${ARGS} |grep -v grep |grep python |grep -v SCREEN|awk '{print $2}')"
+    debug "su ${USER} -c screen -r saged -D -X quit"
+    su ${USER} -c "screen -r saged -D -X quit"
+}
+
+function do_restart()
+{
+    debug "function do_restart"
+    do_stop
+    do_start
+}
+
+function run()
+{
+    debug "function run"
+    if [[ "$(ps aux |grep -v grep |grep '/home/michael/bin/sage -n')" == "" ]]
+    then
+	debug "Stopped"
+	return 1
+    else
+	debug "Runned"
+	return 0
+    fi
+}
+
+case "${1}" in
+    start)
+	if ! run
+	then do_start
+	else echo "Already run"
+	fi
+	;;
+    stop)
+	if run
+	then do_stop
+	else echo "Not run"
+	fi
+	;;
+    restart)
+	if run
+	then do_restart
+	else do_start
+	fi
+	;;
+    *)
+	echo "Usage: ${0} {start|stop|restart}" >&2
+	;;
+esac
