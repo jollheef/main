@@ -204,10 +204,16 @@
 (set-face-background 'highlight-indentation-face "#3F533F")
 (set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-latex-sectioning-0-face ((t (:height 1.000001))))
+ '(font-latex-sectioning-1-face ((t (:height 1.00000000001))))
  '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
- '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666"))))
+ '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
- '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666")))))
+ '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666")))))
 ;; Buggy
 ;;(global-whitespace-mode)
 
@@ -577,9 +583,9 @@ This command does the reverse of `fill-region'."
 ;;(setq ac-modes (append ac-modes '(foo-mode)))
 (yas-global-mode 1)
 ;; sage-mode
-(add-to-list 'load-path "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/local/share/emacs")
-(require 'sage "sage")
-(setq sage-command "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/sage")
+;;(add-to-list 'load-path "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/local/share/emacs")
+;;(require 'sage "sage")
+;;(setq sage-command "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/sage")
 
 ;;
 ;;

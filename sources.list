@@ -8,7 +8,7 @@ deb-src http://apt.jenslody.de/testing testing main
 
 # I2P testing repository
 deb http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main
-deb-src http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main 
+deb-src http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main
 
 # Testing repository
 deb http://mirror.yandex.ru/debian/ testing main contrib non-free
@@ -26,5 +26,5 @@ deb-src http://mirror.yandex.ru/debian/ experimental main contrib
 deb http://www.deb-multimedia.org testing main non-free
 
 # Yi
-#deb http://people.debian.org/~mhatta/debian/yi ./
-#deb-src http://people.debian.org/~mhatta/debian/yi ./
+# deb http://people.debian.org/~mhatta/debian/yi ./
+# deb-src http://people.debian.org/~mhatta/debian/yi ./
