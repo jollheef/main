@@ -172,3 +172,11 @@ function find-urls-by-filenames ()
     for filename in $(ls "${filesPath}"); do
 	cat "${urlsList}" |grep "${filename}"; done
 }
+
+alias 'nmap1'='sudo nmap -T5 -F -D 172.16.254.254 -PS22,23,80,113'
+alias 'nmap2'='sudo nmap -D 172.16.254.254 -T5 -p0-65535'
+alias 'nmap3'='sudo nmap -D 172.16.254.254 -T5 -F'
+alias 'nmap4'='sudo nmap -D 172.16.254.254 -T5'
+
+alias 'sleep1'='date && sleep && date'
+
