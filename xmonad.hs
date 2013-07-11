@@ -15,7 +15,7 @@ import XMonad.Hooks.ManageDocks
 --import XMonad.Layout.Named
 --import XMonad.Layout.Reflect
 
-import XMonad.Layout.IM
+import XMonad.Layout.IM as IM
 import XMonad.Layout.Grid
 import Data.Ratio ((%))
 import XMonad.Layout.Spacing

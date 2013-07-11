@@ -17,8 +17,8 @@ ${PATHBIN}/touchpad.sh &
 wmname LG3D &
 ${PATHBIN}/battery-notify &
 #transmission-dog &
-rhythmbox &
-# audacious &
+#rhythmbox &
+audacious &
 
 #parcellite -dn &
 glipper &
