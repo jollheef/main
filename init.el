@@ -210,12 +210,14 @@
  ;; If there is more than one, they won't work right.
  '(font-latex-sectioning-0-face ((t (:height 1.000001))))
  '(font-latex-sectioning-1-face ((t (:height 1.00000000001))))
+ '(highlight-changes ((t (:foreground "goldenrod"))))
  '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
  '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666")))))
 ;; Buggy
 ;;(global-whitespace-mode)
+;;(global-highlight-changes-mode)
 
 ;;
 ;;

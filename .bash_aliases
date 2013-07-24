@@ -196,3 +196,4 @@ alias 'sleep1'='date && sleep && date'
 #'
 
 alias siv='send_image varejka17'
+alias mount-iso='mount -o loop'

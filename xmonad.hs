@@ -165,9 +165,12 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "/home/michael/bin/brightness inc 
 
           , ("M-g",                     goToSelected defaultGSConfig) -- GridSelect
 
-          , ("M-<F9>",                  spawn "rhythmbox-client --play-pause")
-          , ("M-<F10>",                 spawn "rhythmbox-client --previous")
-          , ("M-<F11>",                 spawn "rhythmbox-client --next")
+          , ("M-<F9>",                  spawn "audacious -t")
+          , ("M-<F10>",                 spawn "audacious -r")
+          , ("M-<F11>",                 spawn "audacious -f")
+--          , ("M-<F9>",                  spawn "rhythmbox-client --play-pause")
+--          , ("M-<F10>",                 spawn "rhythmbox-client --previous")
+--          , ("M-<F11>",                 spawn "rhythmbox-client --next")
           , ("M-<F12>",                 spawn "/home/michael/bin/send_track varejka17")
 
           , ("M-<F7>",                  spawn "/home/michael/bin/record 600 >/dev/null 2>&1")

@@ -17,3 +17,7 @@ Pin-Priority: 1001
 Package: pidgin
 Pin: release a=unstable
 Pin-Priority: 1001
+
+Package: python3-gi
+Pin: release a=unstable
+Pin-Priority: 1001

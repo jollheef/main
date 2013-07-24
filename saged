@@ -24,7 +24,7 @@ function debug()
 USER="michael"
 SAGE="/home/michael/bin/sage"
 ARGS=" -n automatic_login=True"
-DEBUG=1
+#DEBUG=1
 
 # Exit if the package is not installed
 debug -n "Check exist ${SAGE}..."

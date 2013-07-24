@@ -31,6 +31,7 @@ emacs &
 #/home/michael/bin/vksensors.sh &
 
 ${PATHBIN}/sleep-while-inet-down && ${PATHBIN}/pidgin-dog &
+${PATHBIN}/sleep-while-inet-down && ${PATHBIN}/skype_logger-dog &
 # Skype run auto with skype plugin in pidgin
 #sleep 30s && skype &
 
