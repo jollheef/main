@@ -108,7 +108,7 @@ myManageHook = composeAll
   ]
  where
    role = stringProperty "WM_WINDOW_ROLE"
---   command = stringProperty "WM_COMMAND"
+   command = stringProperty "WM_COMMAND"
 
 -- M - modMask, M1 - Alt, C - Control, S - Shift. Use xev.
 myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "/home/michael/bin/brightness inc 25")

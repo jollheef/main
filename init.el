@@ -211,6 +211,7 @@
  '(font-latex-sectioning-0-face ((t (:height 1.000001))))
  '(font-latex-sectioning-1-face ((t (:height 1.00000000001))))
  '(highlight-changes ((t (:foreground "goldenrod"))))
+ '(hs-face ((t (:box 1))))
  '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
  '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666"))))
  '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
@@ -588,6 +589,40 @@ This command does the reverse of `fill-region'."
 ;;(add-to-list 'load-path "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/local/share/emacs")
 ;;(require 'sage "sage")
 ;;(setq sage-command "/home/michael/bin/sage-5.9-linux-32bit-ubuntu_13.04-i686-Linux/sage")
+;; auto-complete-clang
+(require 'auto-complete-clang)
+;;(setq ac-auto-start nil)
+(setq ac-auto-start t)
+(setq ac-quick-help-delay 0.5)
+;; (ac-set-trigger-key "TAB")
+;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
+(define-key ac-mode-map  [(control tab)] 'auto-complete)
+(defun my-ac-config ()
+  (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
+  ;; (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
+  (add-hook 'css-mode-hook 'ac-css-mode-setup)
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+(defun my-ac-cc-mode-setup ()
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
+(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+;; ac-source-gtags
+(my-ac-config)
+(setq ac-clang-flags
+      (mapcar (lambda (item)(concat "-I" item))
+              (split-string "
+/usr/include/c++/4.7
+/usr/include/i386-linux-gnu/c++/4.7/.
+/usr/include/c++/4.7/backward
+/usr/lib/gcc/i486-linux-gnu/4.7/include
+/usr/local/include
+/usr/lib/gcc/i486-linux-gnu/4.7/include-fixed
+/usr/include/i386-linux-gnu
+/usr/include
+")))
+;; end of auto-complete-clang
 
 ;;
 ;;
@@ -595,15 +630,22 @@ This command does the reverse of `fill-region'."
 ;;
 ;;
 
+(defun folding-mode ()
+  (interactive)
+  (hs-minor-mode +1)
+  (hideshowvis-minor-mode +1)
+  (hideshowvis-symbols))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (folding-mode)))
 
 (add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (auto-complete-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (pretty-lambda-mode +1)))
 (add-hook 'lisp-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (folding-mode)))
 ;;(add-hook 'lisp-mode-hook (lambda () (git-auto-commit-mode +1)))
 
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
@@ -614,8 +656,11 @@ This command does the reverse of `fill-region'."
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-newline +1)))
 (add-hook 'c-mode-hook (lambda () (c-toggle-auto-hungry-state +1)))
 (add-hook 'c-mode-hook (lambda () (highlight-parentheses-mode +1)))
+(add-hook 'c-mode-hook (lambda () (folding-mode)))
 ;;(add-hook 'c-mode-hook (lambda () (whitespace-mode +1)))
 ;;(add-hook 'c-mode-hook (lambda () (git-auto-commit-mode +1)))
+(add-hook 'c++-mode-hook (lambda () (folding-mode)))
+(add-hook 'python-mode-hook (lambda () (folding-mode)))
 (add-hook 'nasm-mode-hook (lambda () (auto-fill-mode)))
 ;;(add-hook 'foo-mode-hook 'ac-l-setup)
 (add-hook 'LaTeX-mode-hook (lambda () (abbrev-mode -1)))
