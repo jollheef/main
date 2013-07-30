@@ -149,7 +149,12 @@
 	    (local-set-key (kbd "C-c C-x C-s")
 			   'latex-compile)))
 (global-set-key (kbd "<f2>") 'toggle-truncate-lines)
-
+(add-hook 'hs-minor-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c @ h") 'hs-hide-block)
+	    (local-set-key (kbd "C-c @ s") 'hs-show-block)
+	    (local-set-key (kbd "C-c @ H") 'hs-hide-all)
+	    (local-set-key (kbd "C-c @ S") 'hs-show-all)))
 ;;
 ;;
 ;; Appearance
