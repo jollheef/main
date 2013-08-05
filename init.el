@@ -155,75 +155,6 @@
 	    (local-set-key (kbd "C-c @ s") 'hs-show-block)
 	    (local-set-key (kbd "C-c @ H") 'hs-hide-all)
 	    (local-set-key (kbd "C-c @ S") 'hs-show-all)))
-;;
-;;
-;; Appearance
-;;
-;;
-
-;; Disable startup-message (show *scratch* buffer)
-(setq inhibit-startup-message t)
-;; Set *scratch* buffer text
-(setq initial-scratch-message
-      ";; This buffer is for notes you don't want to save.\n\n")
-;; Set *scratch* buffer mode
-(setq initial-major-mode 'text-mode)
-;; Disable all bar
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-;; Set font
-(set-default-font "DejaVu Sans Mono-11")
-(setq default-frame-alist '((font .  "DejaVu Sans Mono-11")))
-;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
-;; ~/.emacs.d/lisp/color-theme.el
-(require 'zenburn)
-(zenburn)
-;; Show time
-;;(setq display-time-interval 1) ;; in seconds, default value 60
-(setq display-time-format "%H:%M")
-(display-time-mode)
-;; Show column (line,column)
-(column-number-mode)
-;; Nyan-mode
-;; files: ~/.emacs.d/lisp/nyan-mode.el, ~/.emacs.d/lisp/nyan-img/*
-(require 'nyan-mode)
-(nyan-mode)
-;; Indent style
-(setq c-default-style "gnu"
-      c-basic-offset 2)
-(global-hl-line-mode 1)
-;; highlight just parens
-(show-paren-mode)
-(setq show-paren-style 'parenthesis)
-;; Set table-cell color (WHATTHEFUCK? NEED FIX)
-;;(set-face-background 'table-cell "#3f3f3f")
-;;(set-face- 'table-cell "#dcdccc")
-;; Set fill column
-(setq-default fill-column 66)
-;; Display battery state in mode-line
-(setq battery-mode-line-format " (%L %p%% %t)")
-(display-battery-mode 1)
-;; Colors for highlight-indentation-mode
-(require 'highlight-indentation)
-(set-face-background 'highlight-indentation-face "#3F533F")
-(set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-latex-sectioning-0-face ((t (:height 1.000001))))
- '(font-latex-sectioning-1-face ((t (:height 1.00000000001))))
- '(highlight-changes ((t (:foreground "goldenrod"))))
- '(hs-face ((t (:box 1))))
- '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
- '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666"))))
- '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
- '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666")))))
-;; Buggy
-;;(global-whitespace-mode)
-;;(global-highlight-changes-mode)
 
 ;;
 ;;
@@ -355,6 +286,7 @@
 (add-to-list 'auto-mode-alist '(".php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 (add-to-list 'auto-mode-alist '(".gdb$" . gdb-script-mode))
+(add-to-list 'auto-mode-alist '(".ipy$" . python-mode))
 
 ;; Функция для файлов .fb2 в режиме просмотра
 (defun fb2-mode-view()
@@ -517,6 +449,84 @@ This command does the reverse of `fill-region'."
   (interactive)
   (insert (shell-command-to-string
 	   "cat /dev/urandom | head | md5sum | awk '{print $1}' |tr '\n' ' '")))
+(defun get-string-from-file (filePath)
+  "Return FILEPATH's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+;;
+;;
+;; Appearance
+;;
+;;
+
+;; Disable startup-message (show *scratch* buffer)
+(setq inhibit-startup-message t)
+;; Set *scratch* buffer text
+(setq initial-scratch-message
+      (concatenate
+       'string
+       ";; This buffer is for notes you don't want to save.\n"
+       (get-string-from-file "~/doc/TODO")))
+;; Set *scratch* buffer mode
+(setq initial-major-mode 'text-mode)
+;; Disable all bar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+;; Set font
+(set-default-font "DejaVu Sans Mono-11")
+(setq default-frame-alist '((font .  "DejaVu Sans Mono-11")))
+;; Files for zenburn-theme : ~/.emacs.d/lisp/zenburn.el and
+;; ~/.emacs.d/lisp/color-theme.el
+(require 'zenburn)
+(zenburn)
+;; Show time
+;;(setq display-time-interval 1) ;; in seconds, default value 60
+(setq display-time-format "%H:%M")
+(display-time-mode)
+;; Show column (line,column)
+(column-number-mode)
+;; Nyan-mode
+;; files: ~/.emacs.d/lisp/nyan-mode.el, ~/.emacs.d/lisp/nyan-img/*
+(require 'nyan-mode)
+(nyan-mode)
+;; Indent style
+(setq c-default-style "gnu"
+      c-basic-offset 2)
+(global-hl-line-mode 1)
+;; highlight just parens
+(show-paren-mode)
+(setq show-paren-style 'parenthesis)
+;; Set table-cell color (WHATTHEFUCK? NEED FIX)
+;;(set-face-background 'table-cell "#3f3f3f")
+;;(set-face- 'table-cell "#dcdccc")
+;; Set fill column
+(setq-default fill-column 66)
+;; Display battery state in mode-line
+(setq battery-mode-line-format " (%L %p%% %t)")
+(display-battery-mode 1)
+;; Colors for highlight-indentation-mode
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#3F533F")
+(set-face-background 'highlight-indentation-current-column-face "#5f7f5f")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-latex-sectioning-0-face ((t (:height 1.000001))))
+ '(font-latex-sectioning-1-face ((t (:height 1.00000000001))))
+ '(highlight-changes ((t (:foreground "goldenrod"))))
+ '(hs-face ((t (:box 1))))
+ '(whitespace-empty ((t (:background "#3F3F3F" :foreground "firebrick"))))
+ '(whitespace-newline ((t (:background "#3F3F3F" :foreground "#666666"))))
+ '(whitespace-space ((t (:background "#3F3F3F" :foreground "#666666"))))
+ '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#666666")))))
+;; Buggy
+;;(global-whitespace-mode)
+;;(global-highlight-changes-mode)
 
 ;;
 ;;

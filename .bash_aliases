@@ -18,6 +18,7 @@ alias _ys='sudo aptitude search'
 # Update pkgs
 #alias yu='sudo aptitude update && sudo aptitude upgrade -V'
 alias _yu='sudo aptitude upgrade -V'
+alias _yv='aptitude -F %p%v%V search'
 # Find package by file
 alias 'wherein'='dpkg -S'
 
@@ -161,7 +162,10 @@ alias 'wget-site-depth7'='wget -r -k -p -E -nc -l 7'
 
 alias 'bootlog'="sudo sed 's/\^\[/\o33/g;s/\[1G\[/\[27G\[/' /var/log/boot"
 
-function iu () {imgur upload ${1} |grep orig}
+function iu ()
+{
+    imgur upload ${1} |grep orig
+}
 
 function find-urls-by-filenames ()
 {

@@ -101,6 +101,9 @@ myManageHook = composeAll
   , className =? "Mail"                  --> doShift "9:mail"
   , className =? "Icedove"               --> doShift "9:mail"
 
+  , className =? "Umount.py"             --> doFloat
+  , title     =? "isofc-client"          --> doFloat
+
   , className =? "Xfce4-notifyd"         --> doF W.focusDown <+> doF copyToAll
   , className =? "stalonetray"           --> doF W.focusDown <+> doShift "9:mail"
 --  , command   =? "192.168.56.102"        --> doShift "4:work"
@@ -158,8 +161,8 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "/home/michael/bin/brightness inc 
 
           , ("M-d",                     spawn "/home/michael/bin/showdate.sh")
 
-          , ("M-z",                     spawn "/home/michael/bin/allmount.sh 1")
-          , ("M-x",                     spawn "/home/michael/bin/allmount.sh 0")
+--          , ("M-z",                     spawn "/home/michael/bin/allmount.sh 1")
+          , ("M-x",                     spawn "/home/michael/dev/pyautomount/umount.py")
 
 --          , ("<insert>"                 spawn "gmrun")
 
