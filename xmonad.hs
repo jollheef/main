@@ -176,8 +176,8 @@ myKeysP = [ ("<XF86MonBrightnessUp>",   spawn "/home/michael/bin/brightness inc 
 --          , ("M-<F11>",                 spawn "rhythmbox-client --next")
           , ("M-<F12>",                 spawn "/home/michael/bin/send_track varejka17")
 
-          , ("M-<F7>",                  spawn "/home/michael/bin/record 600 >/dev/null 2>&1")
-          , ("M-<F8>",                  spawn "/home/michael/bin/record stop >/dev/null 2>&1")
+--          , ("M-<F7>",                  spawn "/home/michael/bin/record 600 >/dev/null 2>&1")
+--          , ("M-<F8>",                  spawn "/home/michael/bin/record stop >/dev/null 2>&1")
 
           , ("M-m",                     spawn "/home/michael/bin/mathematica")
 

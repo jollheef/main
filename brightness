@@ -43,10 +43,10 @@ function Main
             SetBrightness
             ;;
         set)
-            SetBrightness
+            SetBrightness ${3}
             ;;
         toggle)
-            ToggleBrightness
+            ToggleBrightness ${2}
             ;;
         show)
             echo $CurrentBrightness
@@ -89,7 +89,9 @@ function SetBrightness
     # -le == less than or equal to, -ge == greater than or equal to
     if [ "$Quantity" -le "255" ] && [ "$Quantity" -ge "0" ];
     then
-        SendNotify
+	if [[ "${1}" != "quiet" ]]
+        then SendNotify
+	fi
         # Convert from decimal to hexadecimal
         Quantity=`echo "ibase=10;obase=16; $Quantity" |bc`
         # Set brightness
@@ -105,11 +107,11 @@ function ToggleBrightness
     if [ "$CurrentBrightness" == "0" ];
     then
         Quantity=`cat $TmpFile`
-        SetBrightness
+        SetBrightness ${2}
     else
         echo $CurrentBrightness>$TmpFile
         Quantity=0
-        SetBrightness
+        SetBrightness ${2}
     fi
 }
 
@@ -134,4 +136,4 @@ function NormaliseQuantity
     fi
 }
 
-Main
+Main ${@}

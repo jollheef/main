@@ -193,3 +193,8 @@ function python-callgraph() {
 }
 
 alias 'reboot2win'='sudo grub-reboot 4 && sudo reboot'
+
+function resize640x480()
+{
+    convert -resize 640x480 "${1}" "${1}"
+}

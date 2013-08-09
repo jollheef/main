@@ -45,7 +45,9 @@ function Main
 	    else
 		notif="Volume::on"
 	    fi
-	    SendNotify
+	    if [[ "${2}" != "quiet" ]]
+	    then SendNotify
+	    fi
 	    ;;
 	show)
 	    notif="Volume::$(amixer sget Master |grep "Mono:" |awk '{print $4}' | sed 's/\[//;s/\]//') \
@@ -77,4 +79,4 @@ function TestRun
     fi
 }
 
-Main
+Main ${@}

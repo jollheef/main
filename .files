@@ -41,3 +41,4 @@
 /home/michael/.zshrc
 /home/michael/.ext_aliases.zsh
 /etc/init.d/saged
+/home/michael/bin/virtualbox-change-directory.sh
